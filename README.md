@@ -1,18 +1,16 @@
-#README
+# OWARAIMOVE
 
-#OWARAIMOVE
-
-##概要
-###売れていないお笑い芸人とユーザーをつなぐためのサービス
+## 概要
+### 売れていないお笑い芸人とユーザーをつなぐためのサービス
 売れていない芸人は現在も自ら出演するライブのチケットをSNSを使って手売りで販売しています。こちらチケットが売れ残れば自分の給料よりマイナスされていく仕組みとなっています。
 また、その他にも暮らしていくためにはバイトをしたりすることによって、本来磨くはずの芸を磨くことができないというのが今の現状です。
 なぜ、ライブのチケットが売ることができないかというと考えたときに芸人個々人がバラバラのSNSやお笑いに特化しているサービスがないためと考えました。
 そのためお笑い芸人とライブ情報をこのサービスで管理することにより、空いている時間にすぐに検索ができ映画感覚でお笑いライブに参加していただけると考えました。
 
-##バージョン
-###Ruby 2.5.1 Rails 5.2.1
+## バージョン
+### Ruby 2.5.1 Rails 5.2.1
 
-##機能一覧
+## 機能一覧
 - [ ] ログイン機能
 - [ ] 芸人のプロフィール作成・保存機能
 - [ ] 芸人一覧表示機能
@@ -35,22 +33,22 @@
 - [ ] 予定通知機能
 - [ ] パスワードリセット機能
 
-##カタログ設計
+## カタログ設計
 https://docs.google.com/spreadsheets/d/1Y6Y7uAKJg6z_liahHJ3a1ChUpq2w7VTjxXFTs3HpBss/edit#gid=0
 
-##テーブル定義
+## テーブル定義
 https://docs.google.com/spreadsheets/d/1Y6Y7uAKJg6z_liahHJ3a1ChUpq2w7VTjxXFTs3HpBss/edit#gid=1897333653
 
-##ER図
+## ER図
 https://cacoo.com/diagrams/9pOobDQr3ekWrAsK/0F235
 
-##画面遷移図
+## 画面遷移図
 https://cacoo.com/diagrams/Ss320RzCP6ya4uXl/E974A
 
-##画面ワイヤーフレーム
+## 画面ワイヤーフレーム
 https://cacoo.com/diagrams/3XAxfmp0H4YTtw9r
 
-##使用予定Gem
+## 使用予定Gem
 * device
 * carrierwave
 * mini_magick
