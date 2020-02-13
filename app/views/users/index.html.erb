@@ -1,0 +1,18 @@
+<h1>ユーザー一覧</h1>
+<table>
+  <tr>
+    <th>ユーザーID</th>
+    <th>ユーザー名</th>
+    <th>参加するライブ</th>
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'ユーザー作成', '/users/new' %>
