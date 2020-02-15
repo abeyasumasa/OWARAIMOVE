@@ -3,7 +3,8 @@
   <tr>
     <th>ユーザーID</th>
     <th>ユーザー名</th>
-    <th>参加するライブ</th>
+    <th>メールアドレス</th>
+    <th>詳細</th>
     <th>編集</th>
     <th>削除</th>
   </tr>
@@ -11,6 +12,9 @@
   <tr>
     <td><%= user.id %></td>
     <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to '詳細', user_path(user.id) %></td>
+    <td><%= link_to '編集', edit_user_path(user.id) %></td>
   </tr>
 <% end %>
 </table>
