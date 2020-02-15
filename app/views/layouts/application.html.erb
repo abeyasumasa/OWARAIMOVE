@@ -12,6 +12,8 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <p><%= link_to 'ログイン', new_user_session_path %>
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
     <%= yield %>
   </body>
 </html>
