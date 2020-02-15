@@ -1,5 +1,5 @@
 class ComediansController < ApplicationController
-  before_action :set_comedian, only: [:show, :edit, :update]
+  before_action :set_comedian, only: [:show, :edit, :update, :destroy]
 
   def index
     @comedians = Comedian.all
@@ -11,10 +11,14 @@ class ComediansController < ApplicationController
 
   def create
     @comedian = Comedian.create(comedian_params)
-    if @comedian.save
-      redirect_to comedian_path(params[:id]) , notice:"登録しました！"
-    else
+    if params[:back]
       render :new
+    else
+      if @comedian.save
+        redirect_to comedian_path(params[:id]) , notice:"登録しました！"
+      else
+        render :new
+      end
     end
   end
 
@@ -33,6 +37,13 @@ class ComediansController < ApplicationController
   end
 
   def destroy
+    @comedian.destroy
+    redirect_to comedians_path, notice:"芸人情報を削除しました！"
+  end
+
+  def confirm
+    @comedian = Comedian.new(comedian_params)
+    render :new if @comedian.invalid?
   end
 
   private
