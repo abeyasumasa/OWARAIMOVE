@@ -1,0 +1,34 @@
+<h2><%= @user.name %>の編集画面</h2>
+
+<%= form_with(model:@user,local:true) do |f| %>
+
+  <div class="field">
+    <%= f.label :名前 %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード %>
+
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :確認用パスワード %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :芸人 %>
+    <%= f.check_box :entertainer, {}, checked_value = "true",unchecked_value = "false" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新" %>
+  </div>
+<% end %>
