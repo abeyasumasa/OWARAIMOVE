@@ -17,6 +17,7 @@ class ComediansController < ApplicationController
   end
 
   def show
+    @comedian = Comedian.find(params[:id])
   end
 
   def edit
