@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'pry-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
