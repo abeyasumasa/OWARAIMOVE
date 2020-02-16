@@ -4,7 +4,9 @@
   <tbody>
     <% @comedians.each do |comedian| %>
       <div class="centering_item">
+      <p><%= image_tag comedian.combination_icon.url %></p>
       <span><%= comedian.combination_name %></span><br>
+      <p>ジャンル:<%= comedian.genre %></p>
       <p><%= comedian.comment %></p>
 
         <span><%= link_to '詳細', comedian,class: 'btn btn-default'  %></span>
@@ -14,3 +16,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "芸人を追加", new_comedian_path, class: 'btn btn-default' %>

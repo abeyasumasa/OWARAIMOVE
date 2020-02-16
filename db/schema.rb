@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_064205) do
+ActiveRecord::Schema.define(version: 2020_02_16_085120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_064205) do
     t.string "genre", null: false
     t.string "twitter_url", null: false
     t.string "youtube_url", null: false
-    t.string "combination_icon"
+    t.text "combination_icon"
     t.string "comment", null: false
   end
 

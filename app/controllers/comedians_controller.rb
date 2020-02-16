@@ -15,7 +15,7 @@ class ComediansController < ApplicationController
       render :new
     else
       if @comedian.save
-        redirect_to comedian_path(params[:id]) , notice:"登録しました！"
+        redirect_to comedians_path, notice:"登録しました！"
       else
         render :new
       end
@@ -50,7 +50,7 @@ class ComediansController < ApplicationController
 
   def comedian_params
     params.require(:comedian).permit(:combination_name, :email, :genre, :twitter_url,
-    :youtube_url, :combination_icon, :comment)
+                                    :youtube_url, :combination_icon,:combination_icon_cache,  :comment)
   end
 
   def set_comedian
