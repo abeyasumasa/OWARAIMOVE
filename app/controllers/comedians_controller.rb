@@ -1,5 +1,6 @@
 class ComediansController < ApplicationController
   before_action :set_comedian, only: [:show, :edit, :update, :destroy]
+  before_action :encure_correct_entertainer, {only: [:edit, :update,:destroy]}
 
   def index
     @comedians = Comedian.all
@@ -10,7 +11,8 @@ class ComediansController < ApplicationController
   end
 
   def create
-    @comedian = Comedian.create(comedian_params)
+    @comedian = Comedian.new(comedian_params)
+    @comedian.user_id = current_user.id
     if params[:back]
       render :new
     else
@@ -23,6 +25,7 @@ class ComediansController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(comedian_id: @comedian.id)
   end
 
   def edit
@@ -43,6 +46,8 @@ class ComediansController < ApplicationController
 
   def confirm
     @comedian = Comedian.new(comedian_params)
+    @comedian.user_id = current_user.id
+    binding.pry
     render :new if @comedian.invalid?
   end
 
@@ -50,10 +55,19 @@ class ComediansController < ApplicationController
 
   def comedian_params
     params.require(:comedian).permit(:combination_name, :email, :genre, :twitter_url,
-                                    :youtube_url, :combination_icon,:combination_icon_cache,  :comment)
+                                    :youtube_url, :combination_icon,:combination_icon_cache, :comment, :user_id)
   end
 
   def set_comedian
     @comedian = Comedian.find(params[:id])
+  end
+
+  def encure_correct_entertainer
+    @comedian = Comedian.find(params[:id])
+      if current_user.id == @comedian.user_id
+        binding.pry
+        flash[:notice] = "権限がありません"
+        redirect_to comedians_path
+      end
   end
 end

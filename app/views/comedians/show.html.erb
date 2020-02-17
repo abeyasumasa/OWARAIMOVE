@@ -30,4 +30,14 @@
   <p>Youtube_url:<%= @comedian.youtube_url %></p>
 </div>
 
+<% unless @comedian.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(comedian_id: @comedian.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+<span><%= link_to '編集', edit_comedian_path(@comedian.id),class: 'btn btn-default'   %></span>
+<span><%= link_to '削除', comedian_path(@comedian.id), data: { confirm: '本当に削除していいですか？' },method: :delete,class: 'btn btn-default' %></span>
 <p><%= link_to '芸人一覧に戻る', comedians_path %></p>
