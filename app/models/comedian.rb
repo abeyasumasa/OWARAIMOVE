@@ -1,5 +1,5 @@
 class Comedian < ApplicationRecord
-  mount_uploader :combination_icon, ComedianImageUploader
+  mount_uploader :combination_icon, ImageUploader
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
