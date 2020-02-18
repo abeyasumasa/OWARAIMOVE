@@ -3,3 +3,7 @@
 <p><%=link_to 'フォロー' %></p>
 <p>名前: <%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
+
+<p><%= link_to '編集', edit_user_path(@user.id) %></p>
+
+<p><%= link_to '芸人一覧へ', comedians_path %></p>

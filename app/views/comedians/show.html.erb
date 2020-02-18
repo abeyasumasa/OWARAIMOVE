@@ -1,0 +1,43 @@
+<h1>芸人詳細</h1>
+
+  <div class="comedian_icon">
+   <p>
+     <%= image_tag @comedian.combination_icon.url %>
+   </p>
+  </div>
+
+<div class="comedian_comment">
+  <p>コメント:<%= @comedian.comment %></p>
+</div>
+
+<div class="comedian_combination_name">
+　　<p>コンビ名:<%= @comedian.combination_name %></p>
+</div>
+
+<div class="comedian_email">
+  <p>メールアドレス:<%= @comedian.email %></p>
+</div>
+
+<div class="comedian_genre">
+  <p>ジャンル:<%= @comedian.genre %></p>
+</div>
+
+<div class="comedian_twitter_url">
+  <p>Twitter_url:<%= @comedian.twitter_url %></p>
+</div>
+
+<div class="comedian_youtube_url">
+  <p>Youtube_url:<%= @comedian.youtube_url %></p>
+</div>
+
+<% unless @comedian.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(comedian_id: @comedian.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+<span><%= link_to '編集', edit_comedian_path(@comedian.id),class: 'btn btn-default'   %></span>
+<span><%= link_to '削除', comedian_path(@comedian.id), data: { confirm: '本当に削除していいですか？' },method: :delete,class: 'btn btn-default' %></span>
+<p><%= link_to '芸人一覧に戻る', comedians_path %></p>
