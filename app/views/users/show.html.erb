@@ -1,9 +1,12 @@
 <h1><%= @user.name %>のページ</h1>
-<p><%= @user.icon%></p>
+
+<% unless @user.icon.url == nil %>
+  <p><%= image_tag @user.icon.url %></p>
+<% end %>
+
 <p><%=link_to 'フォロー' %></p>
 <p>名前: <%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
 
 <p><%= link_to '編集', edit_user_path(@user.id) %></p>
-
 <p><%= link_to '芸人一覧へ', comedians_path %></p>

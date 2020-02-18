@@ -47,7 +47,6 @@ class ComediansController < ApplicationController
   def confirm
     @comedian = Comedian.new(comedian_params)
     @comedian.user_id = current_user.id
-    binding.pry
     render :new if @comedian.invalid?
   end
 
