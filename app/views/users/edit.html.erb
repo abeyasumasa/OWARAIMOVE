@@ -9,12 +9,22 @@
 
   <div class="field">
     <%= f.label :名前 %>
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, id: 'Name', autofocus: true %>
   </div>
 
   <div class="field">
     <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, id: 'Email',vautofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード %>
+    <%= f.password_field :password, id: 'Password', autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :確認用パスワード %>
+    <%= f.password_field :password_confirmation, id: 'Password_confirmation', autocomplete: "new-password" %>
   </div>
 
   <div class="field">
