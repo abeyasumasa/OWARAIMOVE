@@ -96,7 +96,13 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     click_on '編集'
     fill_in 'Name' , with: 'spectestuser04'
     fill_in 'Email' , with: 'spectestuser04@gmail.com'
+    fill_in 'Password' , with: 'password'
+    fill_in 'Password_confirmation' , with: 'password'
+    check 'user_entertainer'
     click_on '更新'
+    fill_in 'Email' , with: 'spectestuser04@gmail.com'
+    fill_in 'Password' , with: 'password'
+    click_on 'Log in'
     expect(page).to have_content 'spectestuser04のページ'
   end
     
