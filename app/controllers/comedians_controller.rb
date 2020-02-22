@@ -36,7 +36,7 @@ class ComediansController < ApplicationController
 
   def update
     if @comedian.update(comedian_params)
-      rediret_to comedians_path, notice:"芸人情報を編集しました"
+      redirect_to comedians_path, notice:"芸人情報を編集しました"
     else
       reder :edit
     end
@@ -66,7 +66,7 @@ class ComediansController < ApplicationController
 
   def encure_correct_entertainer
     @comedian = Comedian.find(params[:id])
-      if current_user.id == @comedian.user_id
+      if current_user.id != @comedian.user_id
         binding.pry
         flash[:notice] = "権限がありません"
         redirect_to comedians_path
