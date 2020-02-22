@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       # パスワード変更でログアウトするのを防ぐ
-      bypass_sign_in(@user, bypass: true) 
+      # bypass_sign_in(@user, bypass: true) 
       redirect_to user_path(@user), notice: '更新しました'
     else
       render action: :edit
