@@ -1,4 +1,5 @@
 class ComediansController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_comedian, only: [:show, :edit, :update, :destroy]
   before_action :encure_correct_entertainer, {only: [:edit, :update,:destroy]}
 
@@ -25,7 +26,9 @@ class ComediansController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(comedian_id: @comedian.id)
+    if current_user != nil
+      @favorite = current_user.favorites.find_by(comedian_id: @comedian.id)
+    end
   end
 
   def edit
