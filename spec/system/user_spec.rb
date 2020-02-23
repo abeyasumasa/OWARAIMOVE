@@ -108,4 +108,4 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     
 end
 
-#bin/rspec spec/system/user_spec.rb
+# bundle exec rspec spec/system/user_spec.rb

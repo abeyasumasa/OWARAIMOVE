@@ -1,4 +1,5 @@
 class ComediansController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_comedian, only: [:show, :edit, :update, :destroy]
   before_action :encure_correct_entertainer, {only: [:edit, :update,:destroy]}
 
@@ -25,7 +26,9 @@ class ComediansController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(comedian_id: @comedian.id)
+    if current_user != nil
+      @favorite = current_user.favorites.find_by(comedian_id: @comedian.id)
+    end
   end
 
   def edit
@@ -33,7 +36,7 @@ class ComediansController < ApplicationController
 
   def update
     if @comedian.update(comedian_params)
-      rediret_to comedians_path, notice:"芸人情報を編集しました"
+      redirect_to comedians_path, notice:"芸人情報を編集しました"
     else
       reder :edit
     end
@@ -63,8 +66,7 @@ class ComediansController < ApplicationController
 
   def encure_correct_entertainer
     @comedian = Comedian.find(params[:id])
-      if current_user.id == @comedian.user_id
-        binding.pry
+      if current_user.id != @comedian.user_id
         flash[:notice] = "権限がありません"
         redirect_to comedians_path
       end
