@@ -67,7 +67,6 @@ class ComediansController < ApplicationController
   def encure_correct_entertainer
     @comedian = Comedian.find(params[:id])
       if current_user.id != @comedian.user_id
-        binding.pry
         flash[:notice] = "権限がありません"
         redirect_to comedians_path
       end
