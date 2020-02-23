@@ -4,7 +4,7 @@
   <p><%= image_tag @user.icon.url %></p>
 <% end %>
 
-<p><%=link_to 'フォロー' %></p>
+<p><%=link_to 'フォロー', favorites_path %></p>
 <p>名前: <%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
 

@@ -1,0 +1,15 @@
+<h1>お気に入り芸人一覧</h1>
+
+<table>
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <div class="centering_item">
+        <% unless favorite.combination_icon.url == nil %>
+          <p><%= image_tag favorite.combination_icon.url %></p>
+        <% end %>
+        <span><%= favorite.combination_name %></span><br>
+        <span><%= favorite.comment %></span><br>
+      </div>
+    <% end %>
+  </tbody>
+</table>
