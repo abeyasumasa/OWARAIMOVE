@@ -1,2 +1,33 @@
-<h1>Lives#show</h1>
-<p>Find me in app/views/lives/show.html.erb</p>
+<h1>ライブ詳細</h1>
+
+  <div class="live_title">
+    <p>title</p>
+    <p><%= @live.title %></p>
+  </div>
+
+  <div class="live_date">
+    <p>date</p>
+    <p><%= simple_day(@live.date) %></p>
+  </div>
+
+  <div class="live_time">
+    <p>time</p>
+    <p><%= simple_time(@live.start_time) %>〜<%= simple_time(@live.ending_time) %></p>
+  </div>
+  
+  <div class="live_place">
+    <p>place</p>
+    <p><%= @live.place %></p>
+  </div>
+
+  <div class="live_price">
+    <p>price</p>
+    <p><%= @live.price %>円</p>
+  </div>
+
+  <div class="live_content">
+  　　<p>content</p>
+    <p><%= @live.content %></p>
+  </div>
+
+<p><%= link_to 'ライブ一覧に戻る', lives_path %></p>

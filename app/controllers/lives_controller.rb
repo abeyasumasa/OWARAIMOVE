@@ -9,11 +9,11 @@ class LivesController < ApplicationController
 
   def create
     @live = Live.create(live_params)
-    binding.pry
     redirect_to lives_path
   end
 
   def show
+    @live = Live.find(params[:id])
   end
 
   def update
