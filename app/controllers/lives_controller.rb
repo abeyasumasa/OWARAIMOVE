@@ -1,5 +1,5 @@
 class LivesController < ApplicationController
-  before_action :set_live, only: [:show, :edit, :update]
+  before_action :set_live, only: [:show, :edit, :update, :destroy]
 
   def index
     @lives = Live.all
@@ -33,6 +33,8 @@ class LivesController < ApplicationController
   end
 
   def destroy
+    @live.destroy
+    redirect_to lives_path, notice:"ライブを削除しました！"
   end
 
   private
