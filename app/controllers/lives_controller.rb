@@ -1,4 +1,6 @@
 class LivesController < ApplicationController
+  before_action :set_live, only: [:show, :edit, :update]
+
   def index
     @lives = Live.all
   end
@@ -8,18 +10,26 @@ class LivesController < ApplicationController
   end
 
   def create
-    @live = Live.create(live_params)
-    redirect_to lives_path
+    @live = Live.new(live_params)
+    if @live.save
+      redirect_to lives_path, notice:"ライブを作成しました！"
+    else
+      reder :new
+    end
   end
 
   def show
-    @live = Live.find(params[:id])
-  end
-
-  def update
   end
 
   def edit
+  end
+
+  def update
+    if @live.update(live_params)
+      redirect_to lives_path, notice: "ライブ情報を編集しました！"
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -29,6 +39,10 @@ class LivesController < ApplicationController
 
   def live_params
     params.require(:live).permit(:title, :content, :place, :date, :start_time, :ending_time, :price, :viewer)
+  end
+
+  def set_live
+    @live = Live.find(params[:id])
   end
 
 end

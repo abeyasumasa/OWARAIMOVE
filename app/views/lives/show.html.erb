@@ -29,5 +29,6 @@
   　　<p>content</p>
     <p><%= @live.content %></p>
   </div>
-
-<p><%= link_to 'ライブ一覧に戻る', lives_path %></p>
+  
+  <span><%= link_to '編集', edit_live_path(@live.id),class: 'btn btn-default' %></span>
+　<p><%= link_to 'ライブ一覧に戻る', lives_path %></p>

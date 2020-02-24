@@ -1,2 +1,38 @@
-<h1>Lives#edit</h1>
-<p>Find me in app/views/lives/edit.html.erb</p>
+<h1>ライブ編集画面</h1>
+
+<%= form_with(model: @live, url: live_path, local: true) do |form| %>
+  <div class="live_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="live_date">
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="live_time">
+    <%= form.label :start_time %>
+    <%= form.time_select :start_time, {include_blank: true} %>
+    <%= form.label :ending_time %>
+    <%= form.time_select :ending_time, {include_blank: true} %>
+  </div>
+  
+  <div class="live_place">
+    <%= form.label :place %>
+    <%= form.text_field :place %>
+  </div>
+
+  <div class="live_price">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="live_content">
+    <%= form.label :content %>
+    <%= form.text_area :content, size:"50×10" %>
+  </div>
+
+  <%= form.submit "登録" %>
+
+<% end %>
