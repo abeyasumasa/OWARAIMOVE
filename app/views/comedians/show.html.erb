@@ -28,6 +28,16 @@
 
 <div class="comedian_youtube_url">
   <p>Youtube_url:<%= @comedian.youtube_url %></p>
+
+  <p>出演する予定のライブ</p>
+<% @schedule.each do |schedule| %>
+  <div class="schedule">
+    <p><%= schedule.title %></p>
+    <p><%= simple_day(schedule.date) %></p>
+    <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
+  </div>
+<% end %>
+
 </div>
 <% if current_user !=  nil %>
   <% unless @comedian.user_id == current_user.id %>
