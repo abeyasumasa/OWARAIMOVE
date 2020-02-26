@@ -1,0 +1,42 @@
+<h1>ライブ詳細</h1>
+
+  <div class="live_title">
+    <p>title</p>
+    <p><%= @live.title %></p>
+  </div>
+
+  <div class="live_date">
+    <p>date</p>
+    <p><%= simple_day(@live.date) %></p>
+  </div>
+
+  <div class="live_time">
+    <p>time</p>
+    <p><%= simple_time(@live.start_time) %>〜<%= simple_time(@live.ending_time) %></p>
+  </div>
+  
+  <div class="live_place">
+    <p>place</p>
+    <p><%= @live.place %></p>
+  </div>
+
+  <div class="live_price">
+    <p>price</p>
+    <p><%= @live.price %>円</p>
+  </div>
+
+  <div class="live_content">
+  　　<p>content</p>
+    <p><%= @live.content %></p>
+  </div>
+  
+  <span><%= link_to '編集', edit_live_path(@live.id),class: 'btn btn-default' %></span>
+  <span><%= link_to '削除', live_path(@live.id), method: :delete,class: 'btn btn-default' %></span>
+
+    <% if @participant.present? %>
+      <%= link_to 'お気に入り解除する', participant_management_path(id: @participant.id), method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to '参加する', participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-primary' %>
+    <% end %>
+
+　<p><%= link_to 'ライブ一覧に戻る', lives_path %></p>

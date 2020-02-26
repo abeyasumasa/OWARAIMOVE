@@ -5,8 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # イメージアップローダー機能
   mount_uploader :icon ,ImageUploader
-  # アソシエーション機能、お気に入り機能
+  # アソシエーション機能
   has_many :comedians
+  # ライブ参加機能
+  has_many :participant_managements, dependent: :destroy
+  has_many :participant_management_lives, through: :participant_management, source: :live
+  # お気に入り機能
   has_many :favorites, dependent: :destroy
   has_many :favorite_comedians, through: :favorites, source: :comedian
   # バリデーション
