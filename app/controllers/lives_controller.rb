@@ -14,6 +14,7 @@ class LivesController < ApplicationController
     if @live.save
       comedian = current_user.comedians.first
       comedian.performer_managements.create(live_id:@live.id)
+      binding.pry
       redirect_to lives_path, notice:"ライブを作成しました！"
     else
       reder :new
@@ -21,6 +22,7 @@ class LivesController < ApplicationController
   end
 
   def show
+    @participant = current_user.participant_managements.find_by(live_id: @live.id)
   end
 
   def edit
