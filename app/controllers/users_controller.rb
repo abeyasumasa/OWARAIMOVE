@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @schedule =@user.participant_management_lives
   end
 
   def edit

@@ -8,5 +8,14 @@
 <p>名前: <%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
 
+<p>参加する予定のライブ</p>
+<% @schedule.each do |schedule| %>
+  <div class="schedule">
+    <p><%= schedule.title %></p>
+    <p><%= simple_day(schedule.date) %></p>
+    <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
+  </div>
+<% end %>
+
 <p><%= link_to '編集', edit_user_path(@user.id) %></p>
 <p><%= link_to '芸人一覧へ', comedians_path %></p>
