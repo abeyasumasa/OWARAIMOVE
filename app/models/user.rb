@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :comedians
   # ライブ参加機能
   has_many :participant_managements, dependent: :destroy
-  has_many :participant_management_lives, through: :participant_management, source: :live
+  has_many :participant_management_lives, through: :participant_managements, source: :live
   # お気に入り機能
   has_many :favorites, dependent: :destroy
   has_many :favorite_comedians, through: :favorites, source: :comedian
