@@ -28,6 +28,7 @@ class ComediansController < ApplicationController
   def show
     if current_user != nil
       @favorite = current_user.favorites.find_by(comedian_id: @comedian.id)
+      @schedule = @comedian.performer_management_lives
     end
   end
 
