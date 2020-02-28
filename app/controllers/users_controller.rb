@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :encure_correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show

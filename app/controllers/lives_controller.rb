@@ -2,7 +2,7 @@ class LivesController < ApplicationController
   before_action :set_live, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lives = Live.all
+    @lives = Live.page(params[:page])
   end
 
   def new
