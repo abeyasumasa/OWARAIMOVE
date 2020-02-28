@@ -48,7 +48,7 @@ end
   Live.create!(title: title,
                content: "test",
                place: "渋谷",
-               date: DateTime.parse("2020/02/29"),
+               date: DateTime.strptime("2020/02/29","%Y/%m/%d"),
                start_time: Time.strptime("2020/02/29 10:00","%Y/%m/%d %H:%M"),
                ending_time: Time.strptime("2020/02/29 12:00","%Y/%m/%d %H:%M"),
                price: 2000

@@ -4,7 +4,7 @@ class ComediansController < ApplicationController
   before_action :encure_correct_entertainer, {only: [:edit, :update,:destroy]}
 
   def index
-    @comedians = Comedian.all
+    @comedians = Comedian.page(params[:page])
   end
 
   def new
