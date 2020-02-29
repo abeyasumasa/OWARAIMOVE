@@ -16,7 +16,7 @@ class LivesController < ApplicationController
       comedian.performer_managements.create(live_id:@live.id)
       redirect_to lives_path, notice:"ライブを作成しました！"
     else
-      reder :new
+      render :new
     end
   end
 

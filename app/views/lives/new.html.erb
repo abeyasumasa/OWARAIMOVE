@@ -1,6 +1,17 @@
 <h1>ライブ登録画面</h1>
 
 <%= form_with(model: @live, local:true) do |form| %>
+  <% if @live.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @live.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @live.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="live_title">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -12,9 +23,9 @@
   </div>
 
   <div class="live_time">
-    <%= form.label :start_time %>
+    <%= form.label :time %>
     <%= form.time_select :start_time, {include_blank: true} %>
-    <%= form.label :ending_time %>
+    <span>〜</span>
     <%= form.time_select :ending_time, {include_blank: true} %>
   </div>
   
