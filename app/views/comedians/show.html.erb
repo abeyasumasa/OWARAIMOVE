@@ -37,6 +37,7 @@
     <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
   </div>
 <% end %>
+<%= paginate @schedule %>
 
 </div>
 <% if current_user !=  nil %>

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # ページネーション（１ページの最大表示件数）
+  paginates_per 10
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

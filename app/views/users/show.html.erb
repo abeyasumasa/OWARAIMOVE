@@ -16,6 +16,7 @@
     <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
   </div>
 <% end %>
+<%= paginate @schedule %>
 
 <p><%= link_to '編集', edit_user_path(@user.id) %></p>
 <p><%= link_to '芸人一覧へ', comedians_path %></p>

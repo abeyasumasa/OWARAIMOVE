@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   before_action :encure_correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
-    @schedule =@user.participant_management_lives
+    @schedule =@user.participant_management_lives.page(params[:page]).per(3)
   end
 
   def edit

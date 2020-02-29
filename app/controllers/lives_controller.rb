@@ -2,7 +2,7 @@ class LivesController < ApplicationController
   before_action :set_live, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lives = Live.all
+    @lives = Live.page(params[:page])
   end
 
   def new
@@ -14,7 +14,6 @@ class LivesController < ApplicationController
     if @live.save
       comedian = current_user.comedians.first
       comedian.performer_managements.create(live_id:@live.id)
-      binding.pry
       redirect_to lives_path, notice:"ライブを作成しました！"
     else
       reder :new
