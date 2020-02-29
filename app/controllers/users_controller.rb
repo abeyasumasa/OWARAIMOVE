@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @schedule =@user.participant_management_lives
+    @schedule =@user.participant_management_lives.page(params[:page]).per(3)
   end
 
   def edit
