@@ -27,3 +27,6 @@
 /config/master.key
 
 /tmp/screenshots
+
+#dotenv-rails
+.env
