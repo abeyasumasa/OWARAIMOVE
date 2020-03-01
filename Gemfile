@@ -64,12 +64,26 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# ログイン機能
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+# デバック機能
 gem 'pry-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
+
+# 写真投稿機能
 gem 'carrierwave'
+
+# ページネーション機能
 gem 'kaminari'
+
+# ダミーデータ作成
 gem 'faker'
+
+# oauth認証
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
