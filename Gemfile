@@ -87,3 +87,6 @@ gem 'faker'
 # oauth認証
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+
+# 環境変数変換
+gem 'dotenv-rails'
