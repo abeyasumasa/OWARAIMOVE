@@ -1,5 +1,24 @@
 <h1>ライブ一覧</h1>
 
+<div class="search_comedian">
+  <%= search_form_for @search do |f| %>
+    <div class="genre">
+      <%= f.label :date_eq, '日時' %>
+      <%= f.date_field :date_eq %>
+    </div>
+
+    <div>
+    <%= f.label :place_cont, '場所' %>
+    <%= f.text_field :place_cont %>
+    </div>
+
+    <div class="submit">
+      <%= f.submit '検索する' %>
+    </div>
+  <% end %>
+</div>
+
+
 <% @lives.each do |live| %>
   <div class="live_item">
     <p><%= live.title %></p>

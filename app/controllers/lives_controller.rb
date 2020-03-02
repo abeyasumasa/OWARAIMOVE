@@ -2,7 +2,8 @@ class LivesController < ApplicationController
   before_action :set_live, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lives = Live.page(params[:page])
+    @search = Live.ransack(params[:q])
+    @lives = @search.result.page(params[:page])
   end
 
   def new

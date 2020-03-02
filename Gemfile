@@ -91,3 +91,6 @@ gem 'omniauth-twitter'
 
 # 環境変数変換
 gem 'dotenv-rails'
+
+#検索機能
+gem 'ransack'
