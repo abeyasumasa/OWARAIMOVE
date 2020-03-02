@@ -4,7 +4,8 @@ class ComediansController < ApplicationController
   before_action :encure_correct_entertainer, {only: [:edit, :update,:destroy]}
 
   def index
-    @comedians = Comedian.page(params[:page])
+    @search = Comedian.ransack(params[:q])
+    @comedians = @search.result.page(params[:page])
   end
 
   def new
