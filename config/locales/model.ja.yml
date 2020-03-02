@@ -19,3 +19,13 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+      live:
+        title: ライブタイトル
+        content: ライブ内容
+        place: 場所
+        date: ライブ日付
+        start_time: 開始時間
+        ending_time: 終了時間
+        price: 料金
+        time: 時間
+      

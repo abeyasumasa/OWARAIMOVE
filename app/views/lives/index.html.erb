@@ -32,12 +32,9 @@
 <% end %>
 <%= paginate @lives %>
 
-<p><%= link_to 'ライブ作成', new_live_path %></p>
-
-
 <% if current_user !=  nil %>
   <% if current_user.entertainer != false %>
-    <%= link_to "ライブを追加", new_live_path, class: 'btn btn-default' %>
+    <%= link_to "ライブ作成", new_live_path, class: 'btn btn-default' %>
     <% if current_user.admin ==  true %>
       <%= link_to "ユーザー一覧", users_path, class: 'btn btn-default' %>
     <% end %>
