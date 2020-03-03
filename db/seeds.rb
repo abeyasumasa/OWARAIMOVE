@@ -1,49 +1,57 @@
 # ユーザー
-# 芸人ではないユーザー
-15.times do |n|
-  name = Faker::Games::Pokemon.name
-  email = Faker::Internet.email
-  password = "password"
-  User.create!(name: name,
-               email: email,
-               password: password,
-               password_confirmation: password,
-               entertainer: false,
-               icon: open("#{Rails.root}/db/fixtures/image01.jpg")
-               )
-end
-
 # 芸人であるユーザー
 15.times do |n|
   name = Faker::Games::Pokemon.name
   email = Faker::Internet.email
   password = "password"
+  uid = User.create_unique_string
   User.create!(name: name,
                email: email,
                password: password,
                password_confirmation: password,
                entertainer: true,
-               icon: open("#{Rails.root}/db/fixtures/image01.jpg")
+               icon: open("#{Rails.root}/db/fixtures/image01.jpg"),
+               uid: uid,
+               provider: ""
+               )
+end
+
+# 芸人ではないユーザー
+15.times do |n|
+  name = Faker::Games::Pokemon.name
+  email = Faker::Internet.email
+  password = "password"
+  uid = User.create_unique_string
+  User.create!(name: name,
+               email: email,
+               password: password,
+               password_confirmation: password,
+               entertainer: false,
+               icon: open("#{Rails.root}/db/fixtures/image01.jpg"),
+               uid: uid,
+               provider: ""
                )
 end
 
 # 芸人
 
-30.times do |n|
+1.times do |n|
   name = Faker::Games::Zelda.character
   email = Faker::Internet.email
-  user_id = rand(15..30)
-  Comedian.create!(combination_name: name,
-               email: email,
-               genre: "漫才",
-               combination_icon: open("#{Rails.root}/db/fixtures/image02.jpg"),
-               comment: "test",
-               user_id: user_id
-               )
+  15.times do |n|
+    user_id = n+1
+    Comedian.create!(combination_name: name,
+                     email: email,
+                     genre: "漫才",
+                     combination_icon: open("#{Rails.root}/db/fixtures/image02.jpg"),
+                     comment: "test",
+                     user_id: user_id
+                     )
+  end
 end
 
 # ライブ
-30.times do |n|
+15.times do |n|
   title = Faker::Book.title
   Live.create!(title: title,
                content: "test",
@@ -54,3 +62,28 @@ end
                price: 2000
                )
 end
+
+# お気に入り
+10.times do |n|
+  user_id = n+16
+  comedian_id = n+1
+  Favorite.create!(user_id: user_id,
+                   comedian_id: comedian_id)
+end
+
+# 参加ライブ
+10.times do |n|
+  user_id = n+16
+  live_id = n+1
+  ParticipantManagement.create!(user_id: user_id,
+                                live_id: live_id)
+end
+
+# 出演ライブ
+10.times do |n|
+  comedian_id = n+1
+  live_id = n+1
+  PerformerManagement.create!(comedian_id: comedian_id,
+                              live_id: live_id)
+end
+
