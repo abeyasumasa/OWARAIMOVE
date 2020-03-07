@@ -10,24 +10,10 @@
   </head>
 
   <body>
-    <header>
-      <nav>
-        <% if user_signed_in? %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-            <strong><%= link_to current_user.name, user_path(current_user.id) %></strong>
-            <%= link_to 'プロフィール変更', edit_user_path(current_user.id) %>
-            <%= link_to '芸人一覧', comedians_path %>
-            <%= link_to 'ライブ一覧', lives_path %>
-        <% else %>
-          <%= link_to 'サインアップ', new_user_registration_path %>
-          <%= link_to 'ログイン', new_user_session_path %>
-        <% end %>
-      </nav>
-    </header>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
