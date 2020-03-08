@@ -28,7 +28,7 @@ class User < ApplicationRecord
   mount_uploader :icon ,ImageUploader
 
   # アソシエーション機能
-  has_many :comedians
+  has_one :comedian
 
   # ライブ参加機能
   has_many :participant_managements, dependent: :destroy

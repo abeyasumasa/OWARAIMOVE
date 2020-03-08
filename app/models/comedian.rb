@@ -6,7 +6,7 @@ class Comedian < ApplicationRecord
   mount_uploader :combination_icon, ImageUploader
 
   # 芸人登録者の管理のため
-  belongs_to :user
+  #has_one :user
 
   # 芸人とユーザーのアソシエーション
   has_many :favorites, dependent: :destroy
