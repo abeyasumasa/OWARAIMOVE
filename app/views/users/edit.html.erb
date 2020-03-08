@@ -3,7 +3,8 @@
 <%= form_with(model:@user,local:true) do |f| %>
 
   <div class="field">
-    <%= f.label :写真 %>
+    <%= f.label :写真 %><br>
+    <%= image_tag(@user.icon.url) %>
     <%= f.file_field :icon %>
   </div>
 

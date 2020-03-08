@@ -12,7 +12,7 @@
 
   <div class="comedian_icon">
   <%= form.label :combination_icon %><br>
-  <%= image_tag(@comedian.combination_icon.url) if @comedian.combination_icon && @comedian.combination_icon.url %>
+  <%= image_tag(@comedian.combination_icon.url) %>
   <%= form.file_field :combination_icon %>
   <%= form.hidden_field :image_cache %>
 </div>
