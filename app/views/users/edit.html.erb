@@ -1,3 +1,4 @@
+<div class="container">
 <h2><%= @user.name %>の編集画面</h2>
 
 <%= form_with(model:@user,local:true) do |f| %>
@@ -37,3 +38,4 @@
     <%= f.submit "更新" %>
   </div>
 <% end %>
+</div>
