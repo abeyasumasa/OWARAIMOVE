@@ -1,9 +1,11 @@
+<div class="container">
 <h2><%= @user.name %>の編集画面</h2>
 
 <%= form_with(model:@user,local:true) do |f| %>
 
   <div class="field">
     <%= f.label :写真 %>
+    <p><%= image_tag @user.icon.to_s %></p>
     <%= f.file_field :icon %>
   </div>
 
@@ -36,3 +38,4 @@
     <%= f.submit "更新" %>
   </div>
 <% end %>
+</div>

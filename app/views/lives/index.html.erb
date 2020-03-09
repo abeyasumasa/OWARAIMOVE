@@ -1,42 +1,42 @@
-<h1>ライブ一覧</h1>
+<div class="container">
+  <h1>ライブ一覧</h1>
+    <div class="search_comedian">
+      <%= search_form_for @search do |f| %>
+        <div class="genre">
+          <%= f.label :date_eq, '日時' %>
+          <%= f.date_field :date_eq %>
+        </div>
 
-<div class="search_comedian">
-  <%= search_form_for @search do |f| %>
-    <div class="genre">
-      <%= f.label :date_eq, '日時' %>
-      <%= f.date_field :date_eq %>
+        <div>
+          <%= f.label :place_cont, '場所' %>
+          <%= f.text_field :place_cont %>
+        </div>
+
+        <div class="submit">
+          <%= f.submit '検索する' %>
+        </div>
+      <% end %>
     </div>
 
-    <div>
-    <%= f.label :place_cont, '場所' %>
-    <%= f.text_field :place_cont %>
-    </div>
-
-    <div class="submit">
-      <%= f.submit '検索する' %>
-    </div>
-  <% end %>
-</div>
-
-
-<% @lives.each do |live| %>
-  <div class="live_item">
-    <p><%= live.title %></p>
-    <p><%= simple_day(live.date) %></p>
-    <p><%= simple_time(live.start_time) %>〜<%= simple_time(live.ending_time) %></p>
-    <p><%= live.place %></p>
-    <span><%= link_to '詳細', live_path(live.id),class: 'btn btn-default'  %></span>
-    <span><%= link_to '編集', edit_live_path(live.id),class: 'btn btn-default'   %></span>
-    <span><%= link_to '削除', live_path(live.id), method: :delete,class: 'btn btn-default' %></span>
-  </div>
-<% end %>
-<%= paginate @lives %>
-
-<% if current_user !=  nil %>
-  <% if current_user.entertainer != false %>
-    <%= link_to "ライブ作成", new_live_path, class: 'btn btn-default' %>
-    <% if current_user.admin ==  true %>
-      <%= link_to "ユーザー一覧", users_path, class: 'btn btn-default' %>
+    <% @lives.each do |live| %>
+      <div class="live_item">
+        <p><%= live.title %></p>
+        <p><%= simple_day(live.date) %></p>
+        <p><%= simple_time(live.start_time) %>〜<%= simple_time(live.ending_time) %></p>
+        <p><%= live.place %></p>
+        <span><%= link_to '詳細', live_path(live.id),class: 'btn btn-default'  %></span>
+        <span><%= link_to '編集', edit_live_path(live.id),class: 'btn btn-default'   %></span>
+        <span><%= link_to '削除', live_path(live.id), method: :delete,class: 'btn btn-default' %></span>
+      </div>
     <% end %>
-  <% end %>
-<% end %>
+    <%= paginate @lives %>
+
+    <% if current_user !=  nil %>
+      <% if current_user.entertainer != false %>
+        <%= link_to "ライブ作成", new_live_path, class: 'btn btn-default' %>
+        <% if current_user.admin ==  true %>
+          <%= link_to "ユーザー一覧", users_path, class: 'btn btn-default' %>
+        <% end %>
+      <% end %>
+    <% end %>
+</div>

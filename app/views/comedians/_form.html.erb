@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with(model: @comedian, local: true,url: choose_new_or_edit) do |form| %>
   <% if @comedian.errors.any? %>
     <div id="error_explanation">
@@ -51,3 +52,4 @@
   <%= form.submit "登録" %>
 
 <% end %>
+</div>

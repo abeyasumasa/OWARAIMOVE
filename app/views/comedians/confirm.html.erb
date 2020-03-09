@@ -1,3 +1,4 @@
+<div class="container">
 <h3>以下の内容で、送信する。</h3>
 <%= form_with(model: @comedian, local: true) do |form| %>
   
@@ -43,3 +44,4 @@
     <%= form.hidden_field :combination_icon_cache %>
     <%= form.submit "戻る", name: 'back' %>
   <% end %>
+  </div>
