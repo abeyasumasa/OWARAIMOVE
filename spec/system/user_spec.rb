@@ -5,10 +5,8 @@ RSpec.describe 'ユーザー登録機能', type: :system do
   let!(:second_user){ FactoryBot.create(:second_user) }
   let!(:first_comedian){ FactoryBot.create(:first_comedian) }
   let!(:second_comedian) { FactoryBot.create(:second_comedian) }
-  let!(:first_live){ FactoryBot.create(:first_live)}
   let!(:favorite){FactoryBot.create( :favorite,user_id: first_user.id,comedian_id: second_comedian.id) }
-  let!(:participant){FactoryBot.create(:participant_management, user_id: first_user.id, live_id: first_live)}
-
+  
   scenario 'ユーザー登録テスト' do
     visit new_user_registration_path
     fill_in 'Name' ,with: 'spectestuser01'
