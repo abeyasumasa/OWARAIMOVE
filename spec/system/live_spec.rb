@@ -4,7 +4,9 @@ RSpec.describe 'ライブ投稿機能', type: :system do
 	before do
 		FactoryBot.create(:first_user)
 		FactoryBot.create(:first_live)
-	end
+    end
+    
+    
 
 
 #ライブ作成
