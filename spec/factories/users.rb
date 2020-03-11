@@ -6,7 +6,9 @@ FactoryBot.define do
       email { "spectestuser02@gmail.com" }
       password { "password" }
       password_confirmation { "password" }
-      entertainer {"true"}      
+      entertainer {"true"} 
+      uid {"123456"}
+      provider{""}
     end
 
   factory :second_user, class: User do
@@ -16,6 +18,9 @@ FactoryBot.define do
     password { "password" }
     password_confirmation { "password" }
     entertainer {"false"}
+    uid {"234567"}
+    provider{""}
     end
   end
+
 end
