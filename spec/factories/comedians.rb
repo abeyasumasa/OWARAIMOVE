@@ -8,7 +8,7 @@ FactoryBot.define do
       genre { "漫才" }
       twitter_url { "comedian02.html" }
       youtube_url { "comedian02.html.erb" }
-      user_id { "3" }
+      #association :user , factory: :first_user
     end
 
     factory :second_comedian, class: Comedian do

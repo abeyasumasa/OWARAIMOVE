@@ -3,11 +3,13 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user){FactoryBot.build(:first_user)}
   it '名前、メールアドレス、パスワードがある場合、有効である' do
-    user.name = 'a' * 30
-    user.email = 'a' * 245 + "@gmail.com"
-    user.password = 'a' * 6
-    user.password_confirmation = 'a' * 6
-    expect(user).to be_valid
+    user.name = 'testuser001'
+    user.email = 'testuser001@gmail.com'
+    user.password = 'password'
+    user.password_confirmation = 'password'
+    user.save
+    expect(user.name).to eq 'testuser001'
+    expect(user.email).to eq 'testuser001@gmail.com'
   end
 
   describe 'ユーザーモデルの' do
@@ -76,3 +78,5 @@ RSpec.describe User, type: :model do
     end
   end
 end
+
+# bundle exec rspec spec/models/user_spec.rb
