@@ -1,68 +1,78 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+  let(:user){FactoryBot.build(:first_user)}
+  it '名前、メールアドレス、パスワードがある場合、有効である' do
+    user.name = 'a' * 30
+    user.email = 'a' * 245 + "@gmail.com"
+    user.password = 'a' * 6
+    user.password_confirmation = 'a' * 6
+    expect(user).to be_valid
+  end
 
-# まとめてモデルテスト
-it 'ユーザー登録画面で名前を入力しなかった場合' do
-  visit new_user_registration_path
-  fill_in 'Name' , with: ''
-  fill_in 'Email' , with: 'spectestuser01@gmail.com'
-  fill_in 'Password' , with: 'password'
-  fill_in 'Password_confirmation' , with: 'password'
-  check 'user_entertainer'
-  click_on 'Sign up'
-  expect(page).to have_content '名前を入力してください'
-end
-
-it 'ユーザー登録画面でメールアドレスを入力しなかった場合' do
-  visit new_user_registration_path
-  fill_in 'Name' , with: 'spectestuser01'
-  fill_in 'Email' , with: ''
-  fill_in 'Password' , with: 'password'
-  fill_in 'Password_confirmation' , with: 'password'
-  check 'user_entertainer'
-  click_on 'Sign up'
-  expect(page).to have_content 'メールアドレスを入力してください'
-  expect(page).to have_content 'メールアドレスは不正な値です'
-end
-
-it 'ユーザー登録画面でパスワードを入力しなかった場合' do
-  visit new_user_registration_path
-  fill_in 'Name' , with: 'spectestuser01'
-  fill_in 'Email' , with: 'spectestuser01@gmail.com'
-  fill_in 'Password' , with: ''
-  fill_in 'Password_confirmation' , with: ''
-  check 'user_entertainer'
-  click_on 'Sign up'
-  expect(page).to have_content 'パスワードを入力してください'
-  expect(page).to have_content 'パスワードは6文字以上で入力してください'
-end
-
-it 'ユーザー登録画面でパスワードと確認パスワードが違っている場合' do
-  visit new_user_registration_path
-  fill_in 'Name' , with: 'spectestuser01'
-  fill_in 'Email' , with: 'spectestuser01@gmail.com'
-  fill_in 'Password' , with: 'password'
-  fill_in 'Password_confirmation' , with: 'pass word'
-  check 'user_entertainer'
-  click_on 'Sign up'
-  expect(page).to have_content '確認用パスワードとパスワードの入力が一致しません'
-end
-
-it 'ユーザーログインのテスト成功した場合' do
-  visit new_user_session_path
-  fill_in 'Email' , with: 'spectestuser02@gmail.com'
-  fill_in 'Password' , with: 'password'
-  click_on 'Log in'
-  expect(page).to have_content 'spectestuser02'
-end
-
-it 'ユーザーログインのテスト失敗した場合' do
-  visit new_user_session_path
-  fill_in 'Email' , with: 'spectestuser02@gmail.com'
-  fill_in 'Password' , with: 'pass word'
-  click_on 'Log in'
-  expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
+  describe 'ユーザーモデルの' do
+    context 'name値が' do
+      it '空白の場合、無効である' do
+        user.name = ' '
+        expect(user).to_not be_valid
+      end
+      it '31文字以上の場合、無効である' do
+        user.name = 'a' * 31
+        expect(user).to_not be_valid
+      end
+      it '30文字以下の場合、有効である' do
+        user.name = 'a' * 30
+        expect(user).to be_valid
+      end
+    end
+    context 'email値が' do
+      it '空白の場合、無効である' do
+        user.email = ' '
+        expect(user).to_not be_valid
+      end
+      it '256文字以上の場合、無効である' do
+        user.email = 'a' * 246 + "@gmail.com"
+        expect(user).to_not be_valid
+      end
+      it '255文字以下の場合、有効である' do
+        user.email = 'a' * 245 + "@gmail.com"
+        expect(user).to be_valid
+      end
+      it '正規表現にマッチしてない場合、無効である' do
+        user.email = 'a' *20
+        expect(user).to_not be_valid
+        user.email = '@aaaaaaaaa'
+        expect(user).to_not be_valid
+        user.email = 'aaaaa.aaa@aaa'
+        expect(user).to_not be_valid
+      end
+      it '大文字の場合、小文字になっていること' do
+        user.email = 'AAAAAAAAA@gmail.com'
+        user.save
+        expect(user.reload.email).to eq 'aaaaaaaaa@gmail.com'
+      end
+    end
+    context 'password値が' do
+      it '空白の場合、無効である' do
+        user.password = ' '
+        user.password_confirmation = ' '
+        expect(user).to_not be_valid
+      end
+      it '6文字以下の場合、無効である' do
+        user.password = 'a' * 5
+        user.password_confirmation = 'a' * 5
+        expect(user).to_not be_valid
+      end
+      it '6文字以上の場合、有効である' do
+        user.password = 'a' * 6
+        user.password_confirmation = 'a' * 6
+        expect(user).to be_valid
+      end
+      it 'パスワードとパスワード確認が一致しない場合、無効である' do
+        user.password = 'a' * 6
+        user.password_confirmation = 'a' * 7
+        expect(user).to_not be_valid
+      end
+    end
+  end
 end

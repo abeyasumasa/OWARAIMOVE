@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_validation { email.downcase! }
+  
   # ランダムなuidを作成
   def self.create_unique_string
     SecureRandom.uuid

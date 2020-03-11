@@ -1,5 +1,5 @@
 require 'rails_helper'
-:first_live
+
 RSpec.describe 'ユーザー登録機能', type: :system do
   let!(:first_user){ FactoryBot.create(:first_user)}
   let!(:second_user){ FactoryBot.create(:second_user) }
