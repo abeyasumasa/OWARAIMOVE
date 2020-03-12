@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'ユーザー登録機能', type: :system do
   let!(:first_user){ FactoryBot.create(:first_user)}
-  let!(:second_user){ FactoryBot.create(:second_user) }
+  let!(:second_user){ FactoryBot.create(:second_user)}
   let!(:first_comedian){ FactoryBot.create(:first_comedian) }
   let!(:second_comedian) { FactoryBot.create(:second_comedian) }
   let!(:favorite){FactoryBot.create( :favorite,user_id: first_user.id,comedian_id: second_comedian.id) }
+  #let!(:favorite){FactoryBot.create(:favorite)}
   
   scenario 'ユーザー登録テスト' do
     visit new_user_registration_path
