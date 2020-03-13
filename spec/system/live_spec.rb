@@ -1,16 +1,72 @@
 require 'rails_helper'
 
 RSpec.describe 'ライブ投稿機能', type: :system do
-	let!(:first_live){FactoryBot.create(:first_live)}
-	let!(:second_live){FactoryBot.create(:second_live)}
+  #let!(:first_user){FactoryBot.create(:first_user)}
   
-  it 'ライブ作成' do
+  before do
+    FactoryBot.create(:first_user)
+
+    visit new_user_session_path
+    fill_in 'Email' ,with: 'spectestuser02@gmail.com'
+    fill_in 'Password' ,with: 'password'
+    click_button 'ログイン'
+    visit new_live_path
+    fill_in 'live_title', with: 'ライブ1'
+    fill_in 'live_date', with: '2020/01/01'
+    fill_in 'live_place', with: '渋谷無限大ホール'
+    fill_in 'live_price', with: '2000'
+    fill_in 'live_content', with: 'お笑い大好きな方々集合！'
+    click_on '登録'
+    expect(page).to have_content 'ライブ1'
+    expect(page).to have_content '2020年1月1日'
+    expect(page).to have_content '渋谷無限大ホール'
   end
-#ライブ詳細テスト
-#ライブ編集
-#ライブ削除
-#ライブ日時検索ができているか
-#ライブ場所検索ができているか
-#ライブ日時場所両方で検索できているか
+
+  it 'ライブ詳細テスト' do 
+    visit lives_path
+    click_on '詳細',match: :first
+    expect(page).to have_content 'ライブ1'
+  end
+
+  it 'ライブ編集' do
+    visit lives_path
+    click_on '編集',match: :first
+    fill_in 'live_title', with: 'ライブ2'
+    fill_in 'live_place', with: '新宿ルミネ'
+    fill_in 'live_price', with: '2000'
+    fill_in 'live_content', with: 'お笑い大好きな方々集合！'
+    click_on '登録'
+    expect(page).to have_content 'ライブ2'
+    expect(page).to have_content '新宿ルミネ'
+  end
+
+  it 'ライブ削除' do
+    visit lives_path
+    click_on '削除',match: :first
+    expect(page).to_not have_content 'ライブ1'
+  end
+
+  describe '検索機能のテスト' do
+    it 'ライブ日時検索ができているか' do
+      visit lives_path
+      fill_in 'search_date', with: '2020/01/01'
+      click_on '検索する'
+      expect(page).to have_content 'ライブ1'
+    end
+
+    it 'ライブ場所検索ができているか' do
+      visit lives_path
+      fill_in 'search_place', with: '渋谷'
+      click_on '検索する'
+      expect(page).to have_content 'ライブ1'
+    end
+    it 'ライブ日時場所両方で検索できているか' do
+      visit lives_path
+      fill_in 'search_date', with: '2020/01/01'
+      fill_in 'search_place', with: '渋谷'
+      click_on '検索する'
+      expect(page).to have_content 'ライブ1'
+    end
+  end
 end
 #bundle exec rspec spec/system/live_spec.rb

@@ -13,7 +13,7 @@ class LivesController < ApplicationController
   def create
     @live = Live.new(live_params)
     if @live.save
-      comedian = current_user.comedians.first
+      comedian = current_user.comedian
       comedian.performer_managements.create(live_id:@live.id)
       redirect_to lives_path, notice:"ライブを作成しました！"
     else
