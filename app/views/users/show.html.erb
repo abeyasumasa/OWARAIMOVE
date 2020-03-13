@@ -4,8 +4,8 @@
 <p><%= image_tag @user.icon.to_s %></p>
 <p><%=link_to 'フォロー', favorites_path %></p>
 
-<p>名前: <%= @user.name %></p>
-<p>メールアドレス: <%= @user.email %></p>
+<p><%= t('view.user.name') %>: <%= @user.name %></p>
+<p><%= t('view.email') %>: <%= @user.email %></p>
 
 <p>参加する予定のライブ</p>
 <% @schedule.each do |schedule| %>

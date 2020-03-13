@@ -6,17 +6,17 @@
   <%- end -%>
   
   <div class="field">
-    <%= f.label :メールアドレス %><br />
+    <%= f.label t('view.email') %><br />
     <%= f.email_field :email, autofocus: true, id: 'Email', autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :パスワード %><br />
+    <%= f.label t('view.user.password') %><br />
     <%= f.password_field :password, id: 'Password', autocomplete: "current-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
+    <%= f.submit t('view.log_in') %>
   </div>
 <% end %>
 
