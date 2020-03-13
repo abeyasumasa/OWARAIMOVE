@@ -1,111 +1,73 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザー登録機能', type: :system do
-  before do
-    FactoryBot.create(:first_user)
-    FactoryBot.create(:second_user)
-   end
-
-  it 'ユーザー登録テスト' do
+  let!(:first_user){ FactoryBot.create(:first_user)}
+  let!(:second_user){ FactoryBot.create(:second_user)}
+  let!(:first_comedian){ FactoryBot.create(:first_comedian) }
+  let!(:second_comedian) { FactoryBot.create(:second_comedian) }
+  let!(:favorite){FactoryBot.create( :favorite,user_id: first_user.id,comedian_id: second_comedian.id) }
+  #let!(:favorite){FactoryBot.create(:favorite)}
+  
+  scenario 'ユーザー登録テスト' do
     visit new_user_registration_path
-    fill_in 'Name' , with: 'spectestuser01'
-    fill_in 'Email' , with: 'spectestuser01@gmail.com'
-    fill_in 'Password' , with: 'password'
-    fill_in 'Password_confirmation' , with: 'password'
+    fill_in 'Name' ,with: 'spectestuser01'
+    fill_in 'Email' ,with: 'spectestuser01@gmail.com'
+    fill_in 'Password' ,with: 'password'
+    fill_in 'Password_confirmation' ,with: 'password'
     check 'user_entertainer'
-    click_on 'Sign up'
+    click_button '新規登録'
     expect(page).to have_content 'spectestuser01'
   end
 
-  it 'ユーザー登録画面で名前を入力しなかった場合' do
-    visit new_user_registration_path
-    fill_in 'Name' , with: ''
-    fill_in 'Email' , with: 'spectestuser01@gmail.com'
-    fill_in 'Password' , with: 'password'
-    fill_in 'Password_confirmation' , with: 'password'
-    check 'user_entertainer'
-    click_on 'Sign up'
-    expect(page).to have_content '名前を入力してください'
-  end
-
-  it 'ユーザー登録画面でメールアドレスを入力しなかった場合' do
-    visit new_user_registration_path
-    fill_in 'Name' , with: 'spectestuser01'
-    fill_in 'Email' , with: ''
-    fill_in 'Password' , with: 'password'
-    fill_in 'Password_confirmation' , with: 'password'
-    check 'user_entertainer'
-    click_on 'Sign up'
-    expect(page).to have_content 'メールアドレスを入力してください'
-    expect(page).to have_content 'メールアドレスは不正な値です'
-  end
-
-  it 'ユーザー登録画面でパスワードを入力しなかった場合' do
-    visit new_user_registration_path
-    fill_in 'Name' , with: 'spectestuser01'
-    fill_in 'Email' , with: 'spectestuser01@gmail.com'
-    fill_in 'Password' , with: ''
-    fill_in 'Password_confirmation' , with: ''
-    check 'user_entertainer'
-    click_on 'Sign up'
-    expect(page).to have_content 'パスワードを入力してください'
-    expect(page).to have_content 'パスワードは6文字以上で入力してください'
-  end
-
-  it 'ユーザー登録画面でパスワードと確認パスワードが違っている場合' do
-    visit new_user_registration_path
-    fill_in 'Name' , with: 'spectestuser01'
-    fill_in 'Email' , with: 'spectestuser01@gmail.com'
-    fill_in 'Password' , with: 'password'
-    fill_in 'Password_confirmation' , with: 'pass word'
-    check 'user_entertainer'
-    click_on 'Sign up'
-    expect(page).to have_content '確認用パスワードとパスワードの入力が一致しません'
-  end
-
-  it 'ユーザーログインのテスト成功した場合' do
+  scenario 'ユーザーログインテスト' do
     visit new_user_session_path
-    fill_in 'Email' , with: 'spectestuser02@gmail.com'
-    fill_in 'Password' , with: 'password'
-    click_on 'Log in'
+    fill_in 'Email' ,with: 'spectestuser02@gmail.com'
+    fill_in 'Password' ,with: 'password'
+    click_button 'ログイン'
     expect(page).to have_content 'spectestuser02'
   end
-
-  it 'ユーザーログインのテスト失敗した場合' do
+    
+  scenario '他人のマイページを表示しない' do
     visit new_user_session_path
-    fill_in 'Email' , with: 'spectestuser02@gmail.com'
-    fill_in 'Password' , with: 'pass word'
-    click_on 'Log in'
-    expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
-  end
-
-  it 'ユーザー情報表示テスト' do
-    visit new_user_session_path
-    fill_in 'Email' , with: 'spectestuser02@gmail.com'
-    fill_in 'Password' , with: 'password'
-    click_on 'Log in'
-    visit user_path(3)
+    fill_in 'Email' ,with: 'spectestuser02@gmail.com'
+    fill_in 'Password' ,with: 'password'
+    click_button 'ログイン'
+    visit user_path(4)
     expect(page).to have_content 'spectestuser02のページ'
   end
 
-  it 'ユーザー情報編集テスト' do
+  scenario 'お気に入り芸人が表示されるかのテスト' do
     visit new_user_session_path
-    fill_in 'Email' , with: 'spectestuser02@gmail.com'
-    fill_in 'Password' , with: 'password'
-    click_on 'Log in'
-    click_on '編集'
-    fill_in 'Name' , with: 'spectestuser04'
-    fill_in 'Email' , with: 'spectestuser04@gmail.com'
-    fill_in 'Password' , with: 'password'
-    fill_in 'Password_confirmation' , with: 'password'
+    fill_in 'Email' ,with: 'spectestuser02@gmail.com'
+    fill_in 'Password' ,with: 'password'
+    click_button 'ログイン'
+    visit user_path(3)
+    click_on 'フォロー'
+    expect(page).to have_content 'comedian03'
+  end
+
+  scenario 'ユーザー情報編集テスト' do
+    visit new_user_session_path
+    fill_in 'Email' ,with: 'spectestuser02@gmail.com'
+    fill_in 'Password' ,with: 'password'
+    click_button 'ログイン'
+    click_on 'アカウント'
+    click_on 'プロフィール変更'
+    fill_in 'Name' , with:'spectestuser04'
+    fill_in 'Email' , with:'spectestuser04@gmail.com'
+    fill_in 'Password' , with:'password'
+    fill_in 'Password_confirmation' ,with: 'password'
     check 'user_entertainer'
-    click_on '更新'
-    fill_in 'Email' , with: 'spectestuser04@gmail.com'
-    fill_in 'Password' , with: 'password'
-    click_on 'Log in'
+    click_button '更新'
+    fill_in 'Email' , with:'spectestuser04@gmail.com'
+    fill_in 'Password' , with:'password'
+    click_button  'ログイン'
     expect(page).to have_content 'spectestuser04のページ'
   end
     
 end
 
 # bundle exec rspec spec/system/user_spec.rb
+
+# 管理画面のテスト
+# E2Eテストとは、Webサイトやアプリケーションの「開始から終了まで（ユーザーがページに来てから、目的を果たし離脱するまで）」が、期待通り動いているかを確認するテスト

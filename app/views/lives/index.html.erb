@@ -1,15 +1,15 @@
 <div class="container">
   <h1>ライブ一覧</h1>
-    <div class="search_comedian">
+    <div class="search_live">
       <%= search_form_for @search do |f| %>
-        <div class="genre">
+        <div class="search_date">
           <%= f.label :date_eq, '日時' %>
-          <%= f.date_field :date_eq %>
+          <%= f.date_field :date_eq, id: 'search_date', max: "9999-12-31" %>
         </div>
 
-        <div>
+        <div class='search_plece'>
           <%= f.label :place_cont, '場所' %>
-          <%= f.text_field :place_cont %>
+          <%= f.text_field :place_cont,id: 'search_place' %>
         </div>
 
         <div class="submit">

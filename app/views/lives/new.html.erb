@@ -15,34 +15,34 @@
 
   <div class="live_title">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, id: 'live_title' %>
   </div>
 
   <div class="live_date">
     <%= form.label :date %>
-    <%= form.date_field :date %>
+    <%= form.date_field :date, id: 'live_date', max: "9999-12-31" %>
   </div>
 
   <div class="live_time">
     <%= form.label :time %>
-    <%= form.time_select :start_time, {include_blank: true} %>
+    <%= form.time_select :start_time, {include_blank: true}, id: 'live_start_time' %>
     <span>〜</span>
-    <%= form.time_select :ending_time, {include_blank: true} %>
+    <%= form.time_select :ending_time, {include_blank: true}, id: 'live_ending_time' %>
   </div>
   
   <div class="live_place">
     <%= form.label :place %>
-    <%= form.text_field :place %>
+    <%= form.text_field :place, id: 'live_place' %>
   </div>
 
   <div class="live_price">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price , id: 'live_price'%>
   </div>
 
   <div class="live_content">
     <%= form.label :content %>
-    <%= form.text_area :content, size:"50×10" %>
+    <%= form.text_area :content, size:"50×10", id: 'live_content' %>
   </div>
 
   <%= form.submit "登録" %>
