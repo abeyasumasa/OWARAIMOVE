@@ -2,32 +2,32 @@
 <h1>ライブ詳細</h1>
 
   <div class="live_title">
-    <p>title</p>
+    <p><%= t('view.live.title') %></p>
     <p><%= @live.title %></p>
   </div>
 
   <div class="live_date">
-    <p>date</p>
+    <p><%= t('view.live.date') %></p>
     <p><%= simple_day(@live.date) %></p>
   </div>
 
   <div class="live_time">
-    <p>time</p>
+    <p><%= t('view.live.time') %></p>
     <p><%= simple_time(@live.start_time) %>〜<%= simple_time(@live.ending_time) %></p>
   </div>
   
   <div class="live_place">
-    <p>place</p>
+    <p><%= t('view.live.place') %></p>
     <p><%= @live.place %></p>
   </div>
 
   <div class="live_price">
-    <p>price</p>
+    <p><%= t('view.live.place') %></p>
     <p><%= @live.price %>円</p>
   </div>
 
   <div class="live_content">
-  　　<p>content</p>
+  　　<p><%= t('view.live.content') %></p>
     <p><%= @live.content %></p>
   </div>
   

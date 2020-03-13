@@ -12,29 +12,29 @@
   <% end %>
 
   <div class="comedian_icon">
-  <%= form.label :combination_icon %><br>
+  <%= form.label t('view.comedian.combination_icon') %><br>
   <%= image_tag(@comedian.combination_icon.url) if @comedian.combination_icon && @comedian.combination_icon.url %>
   <%= form.file_field :combination_icon %>
   <%= form.hidden_field :image_cache %>
 </div>
 
 <div class="comedian_comment">
-  <%= form.label :comment %><br>
+  <%= form.label t('view.comedian.comment') %><br>
   <%= form.text_area :comment, id: 'Comment' %>
 </div>
 
 <div class="comedian_combination_name">
-  <%= form.label :combination_name %><br>
+  <%= form.label t('view.comedian.combination_name') %><br>
   <%= form.text_field :combination_name, id: 'Combination_name' %>
 </div>
 
 <div class="comedian_email">
-  <%= form.label :email %><br>
+  <%= form.label  t('view.email') %><br>
   <%= form.email_field :email, id: 'Email' %>
 </div>
 
 <div class="comedian_genre">
-  <%= form.label :genre %><br>
+  <%= form.label  t('view.comedian.genre') %><br>
   <%= form.select :genre, ["コント", "漫才", "フリートーク", "モノマネ", "リアクション芸", "大喜利", 
   "一発ギャグ","歌ネタ/リズムネタ", "ピン芸人", "フリップ芸", "漫談"], :prompt => "選択してください" %>
 </div>
