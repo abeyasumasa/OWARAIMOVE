@@ -2,34 +2,34 @@
 
 <%= form_with(model: @live, url: live_path, local: true) do |form| %>
   <div class="live_title">
-    <%= form.label :title %>
+    <%= form.label t('view.live.title') %>
     <%= form.text_field :title %>
   </div>
 
   <div class="live_date">
-    <%= form.label :date %>
+    <%= form.label t('view.live.date') %>
     <%= form.date_field :date %>
   </div>
 
   <div class="live_time">
-    <%= form.label :start_time %>
-    <%= form.time_select :start_time, {include_blank: true} %>
-    <%= form.label :ending_time %>
+    <%= form.label t('view.live.start_time') %>
+    <%= form.time_select :start_time, {include_blank: true} %><br>
+    <%= form.label t('view.live.ending_time') %>
     <%= form.time_select :ending_time, {include_blank: true} %>
   </div>
   
   <div class="live_place">
-    <%= form.label :place %>
+    <%= form.label t('view.live.place') %>
     <%= form.text_field :place %>
   </div>
 
   <div class="live_price">
-    <%= form.label :price %>
+    <%= form.label t('view.live.prise') %>
     <%= form.text_field :price %>
   </div>
 
   <div class="live_content">
-    <%= form.label :content %>
+    <%= form.label t('view.live.content') %>
     <%= form.text_area :content, size:"50×10" %>
   </div>
 

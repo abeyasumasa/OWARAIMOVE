@@ -16,7 +16,7 @@ class Live < ApplicationRecord
   validates :place, presence: true, length: { maximum: 255 }
   validates :date, presence: true
   validate :start_time_cannot_be_later_than_end_time
-  validates :price, presence: true,numericality: { only_integer: true, greater_than: 1}
+  validates :price, presence: true,numericality: { only_integer: true, greater_than: 1, less_than:10000}
 
   private
   def start_time_cannot_be_later_than_end_time

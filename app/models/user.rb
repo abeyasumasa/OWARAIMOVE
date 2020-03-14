@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_validation { email.downcase! }
+  
   # ランダムなuidを作成
   def self.create_unique_string
     SecureRandom.uuid
@@ -28,7 +30,7 @@ class User < ApplicationRecord
   mount_uploader :icon ,ImageUploader
 
   # アソシエーション機能
-  has_many :comedians
+  has_one :comedian
 
   # ライブ参加機能
   has_many :participant_managements, dependent: :destroy
@@ -43,4 +45,5 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   validates :email, presence: true, length: { maximum: 255 },
                              format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+                             
 end

@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.id != @user.id
       flash[:notice] ="権限がありません"
-      redirect_to users_path
+      redirect_to user_path(current_user.id)
     end
   end
 end

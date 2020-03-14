@@ -4,33 +4,33 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :名前 %>
-    <%= f.text_field :name, id: 'Name', autofocus: true %>
+    <%= f.label t('view.user.name') %>
+    <%= f.text_field :name, id: 'Name' , autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :メールアドレス %>
+    <%= f.label t('view.email') %>
     <%= f.email_field :email, id: 'Email', autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :パスワード %>
+    <%= f.label t('view.user.password') %>
 
     <%= f.password_field :password, id: 'Password', autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :確認用パスワード %>
+    <%= f.label t('view.user.password_confirmation') %>
     <%= f.password_field :password_confirmation, id: 'Password_confirmation', autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :芸人 %>
+    <%= f.label t('view.user.entertainer') %>
     <%= f.check_box :entertainer, {}, checked_value = "true",unchecked_value = "false" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit t('view.sign_up') %>
   </div>
 <% end %>
 

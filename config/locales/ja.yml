@@ -7,6 +7,33 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  view:
+    email: メールアドレス
+    back: 戻る
+    sign_up: 登録
+    log_in: ログイン
+    logout: ログアウト
+    time:
+    comedian:
+      combination_icon: コンビ写真
+      comment: コメント
+      combination_name: コンビ名
+      genre: ジャンル
+    live:
+      title: ライブタイトル
+      date: ライブ日付
+      start_time: 開演時間
+      ending_time: 終了時間
+      place: 会場
+      prise: 料金
+      content: コメント
+      time: 時間
+    user:
+      icon: 写真
+      name: 名前
+      password: パスワード
+      password_confirmation: 確認用パスワード
+      entertainer: 芸人
   date:
     abbr_day_names:
     - 日

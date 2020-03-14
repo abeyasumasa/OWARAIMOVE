@@ -1,3 +1,4 @@
+<div class="container">
 <h1>芸人詳細</h1>
 
   <div class="comedian_icon">
@@ -7,19 +8,19 @@
   </div>
 
 <div class="comedian_comment">
-  <p>コメント:<%= @comedian.comment %></p>
+  <p><%= t('view.comedian.comment') %>:<%= @comedian.comment %></p>
 </div>
 
 <div class="comedian_combination_name">
-　　<p>コンビ名:<%= @comedian.combination_name %></p>
+　　<p><%= t('view.comedian.combination_name') %>:<%= @comedian.combination_name %></p>
 </div>
 
 <div class="comedian_email">
-  <p>メールアドレス:<%= @comedian.email %></p>
+  <p><%= t('view.email') %>:<%= @comedian.email %></p>
 </div>
 
 <div class="comedian_genre">
-  <p>ジャンル:<%= @comedian.genre %></p>
+  <p><%= t('view.comedian.genre') %>:<%= @comedian.genre %></p>
 </div>
 
 <div class="comedian_twitter_url">
@@ -56,3 +57,4 @@
 <% end %>
 
 <p><%= link_to '芸人一覧に戻る', comedians_path %></p>
+</div>

@@ -6,16 +6,22 @@ FactoryBot.define do
       email { "spectestuser02@gmail.com" }
       password { "password" }
       password_confirmation { "password" }
-      entertainer {"true"}      
+      entertainer {"true"} 
+      uid {"123456"}
+      provider{""}
+      association :comedian , factory: :first_comedian
     end
 
-  factory :second_user, class: User do
-    id { "4" }
-    name { "spectestuser03" }
-    email { "spectestuser03@gmail.com" }
-    password { "password" }
-    password_confirmation { "password" }
-    entertainer {"false"}
+    factory :second_user, class: User do
+      id { "4" }
+      name { "spectestuser03" }
+      email { "spectestuser03@gmail.com" }
+      password { "password" }
+      password_confirmation { "password" }
+      entertainer {"false"}
+      uid {"234567"}
+      provider{""}
+      association :comedian , factory: :second_comedian
     end
   end
 end

@@ -2,7 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.wrapper{
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+}
 .top-image {
   background: image-url('central_microphone.png');
   background-size: cover;
+  background-position:center top;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.top-content{
+  padding: 50px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 80%;
+  height: 3.2rem;
+}
+.top-title{
+  font-size: 4rem;
+  margin: 40px;
+}
+
+.navbar-inverse {
+  margin: 0px;
 }
