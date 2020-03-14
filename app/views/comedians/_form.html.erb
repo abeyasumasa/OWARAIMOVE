@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="comedian_icon">
+<div class="comedian_icon">
   <%= form.label t('view.comedian.combination_icon') %><br>
   <%= image_tag(@comedian.combination_icon.url) if @comedian.combination_icon && @comedian.combination_icon.url %>
   <%= form.file_field :combination_icon %>
