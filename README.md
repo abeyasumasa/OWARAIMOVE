@@ -40,13 +40,13 @@ https://docs.google.com/spreadsheets/d/1Y6Y7uAKJg6z_liahHJ3a1ChUpq2w7VTjxXFTs3Hp
 https://docs.google.com/spreadsheets/d/1Y6Y7uAKJg6z_liahHJ3a1ChUpq2w7VTjxXFTs3HpBss/edit#gid=1897333653
 
 ## ER図
-https://cacoo.com/diagrams/9pOobDQr3ekWrAsK/0F235
+https://docs.google.com/spreadsheets/d/1OQbAcJffI-r2NCORHJG2E-1d1NzOfpw1maJgtoCizTM/edit#gid=1948228944
 
 ## 画面遷移図
-https://cacoo.com/diagrams/Ss320RzCP6ya4uXl/E974A
+https://docs.google.com/spreadsheets/d/1cCMPHUG3pwE1PhiKEG4pNNAUILdz3uTcYGV0KcCttHM/edit#gid=887844016
 
 ## 画面ワイヤーフレーム
-https://cacoo.com/diagrams/3XAxfmp0H4YTtw9r
+https://docs.google.com/spreadsheets/d/1MuVMWy9q9k4WdQSB7EAvrc-EzoijuLWXWUop5M4mgG0/edit#gid=1835977959
 
 ## 使用予定Gem
 * device
