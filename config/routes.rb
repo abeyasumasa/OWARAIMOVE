@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   root 'root#index'
+
   resources :users, :only => [:index, :show, :edit, :update]
 
   resources :lives, only: :index
