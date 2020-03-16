@@ -10,15 +10,26 @@ ja:
   view:
     email: メールアドレス
     back: 戻る
+    new: 新規作成
     sign_up: 登録
     log_in: ログイン
     logout: ログアウト
-    time:
+    time: 時間
+    show: 詳細
+    edit: 編集
+    destroy: 削除
+    profile: プロフィール
+    change: プロフィール変更
+    admin: 管理画面
+    top:
     comedian:
       combination_icon: コンビ写真
       comment: コメント
       combination_name: コンビ名
       genre: ジャンル
+      entry: 登録
+      add: 芸人を追加
+      list: 芸人一覧
     live:
       title: ライブタイトル
       date: ライブ日付
@@ -28,65 +39,76 @@ ja:
       prise: 料金
       content: コメント
       time: 時間
+      add: ライブを作成
+      list: ライブ一覧
+      entry: 登録
+      participation: 参加する
+      cancel: キャンセルする
     user:
       icon: 写真
       name: 名前
       password: パスワード
       password_confirmation: 確認用パスワード
       entertainer: 芸人
+      add: ユーザーを追加
+      list: ユーザー一覧
+      release: お気に入り解除する
+      favorite: お気に入りにする
+      update: 更新
+      follow: フォロー
   date:
     abbr_day_names:
-    - 日
-    - 月
-    - 火
-    - 水
-    - 木
-    - 金
-    - 土
+      - 日
+      - 月
+      - 火
+      - 水
+      - 木
+      - 金
+      - 土
     abbr_month_names:
-    - 
-    - 1月
-    - 2月
-    - 3月
-    - 4月
-    - 5月
-    - 6月
-    - 7月
-    - 8月
-    - 9月
-    - 10月
-    - 11月
-    - 12月
+      -
+      - 1月
+      - 2月
+      - 3月
+      - 4月
+      - 5月
+      - 6月
+      - 7月
+      - 8月
+      - 9月
+      - 10月
+      - 11月
+      - 12月
     day_names:
-    - 日曜日
-    - 月曜日
-    - 火曜日
-    - 水曜日
-    - 木曜日
-    - 金曜日
-    - 土曜日
+      - 日曜日
+      - 月曜日
+      - 火曜日
+      - 水曜日
+      - 木曜日
+      - 金曜日
+      - 土曜日
     formats:
       default: "%Y/%m/%d"
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
-    - 1月
-    - 2月
-    - 3月
-    - 4月
-    - 5月
-    - 6月
-    - 7月
-    - 8月
-    - 9月
-    - 10月
-    - 11月
-    - 12月
+      -
+      - 1月
+      - 2月
+      - 3月
+      - 4月
+      - 5月
+      - 6月
+      - 7月
+      - 8月
+      - 9月
+      - 10月
+      - 11月
+      - 12月
     order:
-    - :year
-    - :month
-    - :day
+      - :year
+      - :month
+      - :day
   datetime:
     distance_in_words:
       about_x_hours:
