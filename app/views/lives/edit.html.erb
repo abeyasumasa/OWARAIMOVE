@@ -33,7 +33,7 @@
     <%= form.text_area :content, size:"50×10" %>
   </div>
 
-  <%= form.submit "登録" %>
+  <%= form.submit t('view.live.entry') %>
 
 <% end %>
-<p><%= link_to 'ライブ一覧に戻る', lives_path %></p>
+<p><%= link_to t('view.live.list'), lives_path %></p>
