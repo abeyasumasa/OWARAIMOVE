@@ -1,14 +1,5 @@
 class Comedian < ApplicationRecord
   before_validation { email.downcase! }
-  
-  # ページネーション（１ページの最大表示件数）
-  paginates_per 10
-  
-  # アップローダー
-  mount_uploader :combination_icon, ImageUploader
-
-  # 芸人登録者の管理のため
-  #has_one :user
 
   # 芸人とユーザーのアソシエーション
   has_many :favorites, dependent: :destroy
@@ -18,6 +9,12 @@ class Comedian < ApplicationRecord
   has_many :performer_managements, dependent: :destroy
   has_many :performer_management_lives, through: :performer_managements, source: :live
 
+  # ページネーション（１ページの最大表示件数）
+  paginates_per 10
+  
+  # アップローダー
+  mount_uploader :combination_icon, ComedianImageUploader
+
   # バリデーション
   validates :combination_name, presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -25,5 +22,4 @@ class Comedian < ApplicationRecord
   validates :twitter_url, length: { maximum: 255 }
   validates :youtube_url, length: { maximum: 255 }
   validates :comment, presence: true
-  
 end
