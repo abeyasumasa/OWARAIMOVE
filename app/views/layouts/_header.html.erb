@@ -1,48 +1,46 @@
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
-        <span class="sr-only">OWARAIMOVE</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">OWARAIMOVE</a>
-      <!--            <header class="header wrapper">OWARAIMOVE</header>-->
-      <div id="gnavi" class="collapse navbar-collapse">
-        <nav class="nav navbar-nav">
-          <ul class="row">
-            <% if user_signed_in? %>
-              <li class="col-md-3"><%= link_to 'トップ', root_path %></li>
-              <li class="col-md-3"><%= link_to 'ライブ一覧', lives_path %></li>
-              <% if current_user.entertainer == true && current_user.comedian != nil %>
-                <li class="dropdown col-md-3">
-                  <a href="#" class="dropdown-toggle" ,"col-md-3" data-toggle="dropdown">芸人</a>
-                  <ul class="dropdown-menu">
-                    <li class="dropdown-item"><%= link_to '芸人一覧', comedians_path %></li>
-                    <li class="dropdown-item"><%= link_to 'プロフィール', comedian_path(current_user.comedian.id) %></li>
-                    <li class="dropdown-item"><%= link_to 'プロフィール変更', edit_comedian_path(current_user.comedian.id) %></li>
-                  </ul>
-                </li>
-              <% else %>
-                <li class="col-md-3"><%= link_to '芸人一覧', comedians_path %></li>
-              <% end %>
-              <li class="dropdown col-md-3">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">アカウント</a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item"><%= link_to current_user.name, user_path(current_user.id) %></li>
-                  <li class="dropdown-item"><%= link_to 'プロフィール変更', edit_user_path(current_user.id) %></li>
-                  <li class="dropdown-item"><%= link_to '管理画面', users_path %></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-                </ul>
-              </li>
-            <% else %>
-              <li><%= link_to 'サインアップ', new_user_registration_path %></li>
-              <li><%= link_to 'ログイン', new_user_session_path %></li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
+<nav class="navbar navbar-expand-lg  navbar-light bg-light">
+  <a class="navbar-brand logo_image" href="/"><%= image_tag 'logo.png',:size => '250x35' %></a>
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+    <span class="sr-only">OWARAIMOVE</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+
+  <div id="gnavi" class="collapse navbar-collapse">
+    <div class="container-fluid">
+      <ul class="row header">
+        <% if user_signed_in? %>
+          <li class="col-md-3"><%= link_to 'トップ', root_path %></li>
+          <li class="col-md-3"><%= link_to 'ライブ', lives_path %></li>
+          <% if current_user.entertainer == true && current_user.comedian != nil %>
+            <li class="dropdown col-md-3">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">芸人</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item"><%= link_to '芸人一覧', comedians_path %></li>
+                <li class="dropdown-item"><%= link_to 'プロフィール', comedian_path(current_user.comedian.id) %></li>
+                <li class="dropdown-item"><%= link_to 'プロフィール変更', edit_comedian_path(current_user.comedian.id) %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="col-md-3"><%= link_to '芸人一覧', comedians_path %></li>
+          <% end %>
+          <li class="dropdown col-md-3">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">アカウント</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><%= link_to current_user.name, user_path(current_user.id) %></li>
+              <li class="dropdown-item"><%= link_to 'プロフィール変更', edit_user_path(current_user.id) %></li>
+              <li class="dropdown-item"><%= link_to '管理画面', users_path %></li>
+              <li class="divider"></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>s
+          <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン', new_user_session_path %></li>
+        <% end %>
+      </ul>
     </div>
+  </div>
+  </div>
 </nav>
