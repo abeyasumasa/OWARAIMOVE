@@ -1,42 +1,44 @@
-<div class="container">
-  <h1>ライブ一覧</h1>
-    <div class="search_live">
-      <%= search_form_for @search do |f| %>
-        <div class="search_date">
-          <%= f.label :date_eq, '日時' %>
-          <%= f.date_field :date_eq, id: 'search_date', max: "9999-12-31" %>
-        </div>
-
-        <div class='search_plece'>
-          <%= f.label :place_cont, '場所' %>
-          <%= f.text_field :place_cont,id: 'search_place' %>
-        </div>
-
-        <div class="submit">
-          <%= f.submit '検索する' %>
-        </div>
-      <% end %>
+<h1>ライブ一覧</h1>
+<div class="search_live">
+  <%= search_form_for @search do |f| %>
+    <div class="search_date">
+      <%= f.label :date_eq, '日時' %>
+      <%= f.date_field :date_eq, id: 'search_date', max: "9999-12-31" %>
     </div>
 
-    <% @lives.each do |live| %>
-      <div class="live_item">
-        <p><%= live.title %></p>
-        <p><%= simple_day(live.date) %></p>
-        <p><%= simple_time(live.start_time) %>〜<%= simple_time(live.ending_time) %></p>
-        <p><%= live.place %></p>
-        <span><%= link_to t('view.show'), live_path(live.id),class: 'btn btn-default'  %></span>
-        <span><%= link_to t('view.edit'), edit_live_path(live.id),class: 'btn btn-default'   %></span>
-        <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete,class: 'btn btn-default' %></span>
+    <div class='search_plece'>
+      <%= f.label :place_cont, '場所' %>
+      <%= f.text_field :place_cont, id: 'search_place' %>
+    </div>
+
+    <div class="submit">
+      <%= f.submit '検索する' %>
+    </div>
+  <% end %>
+</div>
+
+<% @lives.each do |live| %>
+  <div class="live_item">
+    <p><%= live.title %></p>
+    <p><%= simple_day(live.date) %></p>
+    <p><%= simple_time(live.start_time) %>〜<%= simple_time(live.ending_time) %></p>
+    <p><%= live.place %></p>
+    <% if current_user == nil || current_user.entertainer == false %>
+      <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-default' %></span>
+    <% else %>
+      <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-default' %></span>
+      <span><%= link_to t('view.edit'), edit_live_path(live.id), class: 'btn btn-default' %></span>
+      <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-default' %></span>
       </div>
     <% end %>
-    <%= paginate @lives %>
+<% end %>
+<%= paginate @lives %>
 
-    <% if current_user !=  nil %>
-      <% if current_user.entertainer != false %>
-        <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-default' %>
-        <% if current_user.admin ==  true %>
-          <%= link_to t('view.user.list'), users_path, class: 'btn btn-default' %>
-        <% end %>
-      <% end %>
+<% if current_user != nil %>
+  <% if current_user.entertainer != false %>
+    <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-default' %>
+    <% if current_user.admin == true %>
+      <%= link_to t('view.user.list'), users_path, class: 'btn btn-default' %>
     <% end %>
-</div>
+  <% end %>
+<% end %>

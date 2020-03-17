@@ -1,8 +1,16 @@
-<div class="container">
 <h2><%= @user.name %>の編集画面</h2>
 
-<%= form_with(model:@user,local:true) do |f| %>
-
+<%= form_with(model: @user, local: true) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label t('view.user.icon') %>
     <p><%= image_tag @user.icon.to_s %></p>
@@ -16,26 +24,25 @@
 
   <div class="field">
     <%= f.label t('view.email') %>
-    <%= f.email_field :email, id: 'Email',vautofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, id: 'Email', vautofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label t('view.user.password') %>
-    <%= f.password_field :password, id: 'Password', autocomplete: "new-password" %>
-  </div>
+<!--  <div class="field">-->
+    <%#= f.label t('view.user.password') %>
+    <%#= f.password_field :password, id: 'Password', autocomplete: "new-password" %>
+<!--  </div>-->
 
-  <div class="field">
-    <%= f.label t('view.user.password_confirmation') %>
-    <%= f.password_field :password_confirmation, id: 'Password_confirmation', autocomplete: "new-password" %>
-  </div>
+<!--  <div class="field">-->
+    <%#= f.label t('view.user.password_confirmation') %>
+    <%#= f.password_field :password_confirmation, id: 'Password_confirmation', autocomplete: "new-password" %>
+<!--  </div>-->
 
   <div class="field">
     <%= f.label t('view.user.entertainer') %>
-    <%= f.check_box :entertainer, {}, checked_value = "true",unchecked_value = "false" %>
+    <%= f.check_box :entertainer, {}, checked_value = "true", unchecked_value = "false" %>
   </div>
 
   <div class="actions">
     <%= f.submit t('view.user.update') %>
   </div>
 <% end %>
-</div>

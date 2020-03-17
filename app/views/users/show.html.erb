@@ -1,22 +1,20 @@
-<div class="container">
-  <h1><%= @user.name %>のページ</h1>
+<h1><%= @user.name %>のページ</h1>
 
-  <p><%= image_tag @user.icon.to_s %></p>
-  <p><%= link_to t('view.user.follow'), favorites_path %></p>
+<p><%= image_tag @user.icon.to_s %></p>
+<p><%= link_to t('view.user.follow'), favorites_path %></p>
 
-  <p><%= t('view.user.name') %>: <%= @user.name %></p>
-  <p><%= t('view.email') %>: <%= @user.email %></p>
+<p><%= t('view.user.name') %>: <%= @user.name %></p>
+<p><%= t('view.email') %>: <%= @user.email %></p>
 
-  <p>参加する予定のライブ</p>
-  <% @schedule.each do |schedule| %>
-    <div class="schedule">
-      <p><%= schedule.title %></p>
-      <p><%= simple_day(schedule.date) %></p>
-      <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
-    </div>
-  <% end %>
-  <%= paginate @schedule %>
+<p>参加する予定のライブ</p>
+<% @schedule.each do |schedule| %>
+  <div class="schedule">
+    <p><%= schedule.title %></p>
+    <p><%= simple_day(schedule.date) %></p>
+    <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
+  </div>
+<% end %>
+<%= paginate @schedule %>
 
-  <p><%= link_to t('view.edit'), edit_user_path(@user.id) %></p>
-  <p><%= link_to t('view.comedian.list'), comedians_path %></p>
-</div>
+<p><%= link_to t('view.edit'), edit_user_path(@user.id) %></p>
+<p><%= link_to t('view.comedian.list'), comedians_path %></p>
