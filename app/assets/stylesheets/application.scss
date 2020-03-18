@@ -19,8 +19,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "roots";
+@import "lives";
 
 /* universal */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  text-align: center;
+}
 
 header {
   width: 100%;
@@ -60,15 +70,6 @@ header ul:after {
   position: absolute;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  text-align: center;
-}
-
 ul.header {
   margin: 0 auto;
   list-style: none;
@@ -77,13 +78,3 @@ ul.header {
 .navbar {
   margin-bottom: 0px;
 }
-
-//.container {
-//  width: 980px;
-//  margin: 0 auto;
-//  min-height: 100%;
-//  position: relative;
-//  padding-bottom: 60px;
-//  padding-top: 60px;
-//}
-//

@@ -1,3 +1,22 @@
 // Place all the styles related to the comedians controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+  padding: 0 auto;
+  padding-bottom: 57px;
+  margin-top: 20px;
+}
+
+.search_comedian {
+  border-right: 3px solid DarkGray;
+}
+
+.comedian {
+  height: 100%;
+
+}

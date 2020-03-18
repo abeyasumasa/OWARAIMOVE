@@ -2,7 +2,7 @@
 <%= form_with(model: @comedian, local: true) do |form| %>
 
   <div class="comedian_icon">
-    <%= image_tag(@comedian.combination_icon.url) if @comedian.combination_icon && @comedian.combination_icon.url %>
+    <%= image_tag  (@comedian.combination_icon.url) if @comedian.combination_icon && @comedian.combination_icon.url %>
     <%= form.hidden_field :combination_icon_cache %>
   </div>
 

@@ -10,7 +10,7 @@ class Comedian < ApplicationRecord
   has_many :performer_management_lives, through: :performer_managements, source: :live
 
   # ページネーション（１ページの最大表示件数）
-  paginates_per 10
+  paginates_per 9
 
   # アップローダー
   mount_uploader :combination_icon, ComedianImageUploader

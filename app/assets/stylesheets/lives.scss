@@ -2,10 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.container {
-    width: 980px;
-    margin: 0 auto;
-    /* 追記 */
-    min-height: 100%;
-    position: relative;
-  }
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+  padding: 0 auto;
+  padding-bottom: 57px;
+  margin-top: 20px;
+}
+
+.search_live {
+  border-right: 3px solid DarkGray;
+}
+
+.live {
+  height: 100%;
+}
+
+.live_item{
+  min-width: auto;
+}
+
+.live-add{
+  margin-top: 30px;
+}
+
+.live_title{
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.live_title tr{
+  height: 5rem;
+}
+.live_title th{
+  width: 200px;
+  background-color: Salmon;
+  color: #fff;
+  text-align: center;
+  border: solid 2px #B1B1B1;
+}
+.live_title td{
+  width: 560px;
+  padding-left: 1rem;
+  border: solid 2px #B1B1B1;
+}

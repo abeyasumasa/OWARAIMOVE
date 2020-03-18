@@ -27,16 +27,6 @@
     <%= f.email_field :email, id: 'Email', vautofocus: true, autocomplete: "email" %>
   </div>
 
-<!--  <div class="field">-->
-    <%#= f.label t('view.user.password') %>
-    <%#= f.password_field :password, id: 'Password', autocomplete: "new-password" %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%#= f.label t('view.user.password_confirmation') %>
-    <%#= f.password_field :password_confirmation, id: 'Password_confirmation', autocomplete: "new-password" %>
-<!--  </div>-->
-
   <div class="field">
     <%= f.label t('view.user.entertainer') %>
     <%= f.check_box :entertainer, {}, checked_value = "true", unchecked_value = "false" %>
