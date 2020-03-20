@@ -4,14 +4,14 @@
   <%- flash.each do |name, msg| -%>
     <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
   <%- end -%>
-  
+
   <div class="field">
-    <%= f.label t('view.email') %><br />
+    <%= f.label t('view.email') %><br/>
     <%= f.email_field :email, autofocus: true, id: 'Email', autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label t('view.user.password') %><br />
+    <%= f.label t('view.user.password') %><br/>
     <%= f.password_field :password, id: 'Password', autocomplete: "current-password" %>
   </div>
 
@@ -21,3 +21,12 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="test_user">
+    <%= f.hidden_field :email, value: 'test_user@examp.com' %>
+    <%= f.hidden_field :password, value: 'password' %>
+    <%= f.submit 'テストログイン', class: 'btn btn-default m-4' %>
+  </div>
+<% end %>
+

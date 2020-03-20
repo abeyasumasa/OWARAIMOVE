@@ -1,4 +1,12 @@
-# ユーザー
+# テストユーザー作成
+User.create!(name: "test_user",
+             email: "test_user@examp.com",
+             password: "password",
+             password_confirmation: "password",
+             entertainer: true,
+             uid: "123456789",
+             provider: ""
+)
 # 芸人であるユーザー
 15.times do |n|
   name = Faker::Games::Pokemon.name
