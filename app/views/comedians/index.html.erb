@@ -19,6 +19,7 @@
             <%= f.submit '検索する' %>
           </div>
         <% end %>
+
         <% if current_user != nil %>
           <% if current_user.entertainer != false %>
             <%= link_to t('view.comedian.add'), new_comedian_path, class: 'btn btn-default mt-3' %>

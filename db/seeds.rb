@@ -65,7 +65,7 @@ end
   )
 end
 
-# お気に入り
+#お気に入り
 10.times do |n|
   user_id = n + 16
   comedian_id = n + 1
