@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg  navbar-light bg-light">
+<nav class="navbar navbar-expand-lg  navbar-light" style="background-color:#f9e900;">
   <a class="navbar-brand logo_image" href="/"><%= image_tag 'logo.png', :size => '250x35' %></a>
   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
     <span class="sr-only">OWARAIMOVE</span>
@@ -8,40 +8,37 @@
   </button>
 
   <div id="gnavi" class="collapse navbar-collapse">
-    <div class="container-fluid">
-      <ul class="row header">
-        <% if user_signed_in? %>
-          <li class="col-md-4"><%= link_to 'トップ', lives_path %></li>
-          <% if current_user.entertainer == true && current_user.comedian != nil %>
-            <li class="dropdown col-md-3">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">芸人</a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-item"><%= link_to t('view.comedian.list'), comedians_path %></li>
-                <li class="dropdown-item"><%= link_to t('view.profile'), comedian_path(current_user.comedian.id) %></li>
-                <li class="dropdown-item"><%= link_to t('view.change'), edit_comedian_path(current_user.comedian.id) %></li>
-              </ul>
-            </li>
-          <% else %>
-            <li class="col-md-4"><%= link_to t('view.comedian.list'), comedians_path %></li>
-          <% end %>
-          <li class="dropdown col-md-4">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">アカウント</a>
-            <ul class="dropdown-menu">
-              <li class="dropdown-item"><%= link_to current_user.name, user_path(current_user.id) %></li>
-              <% if current_user.admin == true %>
-                <li class="dropdown-item"><%= link_to t('view.change'), edit_user_path(current_user.id) %></li>
-              <% end %>
-              <li class="dropdown-item"><%= link_to t('view.admin'), users_path %></li>
-              <li class="divider"></li>
-              <li class="dropdown-item"><%= link_to t('view.logout'), destroy_user_session_path, method: :delete %></li>
+    <ul class="navbar-nav float-lg-right">
+      <% if user_signed_in? %>
+        <li class="nav-item m-3"><%= link_to 'トップ', lives_path %></li>
+        <% if current_user.entertainer == true && current_user.comedian != nil %>
+          <li class="dropdown nav-item m-3 p-0 ">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">芸人</a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item text-center"><%= link_to t('view.comedian.list'), comedians_path %></li>
+              <li class="dropdown-item text-center"><%= link_to t('view.profile'), comedian_path(current_user.comedian.id) %></li>
+              <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_comedian_path(current_user.comedian.id) %></li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to t('view.new'), new_user_registration_path %></li>
-          <li><%= link_to t('view.log_in'), new_user_session_path %></li>
+          <li class="nav-item m-3"><%= link_to t('view.comedian.list'), comedians_path %></li>
         <% end %>
-      </ul>
-    </div>
-  </div>
+        <li class="dropdown nav-item m-3 p-0">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">アカウント</a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li class="dropdown-item text-center"><%= link_to current_user.name, user_path(current_user.id) %></li>
+            <% if current_user.admin == true %>
+              <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_user_path(current_user.id) %></li>
+            <% end %>
+            <li class="dropdown-item text-center"><%= link_to t('view.admin'), users_path %></li>
+            <li class="divider"></li>
+            <li class="dropdown-item text-center"><%= link_to t('view.logout'), destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to t('view.new'), new_user_registration_path %></li>
+        <li><%= link_to t('view.log_in'), new_user_session_path %></li>
+      <% end %>
+    </ul>
   </div>
 </nav>

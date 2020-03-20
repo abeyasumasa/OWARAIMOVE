@@ -1,9 +1,9 @@
-<h1>芸人一覧</h1>
-
 <div class="wrapper">
   <div class="container">
     <div class="row">
       <div class="search_comedian col-sm-2">
+        <h6>芸人検索機能</h6>
+        <h2>芸人を検索しよう</h2>
         <%= search_form_for @search do |f| %>
           <div class="genre">
             <%= f.label :genre_cont, 'ジャンル' %>
@@ -21,14 +21,18 @@
         <% end %>
         <% if current_user != nil %>
           <% if current_user.entertainer != false %>
-            <%= link_to t('view.comedian.add'), new_comedian_path, class: 'btn btn-default' %>
+            <%= link_to t('view.comedian.add'), new_comedian_path, class: 'btn btn-default mt-3' %>
           <% end %>
         <% end %>
       </div>
 
-      <div class="comedian col-sm-10 row text-center">
+      <div class="comedian col-sm-10 row text-center mx-auto">
+        <div class="w-100 p-3">
+          <h6>芸人一覧</h6>
+          <h2>こんな芸人がいます</h2>
+        </div>
         <% @comedians.each do |comedian| %>
-          <div class="centering_item card col-sm-4">
+          <div class="centering_item card col-sm-4 mb-3">
             <% unless comedian.combination_icon.url == nil %>
               <p><%= image_tag comedian.combination_icon.thumb.url, class: "mt-4" %></p>
             <% end %>
