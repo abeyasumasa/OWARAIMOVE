@@ -1,14 +1,13 @@
-<div class="container">
 <h1>ライブ登録画面</h1>
 
-<%= form_with(model: @live, local:true) do |form| %>
+<%= form_with(model: @live, local: true) do |form| %>
   <% if @live.errors.any? %>
     <div id="error_explanation">
       <h2><%= @live.errors.count %>件のエラーがあります。</h2>
       <ul>
-      <% @live.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @live.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -29,7 +28,7 @@
     <span>〜</span>
     <%= form.time_select :ending_time, {include_blank: true}, id: 'live_ending_time' %>
   </div>
-  
+
   <div class="live_place">
     <%= form.label t('view.live.place') %>
     <%= form.text_field :place, id: 'live_place' %>
@@ -37,16 +36,15 @@
 
   <div class="live_price">
     <%= form.label t('view.live.prise') %>
-    <%= form.text_field :price , id: 'live_price'%>
+    <%= form.text_field :price, id: 'live_price' %>
   </div>
 
   <div class="live_content">
     <%= form.label t('view.live.content') %>
-    <%= form.text_area :content, size:"50×10", id: 'live_content' %>
+    <%= form.text_area :content, size: "50×10", id: 'live_content' %>
   </div>
 
   <%= form.submit t('view.live.entry') %>
 
 <% end %>
 <p><%= link_to t('view.live.list'), lives_path %></p>
-</div>

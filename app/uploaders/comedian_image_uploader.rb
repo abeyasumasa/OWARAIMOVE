@@ -10,11 +10,13 @@ class ComedianImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :thumb_300 do
-      process :resize_to_fit => [300, 300]
-    end
+  process resize_to_limit: [350, 350]
 
-    def default_url
-      "default.png"
-    end
+  version :thumb do
+    process resize_to_fill: [250, 250]
+  end
+
+  def default_url
+    "default.png"
+  end
 end

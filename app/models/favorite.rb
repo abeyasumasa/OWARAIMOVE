@@ -1,7 +1,8 @@
 class Favorite < ApplicationRecord
-  # ページネーション（１ページの最大表示件数）
-  paginates_per 10
-  
   belongs_to :user
   belongs_to :comedian
+
+  paginates_per 10
+  validates :user_id,
+            uniqueness: {scope: [:comedian_id]}
 end

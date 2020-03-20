@@ -1,53 +1,64 @@
-<div class="container">
-  <h1>芸人一覧</h1>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="search_comedian col-sm-2">
+        <h6>芸人検索機能</h6>
+        <h2>芸人を検索しよう</h2>
+        <%= search_form_for @search do |f| %>
+          <div class="genre">
+            <%= f.label :genre_cont, 'ジャンル' %>
+            <%= f.text_field :genre_cont %>
+          </div>
 
-  <div class="search_comedian">
-    <%= search_form_for @search do |f| %>
-      <div class="genre">
-        <%= f.label :genre_cont, 'ジャンル' %>
-        <%= f.text_field :genre_cont %>
+          <div>
+            <%= f.label :comment_cout, 'キーワード' %>
+            <%= f.text_field :comment_cont %>
+          </div>
+
+          <div class="submit">
+            <%= f.submit '検索する' %>
+          </div>
+        <% end %>
+        <% if current_user != nil %>
+          <% if current_user.entertainer != false %>
+            <%= link_to t('view.comedian.add'), new_comedian_path, class: 'btn btn-default mt-3' %>
+          <% end %>
+        <% end %>
       </div>
 
-      <div>
-        <%= f.label :comment_cout, 'キーワード' %>
-        <%= f.text_field :comment_cont %>
+      <div class="comedian col-sm-10 row text-center mx-auto">
+        <div class="w-100 p-3">
+          <h6>芸人一覧</h6>
+          <h2>こんな芸人がいます</h2>
+        </div>
+        <% @comedians.each do |comedian| %>
+          <div class="centering_item card col-sm-4 mb-3">
+            <% unless comedian.combination_icon.url == nil %>
+              <p><%= image_tag comedian.combination_icon.thumb.url, class: "mt-4" %></p>
+            <% end %>
+            <span><%= comedian.combination_name %></span><br>
+            <p><%= t('view.comedian.genre') %><%= comedian.genre %></p>
+            <p><%= comedian.comment %></p>
+            <% if current_user == nil || current_user.id != comedian.user_id %>
+              <div class="mb-4">
+                <span><%= link_to t('view.show'), comedian, class: 'btn btn-default' %></span>
+              </div>
+            <% elsif current_user.id == comedian.user_id %>
+              <div class="btn-toolbar mx-auto mb-4">
+                <div class="btn-group">
+                  <span><%= link_to t('view.show'), comedian, class: 'btn btn-default' %></span>
+                  <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-default' %></span>
+                  <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-default' %></span>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="pagination mx-auto">
+        <%= paginate @comedians %>
       </div>
 
-      <div class="submit">
-        <%= f.submit '検索する' %>
-      </div>
-    <% end %>
+    </div>
   </div>
-
-  <table>
-    <tbody>
-    <% @comedians.each do |comedian| %>
-      <div class="centering_item">
-        <% unless comedian.combination_icon.url == nil %>
-          <p><%= image_tag comedian.combination_icon.url %></p>
-        <% end %>
-        <span><%= comedian.combination_name %></span><br>
-        <p><%= t('view.comedian.genre') %><%= comedian.genre %></p>
-        <p><%= comedian.comment %></p>
-        <% if current_user == nil || current_user.id != comedian.user_id %>
-          <span><%= link_to t('view.show'), comedian, class: 'btn btn-default' %></span>
-        <% elsif current_user.id == comedian.user_id %>
-          <span><%= link_to t('view.show'), comedian, class: 'btn btn-default' %></span>
-          <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-default' %></span>
-          <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-default' %></span>
-        <% end %>
-      </div>
-    <% end %>
-    <%= paginate @comedians %>
-    </tbody>
-  </table>
-
-  <% if current_user != nil %>
-    <% if current_user.entertainer != false %>
-      <%= link_to t('view.comedian.add'), new_comedian_path, class: 'btn btn-default' %>
-      <% if current_user.admin == true %>
-        <%= link_to t('view.user.list'), users_path, class: 'btn btn-default' %>
-      <% end %>
-    <% end %>
-  <% end %>
 </div>
