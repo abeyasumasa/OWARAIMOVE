@@ -20,6 +20,7 @@
             <%= f.submit '検索する' %>
           </div>
         <% end %>
+
         <% if current_user != nil %>
           <% if current_user.entertainer != false %>
             <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-default mt-3' %>
@@ -44,11 +45,13 @@
               <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-default' %></span>
               </div>
             <% end %>
+          </div>
         <% end %>
+
         <div class="pagination mx-auto">
           <%= paginate @lives %>
         </div>
+
       </div>
-    </div>
   </div>
 </div>

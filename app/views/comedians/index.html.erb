@@ -19,6 +19,7 @@
             <%= f.submit '検索する' %>
           </div>
         <% end %>
+
         <% if current_user != nil %>
           <% if current_user.entertainer != false %>
             <%= link_to t('view.comedian.add'), new_comedian_path, class: 'btn btn-default mt-3' %>
@@ -40,12 +41,12 @@
             <p><%= t('view.comedian.genre') %><%= comedian.genre %></p>
             <p><%= comedian.comment %></p>
             <% if current_user == nil || current_user.id != comedian.user_id %>
-              <div class="mb-4">
+              <div class="mb-4 comedian_show">
                 <span><%= link_to t('view.show'), comedian, class: 'btn btn-default' %></span>
               </div>
             <% elsif current_user.id == comedian.user_id %>
               <div class="btn-toolbar mx-auto mb-4">
-                <div class="btn-group">
+                <div class="btn-group comedian_show">
                   <span><%= link_to t('view.show'), comedian, class: 'btn btn-default' %></span>
                   <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-default' %></span>
                   <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-default' %></span>

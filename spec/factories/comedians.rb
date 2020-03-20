@@ -18,6 +18,7 @@ FactoryBot.define do
       genre { "漫才" }
       twitter_url { "https://comedian03.html" }
       youtube_url { "https://comedian03.html.erb" }
+      # association :user, factory: :second_user
     end
   end
 end
