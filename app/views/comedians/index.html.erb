@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <div class="search_comedian col-sm-2">
+      <div class="search_comedian col-sm-3 pl-0 pr-1">
         <h6>芸人検索機能</h6>
         <h2>芸人を検索しよう</h2>
         <%= search_form_for @search do |f| %>
@@ -11,8 +11,8 @@
           </div>
 
           <div>
-            <%= f.label :comment_cout, 'キーワード' %>
-            <%= f.text_field :comment_cont %>
+            <%= f.label :comment_cout, 'キーワード' %><br>
+            <%= f.text_field :combination_name_or_comment_cont ,placeholder:"コンビ名や気になったフレーズで検索",:size=>"35" %>
           </div>
 
           <div class="submit mt-3">
@@ -27,7 +27,7 @@
         <% end %>
       </div>
 
-      <div class="comedian col-sm-10 row text-center mx-auto">
+      <div class="comedian col-sm-9 row text-center mx-auto">
         <div class="w-100 p-3">
           <h6>芸人一覧</h6>
           <h2>こんな芸人がいます</h2>
@@ -38,7 +38,7 @@
               <p><%= image_tag comedian.combination_icon.thumb.url, class: "mt-4" %></p>
             <% end %>
             <span><%= comedian.combination_name %></span><br>
-            <p><%= t('view.comedian.genre') %><%= comedian.genre %></p>
+            <p><%= t('view.comedian.genre') %> : <%= comedian.genre %></p>
             <p><%= comedian.comment %></p>
             <% if current_user == nil || current_user.id != comedian.user_id %>
               <div class="mb-4 comedian_show">
