@@ -416,7 +416,8 @@ DEPENDENCIES
   rails (= 5.2.3)
   ransack
   rspec-rails
-  sass-rails (~> 5.0)
+  sass-rails (= 5.1.0)
+  sassc (= 2.2.1)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
