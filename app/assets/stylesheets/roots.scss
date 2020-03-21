@@ -18,6 +18,7 @@
 .top-content{
   background-image: image-url("top-image.png");
   background-size:cover;
+  background-position: bottom;
   margin-top: 62px;
   margin-bottom: 57px;
   text-align: center;
@@ -26,16 +27,24 @@
   right: 0;
   bottom: 0;
   left: 0;
+
 }
 .top-title{
   font-size: 4rem;
   margin: 40px;
+  position: relative;
 }
 
 .content{
-  margin: auto;
+  position: absolute;
+  top: 50%; /*親要素を起点に上から50%*/
+  left: 50%;  /*親要素を起点に左から50%*/
+  transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
+  -webkit-transform: translateY(-50%) translateX(-50%);
 }
-
+.content h1{
+  color:#eeeeee;
+}
 .navbar-inverse {
   margin: 0px;
 }
