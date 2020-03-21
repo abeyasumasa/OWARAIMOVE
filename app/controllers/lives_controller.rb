@@ -4,6 +4,7 @@ class LivesController < ApplicationController
   def index
     @search = Live.ransack(params[:q])
     @lives = @search.result.page(params[:page])
+                 # .list(params)
   end
 
   def new

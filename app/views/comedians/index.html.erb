@@ -6,8 +6,8 @@
         <h2>芸人を検索しよう</h2>
         <%= search_form_for @search do |f| %>
           <div class="genre">
-            <%= f.label :genre_cont, 'ジャンル' %>
-            <%= f.text_field :genre_cont %>
+            <%= f.label :genre_cont, 'ジャンル' %><br>
+            <%= f.collection_select :genre_cont, Comedian.select(:genre).distinct, :genre, :genre, :include_blank => true %>
           </div>
 
           <div>
@@ -15,7 +15,7 @@
             <%= f.text_field :comment_cont %>
           </div>
 
-          <div class="submit">
+          <div class="submit mt-3">
             <%= f.submit '検索する' %>
           </div>
         <% end %>
