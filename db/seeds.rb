@@ -43,21 +43,19 @@ end
 
 # 芸人
 
-1.times do |n|
+15.times do |n|
+  user_id = n + 1
   name = Faker::Games::Zelda.character
   email = Faker::Internet.email
-  15.times do |n|
-    user_id = n + 1
-    Comedian.create!(combination_name: name,
-                     email: email,
-                     genre: "漫才",
-                     combination_icon: open("#{Rails.root}/db/fixtures/image02.jpg"),
-                     comment: "test",
-                     user_id: user_id,
-                     twitter_url: "https://twitter",
-                     youtube_url: "https://tyoutube"
-    )
-  end
+  Comedian.create!(combination_name: name,
+                   email: email,
+                   genre: "漫才",
+                   combination_icon: open("#{Rails.root}/db/fixtures/image02.jpg"),
+                   comment: "test",
+                   user_id: user_id,
+                   twitter_url: "https://twitter",
+                   youtube_url: "https://youtube"
+  )
 end
 
 # ライブ
