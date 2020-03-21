@@ -44,14 +44,18 @@ end
 # 芸人
 
 15.times do |n|
+  genres = ["コント", "漫才", "フリートーク", "モノマネ", "リアクション芸", "大喜利",
+                                     "一発ギャグ", "歌ネタ/リズムネタ", "ピン芸人", "フリップ芸", "漫談"]
+  genre = genres.sample
   user_id = n + 1
   name = Faker::Games::Zelda.character
   email = Faker::Internet.email
+  comment = "test" + "#{n}"
   Comedian.create!(combination_name: name,
                    email: email,
-                   genre: "漫才",
+                   genre: genre,
                    combination_icon: open("#{Rails.root}/db/fixtures/image02.jpg"),
-                   comment: "test",
+                   comment: comment,
                    user_id: user_id,
                    twitter_url: "https://twitter",
                    youtube_url: "https://youtube"
@@ -61,10 +65,16 @@ end
 # ライブ
 15.times do |n|
   title = Faker::Book.title
+  s1 = Date.parse("2020/01/1")
+  s2 = Date.parse("2021/01/01")
+  date = Random.rand(s1 .. s2)
+  places = ["渋谷", "原宿", "新宿", "神保町"]
+  place = places.sample
+  conent = "test" + "#{n}"
   Live.create!(title: title,
-               content: "test",
-               place: "渋谷",
-               date: DateTime.strptime("2020/02/29", "%Y/%m/%d"),
+               content: conent,
+               place: place,
+               date: date,
                start_time: Time.strptime("2020/02/29 10:00", "%Y/%m/%d %H:%M"),
                ending_time: Time.strptime("2020/02/29 12:00", "%Y/%m/%d %H:%M"),
                price: 2000
