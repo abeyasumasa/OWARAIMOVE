@@ -78,3 +78,6 @@ gem 'bootstrap-sass'
 
 # Autoprefixer Rails
 gem 'autoprefixer-rails'
+
+gem 'fog-aws'
+gem 'dotenv-rails'
