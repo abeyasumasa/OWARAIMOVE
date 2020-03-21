@@ -18,6 +18,8 @@ class Live < ApplicationRecord
   validate :start_time_cannot_be_later_than_end_time
   validates :price, presence: true, numericality: {only_integer: true, greater_than: 1, less_than: 10000}
 
+  # scope :week_search, -> (from = Time.now.at_beginning_of_day)(to = (from + 6.day).at_end_of_day){Live.where(date: from...to)}
+
   private
 
   def start_time_cannot_be_later_than_end_time
@@ -26,4 +28,13 @@ class Live < ApplicationRecord
     end
   end
 
+  # def self.list(parameter)
+  #   if parameter[:week_seach] == "true"
+  #     from = Time.now.at_beginning_of_day
+  #     to = (from + 6.day).at_end_of_day
+  #     Live.where(date: from...to)
+  #     week_search
+  #   end
+  # end
 end
+
