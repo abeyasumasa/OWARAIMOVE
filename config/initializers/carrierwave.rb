@@ -17,8 +17,8 @@ CarrierWave.configure do |config|
   when 'production'
     config.fog_directory = 'owaraimove-production'
     config.asset_host = 'https://s3.console.aws.amazon.com/s3/buckets/owaraimove-production'
-  when 'development'
-    config.fog_directory = 'owaraimove-development'
-    config.asset_host = 'https://s3.console.aws.amazon.com/s3/buckets/owaraimove-development'
+  # when 'development'
+  #   config.fog_directory = 'owaraimove-development'
+  #   config.asset_host = 'https://s3.console.aws.amazon.com/s3/buckets/owaraimove-development'
   end
 end
