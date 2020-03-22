@@ -24,7 +24,7 @@
         <% end %>
 
         <% if current_user != nil %>
-          <% if current_user.entertainer != false %>
+          <% if current_user.entertainer != false && current_user.comedian != nil %>
             <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-default mt-3' %>
           <% end %>
         <% end %>
@@ -43,12 +43,24 @@
             <p><%= live.place %></p>
             <% @comedian = live.performer_management_comedians %>
             <% @comedian.each do |comedian| %>
-              <% if current_user == nil || current_user.comedian.id != comedian.id %>
+              <% if current_user == nil %>
                 <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-default' %></span>
               <% else %>
-                <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-default' %></span>
-                <span><%= link_to t('view.edit'), edit_live_path(live.id), class: 'btn btn-default' %></span>
-                <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-default' %></span>
+                <% if current_user.entertainer == false %>
+                  <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-default' %></span>
+                <% else %>
+                  <% if current_user.comedian == nil %>
+                    <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-default' %></span>
+                  <% else %>
+                    <% if current_user.comedian.id == comedian.id %>
+                      <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-default' %></span>
+                      <span><%= link_to t('view.edit'), edit_live_path(live.id), class: 'btn btn-default' %></span>
+                      <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-default' %></span>
+                    <% else %>
+                      <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-default' %></span>
+                    <% end %>
+                  <% end %>
+                <% end %>
               <% end %>
             <% end %>
           </div>

@@ -2,43 +2,43 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+# before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+# GET /resource/sign_up
+# def new
+#   super
+# end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+# POST /resource
+# def create
+#   super
+# end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+# GET /resource/edit
+# def edit
+#   super
+# end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+# PUT /resource
+# def update
+#   super
+# end
 
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
+# DELETE /resource
+# def destroy
+#   super
+# end
 
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
+# GET /resource/cancel
+# Forces the session data which is usually expired after sign
+# in to be expired now. This is useful if the user wants to
+# cancel oauth signing in/up in the middle of the process,
+# removing all OAuth session data.
+# def cancel
+#   super
+# end
 
-  # プロフィール画面用のアクションを追加
+# プロフィール画面用のアクションを追加
   def detail
     @user = User.find_by(id: params[:id])
   end
@@ -57,7 +57,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    "/lives"
+    if current_user.entertainer == true
+      flash[:notice] = "アカウント登録が完了しました。次に芸人を作成してください。"
+      "/comedians/new"
+    else
+      flash[:notice] = "アカウント登録が完了しました。"
+      "/lives"
+    end
   end
 
   # The path used after sign up for inactive accounts.
@@ -65,7 +71,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def build_resource(hash={})
+  def build_resource(hash = {})
     hash[:uid] = User.create_unique_string
     super
   end
