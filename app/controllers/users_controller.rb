@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      binding.pry
       if @user.entertainer == true
         redirect_to new_comedian_path, notice: '芸人を作成してください！'
       elsif @user.entertainer == false
