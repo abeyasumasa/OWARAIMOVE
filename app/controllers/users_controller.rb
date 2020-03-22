@@ -16,9 +16,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      if @user.entertainer == true
+      binding.pry
+      if @user.entertainer == true && @user.entertainer_started_at == nil
+        @user.update_attributes(entertainer_started_at: Date.today)
         redirect_to new_comedian_path, notice: '芸人を作成してください！'
-      elsif @user.entertainer == false
+      else
         redirect_to user_path(@user), notice: '更新しました'
       end
     else
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :icon, :entertainer, :password,
-                                 :password_confirmation, :icon, :icon_cache)
+                                 :password_confirmation, :icon, :icon_cache, :entertainer_started_at)
   end
 
   def set_user
