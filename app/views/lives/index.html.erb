@@ -24,7 +24,7 @@
         <% end %>
 
         <% if current_user != nil %>
-          <% if current_user.entertainer != false %>
+          <% if current_user.entertainer != false && current_user.comedian != nil %>
             <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-default mt-3' %>
           <% end %>
         <% end %>

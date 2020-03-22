@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      binding.pry
       if @user.entertainer == true && @user.entertainer_started_at == nil
         @user.update_attributes(entertainer_started_at: Date.today)
         redirect_to new_comedian_path, notice: '芸人を作成してください！'
