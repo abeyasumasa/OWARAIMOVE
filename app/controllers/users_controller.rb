@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @schedule =@user.participant_management_lives.page(params[:page]).per(3)
+    @schedule = @user.participant_management_lives.page(params[:page]).per(3)
   end
 
   def edit
@@ -16,18 +16,22 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      # パスワード変更でログアウトするのを防ぐ
-      # bypass_sign_in(@user, bypass: true) 
-      redirect_to user_path(@user), notice: '更新しました'
+      binding.pry
+      if @user.entertainer == true
+        redirect_to new_comedian_path, notice: '芸人を作成してください！'
+      elsif @user.entertainer == false
+        redirect_to user_path(@user), notice: '更新しました'
+      end
     else
       render action: :edit
     end
   end
 
   private
+
   def user_params
-    params.require(:user).permit(:name,:email,:icon,:entertainer,:password,
-                                :password_confirmation,:icon, :icon_cache)
+    params.require(:user).permit(:name, :email, :icon, :entertainer, :password,
+                                 :password_confirmation, :icon, :icon_cache)
   end
 
   def set_user
@@ -37,7 +41,7 @@ class UsersController < ApplicationController
   def encure_correct_user
     @user = User.find(params[:id])
     if current_user.id != @user.id
-      flash[:notice] ="権限がありません"
+      flash[:notice] = "権限がありません"
       redirect_to user_path(current_user.id)
     end
   end
