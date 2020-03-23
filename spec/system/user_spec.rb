@@ -13,7 +13,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     fill_in 'Password_confirmation', with: 'password'
     check 'user_entertainer'
     click_button '登録'
-    click_link 'アカウント'
+    click_on 'アカウント'
     click_link 'spectestuser01'
     expect(page).to_not have_content 'spectestuser01'
   end
@@ -71,6 +71,8 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     fill_in 'Email', with: 'spectestuser04@gmail.com'
     check 'user_entertainer'
     click_button '更新'
+    click_on 'アカウント'
+    click_on 'spectestuser04'
     expect(page).to have_content 'spectestuser04のページ'
   end
 

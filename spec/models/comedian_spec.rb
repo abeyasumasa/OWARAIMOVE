@@ -66,21 +66,21 @@ RSpec.describe Comedian, type: :model do
     end
     context 'twitter_url値が' do
       it '255文字以上の場合、無効である' do
-        comedian.twitter_url = 'a' * 256
+        comedian.twitter_url = 'https://www.' + 'a' * 244
         expect(comedian).to_not be_valid
       end
       it '255文字以下の場合、有効である' do
-        comedian.twitter_url = 'a' * 255
+        comedian.twitter_url = 'https://www.' + 'a' * 243
         expect(comedian).to be_valid
       end
     end
     context 'youtube_url値が' do
       it '255文字以上の場合、無効である' do
-        comedian.youtube_url = 'a' * 256
+        comedian.youtube_url = 'https://www.' + 'a' * 244
         expect(comedian).to_not be_valid
       end
       it '255文字以下の場合、有効である' do
-        comedian.youtube_url = 'a' * 255
+        comedian.youtube_url = 'https://www.' + 'a' * 243
         expect(comedian).to be_valid
       end
     end
