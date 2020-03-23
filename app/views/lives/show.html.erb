@@ -33,13 +33,14 @@
           <p><%= @live.content %></p>
         </div>
 
-        <span><%= link_to t('view.edit'), edit_live_path(@live.id), class: 'btn btn-default' %></span>
-        <span><%= link_to t('view.destroy'), live_path(@live.id), method: :delete, class: 'btn btn-default' %></span>
-
-        <% if @participant.present? %>
-          <%= link_to t('view.live.participation'), participant_management_path(id: @participant.id), method: :delete, class: 'btn btn-danger' %>
-        <% else %>
-          <%= link_to t('view.live.cancel'), participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-primary' %>
+        <% @comedian = @live.performer_management_comedians %>
+        <% @comedian.each do |comedian| %>
+          <% unless current_user == nil || current_user.entertainer == false || current_user.comedian == nil %>
+            <% if current_user.comedian.id == comedian.id %>
+              <span><%= link_to t('view.edit'), edit_live_path(@live.id), class: 'btn btn-default' %></span>
+              <span><%= link_to t('view.destroy'), live_path(@live.id), method: :delete, class: 'btn btn-default' %></span>
+            <% end %>
+          <% end %>
         <% end %>
 
       </div>
