@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <div class="search_live col-sm-2">
+      <div class="search_live col-sm-3 pl-0 pr-1">
         <h6>ライブ検索機能</h6>
         <h2>ライブを検索しよう</h2>
 
@@ -32,7 +32,7 @@
         <%#= link_to "直近１週間の予定", lives_path(week_search: "true"), class: 'btn btn-info mt-3' %>
       </div>
 
-      <div class="live  col-sm-10">
+      <div class="live  col-sm-9">
         <h6>ライブ一覧</h6>
         <h2>開催される予定のライブがあります</h2>
         <% @lives.each do |live| %>
