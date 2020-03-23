@@ -78,7 +78,7 @@ gem 'dotenv-rails'
 gem 'ransack'
 
 # bootstarap-saasを使う
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 
 # Autoprefixer Rails
 gem 'autoprefixer-rails'
