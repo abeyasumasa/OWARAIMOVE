@@ -40,6 +40,7 @@
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="binding_of_caller (v0.8.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.4.6, rbenv: 2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bootstrap (v4.4.1, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.0.2, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="byebug (v11.1.1, rbenv: 2.6.3) [gem]" level="application" />
@@ -87,6 +88,7 @@
     <orderEntry type="library" scope="PROVIDED" name="io-like (v0.3.1, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ipaddress (v0.8.3, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.10.0, rbenv: 2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.3.5, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jwt (v2.2.1, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kaminari (v1.2.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kaminari-actionview (v1.2.0, rbenv: 2.6.3) [gem]" level="application" />
@@ -124,6 +126,7 @@
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v1.2.3, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyamorous (v2.3.2, rbenv: 2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="popper_js (v1.16.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.13.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry-rails (v0.3.9, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v4.0.3, rbenv: 2.6.3) [gem]" level="application" />
@@ -152,6 +155,8 @@
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.7.4, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-listen (v4.0.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.1.0, rbenv: 2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sassc (v2.2.1, rbenv: 2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sassc-rails (v2.1.2, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v3.142.7, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spring (v2.1.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spring-watcher-listen (v2.0.1, rbenv: 2.6.3) [gem]" level="application" />
