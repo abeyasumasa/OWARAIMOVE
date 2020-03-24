@@ -63,6 +63,9 @@ header ul:after {
   background-color: #eeeeee;
 }
 
+.header_nav {
+  flex-direction: row-reverse;
+}
 //
 //.navbar-toggler {
 //  border-color: #eeeeee;

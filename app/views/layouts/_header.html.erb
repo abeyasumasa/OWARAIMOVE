@@ -4,14 +4,11 @@
   <% else %>
     <a class="navbar-brand logo_image" href="/"><%= image_tag 'logo.png', :size => '250x35' %></a>
   <% end %>
-  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
-    <span class="sr-only">OWARAIMOVE</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gnavi" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div id="gnavi" class="collapse navbar-collapse">
+  <div id="gnavi" class="collapse navbar-collapse header_nav ">
     <ul class="navbar-nav float-lg-right">
       <% if user_signed_in? %>
         <li class="nav-item m-3"><%= link_to 'トップ', lives_path %></li>
