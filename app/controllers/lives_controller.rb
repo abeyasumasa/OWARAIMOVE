@@ -1,10 +1,11 @@
 class LivesController < ApplicationController
   before_action :set_live, only: [:show, :edit, :update, :destroy]
+  before_action :encure_correct_performer, {only: [:edit, :update,:destroy]}
 
   def index
     @search = Live.ransack(params[:q])
     @lives = @search.result.page(params[:page])
-                 # .list(params)
+    # .list(params)
     # @comedian = Live.performer_management_comedians
   end
 
@@ -16,8 +17,8 @@ class LivesController < ApplicationController
     @live = Live.new(live_params)
     if @live.save
       comedian = current_user.comedian
-      comedian.performer_managements.create(live_id:@live.id)
-      redirect_to lives_path, notice:"ライブを作成しました！"
+      comedian.performer_managements.create(live_id: @live.id)
+      redirect_to lives_path, notice: "ライブを作成しました！"
     else
       render :new
     end
@@ -40,7 +41,7 @@ class LivesController < ApplicationController
 
   def destroy
     @live.destroy
-    redirect_to lives_path, notice:"ライブを削除しました！"
+    redirect_to lives_path, notice: "ライブを削除しました！"
   end
 
   private
@@ -51,6 +52,16 @@ class LivesController < ApplicationController
 
   def set_live
     @live = Live.find(params[:id])
+  end
+
+  def encure_correct_performer
+    @comedian = @live.performer_management_comedians
+    @comedian.each do |comedian|
+      if current_user.comedian.id != comedian.id
+        flash[:notice] = "権限がありません"
+        redirect_to lives_path
+      end
+    end
   end
 
 end
