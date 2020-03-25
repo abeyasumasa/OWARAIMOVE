@@ -45,16 +45,17 @@ end
 
 15.times do |n|
   genres = ["コント", "漫才", "フリートーク", "モノマネ", "リアクション芸", "大喜利",
-                                     "一発ギャグ", "歌ネタ/リズムネタ", "ピン芸人", "フリップ芸", "漫談"]
+            "一発ギャグ", "歌ネタ/リズムネタ", "ピン芸人", "フリップ芸", "漫談"]
   genre = genres.sample
   user_id = n + 1
   name = Faker::Games::Zelda.character
   email = Faker::Internet.email
   comment = "test" + "#{n}"
+  number = [*1..4].sample
   Comedian.create!(combination_name: name,
                    email: email,
                    genre: genre,
-                   combination_icon: open("#{Rails.root}/db/fixtures/image02.jpg"),
+                   combination_icon: open("#{Rails.root}/db/fixtures/image0#{number}.jpg"),
                    comment: comment,
                    user_id: user_id,
                    twitter_url: "https://twitter",
@@ -67,7 +68,7 @@ end
   title = Faker::Book.title
   s1 = Date.parse("2020/01/1")
   s2 = Date.parse("2021/01/01")
-  date = Random.rand(s1 .. s2)
+  date = Random.rand(s1..s2)
   places = ["渋谷", "原宿", "新宿", "神保町"]
   place = places.sample
   conent = "test" + "#{n}"
@@ -98,7 +99,7 @@ end
 end
 
 # 出演ライブ
-10.times do |n|
+15.times do |n|
   comedian_id = n + 1
   live_id = n + 1
   PerformerManagement.create!(comedian_id: comedian_id,

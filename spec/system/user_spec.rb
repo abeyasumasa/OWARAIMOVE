@@ -13,9 +13,10 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     fill_in 'Password_confirmation', with: 'password'
     check 'user_entertainer'
     click_button '登録'
-    click_on 'アカウント'
+    find("button.navbar-toggler").click
+    find(".dropdown-toggle").click
     click_link 'spectestuser01'
-    expect(page).to_not have_content 'spectestuser01'
+    expect(page).to have_content 'spectestuser01'
   end
 
   scenario 'ユーザーログインテスト' do
@@ -51,7 +52,8 @@ RSpec.describe 'ユーザー登録機能', type: :system do
       fill_in 'Password', with: 'password'
       click_button 'ログイン'
       visit user_path(first_user)
-      click_link '芸人'
+      find("button.navbar-toggler").click
+      find(".dropdown-toggle").click
       click_link '芸人一覧'
       page.all(".comedian_show")[1].click_link("詳細")
       expect(page).to have_content 'comedian03'
@@ -61,17 +63,22 @@ RSpec.describe 'ユーザー登録機能', type: :system do
 
 
   scenario 'ユーザー情報編集テスト' do
-    visit new_user_session_path
-    fill_in 'Email', with: 'spectestuser02@gmail.com'
+    visit new_user_registration_path
+    fill_in 'Name', with: 'spectestuser01'
+    fill_in 'Email', with: 'spectestuser01@gmail.com'
     fill_in 'Password', with: 'password'
-    click_button 'ログイン'
-    click_on 'アカウント'
-    click_on 'プロフィール変更'
+    fill_in 'Password_confirmation', with: 'password'
+    check 'user_entertainer'
+    click_button '登録'
+    find("button.navbar-toggler").click
+    find(".dropdown-toggle").click
+    click_link 'プロフィール変更'
     fill_in 'Name', with: 'spectestuser04'
     fill_in 'Email', with: 'spectestuser04@gmail.com'
     check 'user_entertainer'
     click_button '更新'
-    click_on 'アカウント'
+    find("button.navbar-toggler").click
+    find(".dropdown-toggle").click
     click_on 'spectestuser04'
     expect(page).to have_content 'spectestuser04のページ'
   end

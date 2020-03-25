@@ -4,14 +4,11 @@
   <% else %>
     <a class="navbar-brand logo_image" href="/"><%= image_tag 'logo.png', :size => '250x35' %></a>
   <% end %>
-  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
-    <span class="sr-only">OWARAIMOVE</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gnavi" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div id="gnavi" class="collapse navbar-collapse">
+  <div id="gnavi" class="collapse navbar-collapse header_nav ">
     <ul class="navbar-nav float-lg-right">
       <% if user_signed_in? %>
         <li class="nav-item m-3"><%= link_to 'トップ', lives_path %></li>
@@ -31,7 +28,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">アカウント</a>
           <ul class="dropdown-menu dropdown-menu-right">
             <li class="dropdown-item text-center"><%= link_to current_user.name, user_path(current_user.id) %></li>
-            <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_user_path(current_user.id) %></li>
+            <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_user_path(current_user.id) ,id: "user" %></li>
             <% if current_user.admin == true %>
               <li class="dropdown-item text-center"><%= link_to t('view.admin'), users_path %></li>
             <% end %>

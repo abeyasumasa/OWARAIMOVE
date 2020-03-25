@@ -6,8 +6,8 @@ ruby '2.6.3'
 gem 'rails', '5.2.3'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-# gem 'sassc', '>= 2.0.0'
 gem 'sass-rails', '~> 5.0'
+gem 'sassc', '~> 2.1.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'coffee-rails', '~> 4.2'
@@ -78,7 +78,8 @@ gem 'dotenv-rails'
 gem 'ransack'
 
 # bootstarap-saasを使う
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
 
 # Autoprefixer Rails
 gem 'autoprefixer-rails'

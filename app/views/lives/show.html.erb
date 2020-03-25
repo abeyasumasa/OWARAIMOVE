@@ -37,8 +37,8 @@
         <% @comedian.each do |comedian| %>
           <% unless current_user == nil || current_user.entertainer == false || current_user.comedian == nil %>
             <% if current_user.comedian.id == comedian.id %>
-              <span><%= link_to t('view.edit'), edit_live_path(@live.id), class: 'btn btn-default' %></span>
-              <span><%= link_to t('view.destroy'), live_path(@live.id), method: :delete, class: 'btn btn-default' %></span>
+              <span><%= link_to t('view.edit'), edit_live_path(@live.id), class: 'btn btn-outline-secondary' %></span>
+              <span><%= link_to t('view.destroy'), live_path(@live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
             <% end %>
           <% end %>
         <% end %>
