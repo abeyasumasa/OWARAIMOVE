@@ -16,8 +16,8 @@ CarrierWave.configure do |config|
   case Rails.env
   when 'production'
     config.fog_directory = 'owaraimove-production'
-    config.asset_host = 'https://owaraimove-production.s3.amazon.com'
-    # config.asset_host = 'https://s3.console.aws.amazon.com/s3/buckets/owaraimove-production'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/owaraimove-production'
+    # config.asset_host = 'https://owaraimove-production.s3.amazon.com'
   when 'development'
     config.cache_storage = :file
     config.storage :file
