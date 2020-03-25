@@ -40,7 +40,7 @@
             <%= form.hidden_field :youtube_url %>
           </div>
 
-          <%= form.submit t('view.comedian.entry'), class: "btn btn-success mt-2" %>
+          <%= form.submit t('view.comedian.entry'), class: "btn btn-outline-secondary mt-2" %>
         <% end %>
 
         <%= form_with(model: @comedian, url: new_comedian_path, local: true, method: "get") do |form| %>
