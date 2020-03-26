@@ -67,6 +67,11 @@ RSpec.describe 'ライブ投稿機能', type: :system do
       click_on '検索する'
       expect(page).to have_content 'ライブ1'
     end
+    it 'ライブ参加機能のテスト' do
+      click_on '詳細', match: :first
+      click_on 'ライブに参加する'
+      expect(page).to have_content ''
+    end
   end
 end
 

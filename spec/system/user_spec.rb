@@ -63,22 +63,19 @@ RSpec.describe 'ユーザー登録機能', type: :system do
 
 
   scenario 'ユーザー情報編集テスト' do
-    visit new_user_registration_path
-    fill_in 'Name', with: 'spectestuser01'
-    fill_in 'Email', with: 'spectestuser01@gmail.com'
+    visit new_user_session_path
+    fill_in 'Email', with: 'spectestuser02@gmail.com'
     fill_in 'Password', with: 'password'
-    fill_in 'Password_confirmation', with: 'password'
-    check 'user_entertainer'
-    click_button '登録'
+    click_button 'ログイン'
     find("button.navbar-toggler").click
-    find(".dropdown-toggle").click
+    find(".dropdown-toggle.user").click
     click_link 'プロフィール変更'
-    fill_in 'Name', with: 'spectestuser04'
-    fill_in 'Email', with: 'spectestuser04@gmail.com'
+    fill_in 'user[name]', with: 'spectestuser04'
+    fill_in 'user[email]', with: 'spectestuser04@gmail.com'
     check 'user_entertainer'
     click_button '更新'
     find("button.navbar-toggler").click
-    find(".dropdown-toggle").click
+    find(".dropdown-toggle.user").click
     click_on 'spectestuser04'
     expect(page).to have_content 'spectestuser04のページ'
   end
