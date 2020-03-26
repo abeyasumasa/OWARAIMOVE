@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Live, type: :model do
-  let(:live){FactoryBot.build(:first_live)}
+  let(:live) { FactoryBot.build(:first_live) }
   #it 'タイトル、コメント、場所、日にち、料金が入っていれば、有効である'
   describe 'ライブモデルの' do
     context 'title値が' do
@@ -71,6 +71,18 @@ RSpec.describe Live, type: :model do
       end
       it '数字かつ1~10000の場合、有効である' do
         live.price = 5000
+        expect(live).to be_valid
+      end
+    end
+    context 'start_time値とending_time値が' do
+      it '開始時間が終了時間よりも前の場合、有効である' do
+        live.start_time = "15:00"
+        live.ending_time = "13:00"
+        expect(live).to_not be_valid
+      end
+      it '開始時間が終了時間よりも前の場合、有効である' do
+        live.start_time = "13:00"
+        live.ending_time = "15:00"
         expect(live).to be_valid
       end
     end

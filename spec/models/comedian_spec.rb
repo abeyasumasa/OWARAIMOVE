@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Comedian, type: :model do
-  let(:comedian){FactoryBot.build(:first_comedian)}
+  let(:comedian) { FactoryBot.build(:first_comedian) }
   it 'コンビ名、メール、コメントがある場合、有効である' do
     comedian.combination_name = 'comedian001'
     comedian.email = 'comedian001@gmail.com'
@@ -41,7 +41,7 @@ RSpec.describe Comedian, type: :model do
         expect(comedian).to be_valid
       end
       it '正規表現にマッチしてない場合、無効である' do
-        comedian.email = 'a' *20
+        comedian.email = 'a' * 20
         expect(comedian).to_not be_valid
         comedian.email = '@aaaaaaaaa'
         expect(comedian).to_not be_valid
@@ -65,23 +65,31 @@ RSpec.describe Comedian, type: :model do
       end
     end
     context 'twitter_url値が' do
-      it '255文字以上の場合、無効である' do
+      it '正規表現にマッチしており、255文字以上の場合、無効である' do
         comedian.twitter_url = 'https://www.' + 'a' * 244
         expect(comedian).to_not be_valid
       end
-      it '255文字以下の場合、有効である' do
+      it '正規表現にマッチしており、255文字以下の場合、有効である' do
         comedian.twitter_url = 'https://www.' + 'a' * 243
         expect(comedian).to be_valid
       end
+      it '正規表現にマッチしてない場合、無効である' do
+        comedian.twitter_url = 'a' * 243
+        expect(comedian).to_not be_valid
+      end
     end
     context 'youtube_url値が' do
-      it '255文字以上の場合、無効である' do
+      it '正規表現にマッチしており、255文字以上の場合、無効である' do
         comedian.youtube_url = 'https://www.' + 'a' * 244
         expect(comedian).to_not be_valid
       end
-      it '255文字以下の場合、有効である' do
+      it '正規表現にマッチしており、255文字以下の場合、有効である' do
         comedian.youtube_url = 'https://www.' + 'a' * 243
         expect(comedian).to be_valid
+      end
+      it '正規表現にマッチしてない場合、無効である' do
+        comedian.youtube_url = 'a' * 243
+        expect(comedian).to_not be_valid
       end
     end
   end
