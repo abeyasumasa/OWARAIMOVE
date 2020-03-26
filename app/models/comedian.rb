@@ -22,6 +22,6 @@ class Comedian < ApplicationRecord
   validates :twitter_url, length: {maximum: 255}
   validates :youtube_url, length: {maximum: 255}
   validates :comment, presence: true
-  validates :twitter_url, format: /\A#{URI::regexp(%w(http https))}\z/
-  validates :youtube_url, format: /\A#{URI::regexp(%w(http https))}\z/
+  validates :twitter_url, format: /\A#{URI::regexp(%w(http https))}\z/, allow_blank: true
+  validates :youtube_url, format: /\A#{URI::regexp(%w(http https))}\z/, allow_blank: true
 end

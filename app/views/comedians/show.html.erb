@@ -57,6 +57,9 @@
           <span><%= link_to t('view.edit'), edit_comedian_path(@comedian.id), class: 'btn btn-outline-secondary' %></span>
           <span><%= link_to t('view.destroy'), comedian_path(@comedian.id), data: {confirm: '本当に削除していいですか？'}, method: :delete, class: 'btn btn-outline-secondary' %></span>
         <% end %>
+        <div class='mt-2'>
+          <%= link_to "芸人一覧に戻る", comedians_path %>
+        </div>
       </div>
     </div>
   </div>
