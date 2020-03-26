@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'ライブ投稿機能', type: :system do
   #let!(:first_user){FactoryBot.create(:first_user)}
+  let!(:second_live) { create(:second_live) }
 
   before do
-    FactoryBot.create(:first_user)
+    create(:first_user)
 
     visit new_user_session_path
     fill_in 'Email', with: 'spectestuser02@gmail.com'
@@ -66,11 +67,6 @@ RSpec.describe 'ライブ投稿機能', type: :system do
       select '渋谷', from: '場所で絞り込む'
       click_on '検索する'
       expect(page).to have_content 'ライブ1'
-    end
-    it 'ライブ参加機能のテスト' do
-      click_on '詳細', match: :first
-      click_on 'ライブに参加する'
-      expect(page).to have_content ''
     end
   end
 end
