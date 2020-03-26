@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'ライブ投稿機能', type: :system do
   #let!(:first_user){FactoryBot.create(:first_user)}
+  let!(:second_live) { create(:second_live) }
 
   before do
-    FactoryBot.create(:first_user)
+    create(:first_user)
 
     visit new_user_session_path
     fill_in 'Email', with: 'spectestuser02@gmail.com'
