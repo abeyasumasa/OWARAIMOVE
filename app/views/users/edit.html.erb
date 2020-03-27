@@ -17,7 +17,7 @@
           <% end %>
           <div class="field">
             <%= f.label t('view.user.icon') %>
-            <p><%= image_tag @user.icon.to_s %></p>
+            <p><%= image_tag @user.icon.thumb.to_s %></p>
             <%= f.file_field :icon %>
           </div>
 
