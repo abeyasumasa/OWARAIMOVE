@@ -4,7 +4,7 @@
       <div class="user_show col-sm-12">
         <h1><%= @user.name %>のページ</h1>
 
-        <p><%= image_tag @user.icon.to_s %></p>
+        <p><%= image_tag @user.icon.thumb.to_s %></p>
         <p><%= link_to t('view.user.follow'), favorites_path %></p>
 
         <p><%= t('view.user.name') %>: <%= @user.name %></p>
