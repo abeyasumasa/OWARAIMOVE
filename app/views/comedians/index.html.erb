@@ -34,7 +34,7 @@
         </div>
         <% @comedians.each do |comedian| %>
           <div class="centering_item card col-sm-4 mb-3">
-            <% unless comedian.combination_icon.url == nil %>
+            <% unless comedian.combination_icon.thumb.url == nil %>
               <p><%= image_tag comedian.combination_icon.thumb.url, class: "mt-4" %></p>
             <% end %>
             <span><%= comedian.combination_name %></span><br>

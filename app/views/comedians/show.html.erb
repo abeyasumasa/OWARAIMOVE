@@ -5,7 +5,7 @@
       <div class="comedian-show col-sm-12">
         <div class="comedian_icon">
           <% unless @comedian.combination_icon.url == nil %>
-            <p><%= image_tag @comedian.combination_icon.url %></p>
+            <p><%= image_tag @comedian.combination_icon.thumb.url %></p>
           <% end %>
         </div>
 
