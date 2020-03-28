@@ -4,7 +4,7 @@
       <div class="comedian_create col-sm-12">
         <%= form_with(model: @comedian, local: true, url: choose_new_or_edit) do |form| %>
           <% if @comedian.errors.any? %>
-            <div id="error_explanation">
+            <div id="error_explanation" class="alert alert-danger">
               <h2><%= @comedian.errors.count %>件のエラーがあります。</h2>
               <ul>
                 <% @comedian.errors.full_messages.each do |msg| %>
