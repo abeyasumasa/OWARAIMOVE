@@ -9,17 +9,15 @@
         <hr class="colorgraph">
         <br>
 
-        <div class="form-control">
-          <%= f.label t('view.email') %><br/>
-          <%= f.email_field :email, autofocus: true, id: 'Email', autocomplete: "email" %>
-        </div>
+<!--        <div class="for?m-control">-->
+          <%= f.email_field :email, placeholder: t('view.email'),autofocus: true, class:'form-control', id: 'Email', autocomplete: "email" %>
+<!--        </div>-->
 
-        <div class="form-control">
-          <%= f.label t('view.user.password') %><br/>
-          <%= f.password_field :password, id: 'Password', autocomplete: "current-password" %>
-        </div>
+<!--        <div class="form-control">-->
+          <%= f.password_field :password,placeholder: t('view.user.password'), class:'form-control', id: 'Password', autocomplete: "current-password" %>
+<!--        </div>-->
 
-        <div class="btn btn-lg btn-block">
+        <div class="btn btn-lg btn-block mt-2">
           <%= f.submit t('view.log_in'), class: "btn btn-primary"%>
         </div>
       <% end %>
@@ -29,7 +27,7 @@
         <div class="test_user">
           <%= f.hidden_field :email, value: 'test_user@examp.com' %>
           <%= f.hidden_field :password, value: 'password' %>
-          <%= f.submit 'テストログイン', class: 'btn btn-outline-secondary m-4' %>
+          <%= f.submit 'テストログイン', class: 'btn btn-secondary m-4' %>
         </div>
       <% end %>
     </div>
