@@ -7,6 +7,7 @@ RSpec.describe Comedian, type: :model do
     comedian.combination_name = 'comedian001'
     comedian.email = 'comedian001@gmail.com'
     comedian.comment = 'comedian001です。よろしくお願いします。'
+    comedian.genre = '漫才'
     comedian.save
     expect(comedian.combination_name).to eq 'comedian001'
     expect(comedian.email).to eq 'comedian001@gmail.com'
@@ -66,6 +67,18 @@ RSpec.describe Comedian, type: :model do
         expect(comedian).to be_valid
       end
     end
+
+    context 'genre値が' do
+      it '空白の場合、無効である' do
+        comedian.genre = ' '
+        expect(comedian).to_not be_valid
+      end
+      it '入力されている場合、有効である' do
+        comedian.genre = '漫才'
+        expect(comedian).to be_valid
+      end
+    end
+
     context 'twitter_url値が' do
       it '正規表現にマッチしており、255文字以上の場合、無効である' do
         comedian.twitter_url = 'https://www.' + 'a' * 244
