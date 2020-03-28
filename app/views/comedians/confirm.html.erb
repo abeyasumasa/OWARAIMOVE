@@ -41,11 +41,8 @@
           </div>
 
           <%= form.submit t('view.comedian.entry'), class: "btn btn-outline-secondary mt-2" %>
-        <% end %>
+          <%= form.submit t('view.back'), name: 'back', class: "btn btn-outline-secondary mt-2" %>
 
-        <%= form_with(model: @comedian, url: new_comedian_path, local: true, method: "get") do |form| %>
-          <%= form.hidden_field :combination_icon_cache %>
-          <%= form.submit t('view.back'), name: 'back' %>
         <% end %>
       </div>
     </div>
