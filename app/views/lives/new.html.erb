@@ -2,7 +2,7 @@
 
 <%= form_with(model: @live, local: true) do |form| %>
   <% if @live.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= @live.errors.count %>件のエラーがあります。</h2>
       <ul>
         <% @live.errors.full_messages.each do |msg| %>

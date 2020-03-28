@@ -41,7 +41,7 @@ class ComediansController < ApplicationController
     if @comedian.update(comedian_params)
       redirect_to comedians_path, notice: "芸人情報を編集しました"
     else
-      reder :edit
+      render :edit
     end
   end
 
