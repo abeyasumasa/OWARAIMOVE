@@ -9,7 +9,7 @@ FactoryBot.define do
       entertainer { "true" }
       uid { "123456" }
       provider { "" }
-      association :comedian , factory: :first_comedian
+      # association :comedian , factory: :first_comedian
 
       # after(:create) do |first_user|
       #   create(:favorite, user: first_user, comedian: create(:second_comedian))
@@ -25,7 +25,32 @@ FactoryBot.define do
       entertainer { "false" }
       uid { "234567" }
       provider { "" }
-      association :comedian, factory: :second_comedian
+      # association :comedian, factory: :second_comedian
     end
+
+    factory :third_user, class: User do
+      id { "5" }
+      name { "spectestuser04" }
+      email { "spectestuser04@gmail.com" }
+      password { "password" }
+      password_confirmation { "password" }
+      entertainer { "true" }
+      uid { "345678" }
+      provider { "" }
+      # association :comedian, factory: :second_comedian
+    end
+
+    factory :fourth_user, class: User do
+      id { "6" }
+      name { "spectestuser05" }
+      email { "spectestuser05@gmail.com" }
+      password { "password" }
+      password_confirmation { "password" }
+      entertainer { "true" }
+      uid { "456789" }
+      provider { "" }
+      # association :comedian, factory: :second_comedian
+    end
+
   end
 end

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Comedian, type: :model do
+  let!(:first_user) { FactoryBot.create(:first_user) }
   let(:comedian) { FactoryBot.build(:first_comedian) }
   it 'コンビ名、メール、コメントがある場合、有効である' do
     comedian.combination_name = 'comedian001'
@@ -16,6 +17,7 @@ RSpec.describe Comedian, type: :model do
     context 'combination_name値が' do
       it '空白の場合、無効である' do
         comedian.combination_name = ' '
+        first_user.id
         expect(comedian).to_not be_valid
       end
       it '30文字以上の場合、無効である' do

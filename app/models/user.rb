@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_validation { email.downcase! }
 
   # アソシエーション機能
-  has_one :comedian
+  has_one :comedian, dependent: :destroy
 
   # ライブ参加機能
   has_many :participant_managements, dependent: :destroy

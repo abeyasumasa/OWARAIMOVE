@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe '芸人登録機能', type: :system do
   let!(:first_user) { FactoryBot.create(:first_user) }
   let!(:second_user) { FactoryBot.create(:second_user) }
+  let!(:third_user) { FactoryBot.create(:third_user) }
+  let!(:fourth_user) { FactoryBot.create(:fourth_user) }
+  let!(:first_comedian) { create(:first_comedian) }
+  let!(:second_comedian) { create(:second_comedian) }
 
   it '芸人一覧表示テスト' do
     visit new_user_session_path
@@ -16,7 +20,7 @@ RSpec.describe '芸人登録機能', type: :system do
 
   it '芸人登録テスト' do
     visit new_user_session_path
-    fill_in 'Email', with: 'spectestuser02@gmail.com'
+    fill_in 'Email', with: 'spectestuser05@gmail.com'
     fill_in 'Password', with: 'password'
     click_button 'ログイン'
     visit new_comedian_path
@@ -67,8 +71,17 @@ RSpec.describe '芸人登録機能', type: :system do
     fill_in 'Email', with: 'spectestuser02@gmail.com'
     fill_in 'Password', with: 'password'
     click_button 'ログイン'
-    visit edit_comedian_path(second_user.comedian.id)
+    visit edit_comedian_path(second_comedian.id)
     expect(page).to have_content '権限がありません'
+  end
+
+  it '芸人が複数登録できないようになっているかテスト' do
+    visit new_user_session_path
+    fill_in 'Email', with: 'spectestuser02@gmail.com'
+    fill_in 'Password', with: 'password'
+    click_button 'ログイン'
+    visit comedians_path
+    expect(page).to_not have_content '芸人プロフィール作成'
   end
 end
 

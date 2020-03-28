@@ -6,6 +6,7 @@ RSpec.describe 'ライブ投稿機能', type: :system do
 
   before do
     create(:first_user)
+    create(:first_comedian)
 
     visit new_user_session_path
     fill_in 'Email', with: 'spectestuser02@gmail.com'

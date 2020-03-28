@@ -1,7 +1,8 @@
 class ComediansController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_comedian, only: [:show, :edit, :update, :destroy]
-  before_action :encure_correct_entertainer, {only: [:edit, :update,:destroy]}
+  before_action :encure_correct_entertainer, {only: [:edit, :update, :destroy]}
+  before_action :encure_correct_comedian, {only: [:new, :create]}
 
   def index
     @search = Comedian.ransack(params[:q])
@@ -19,7 +20,7 @@ class ComediansController < ApplicationController
       render :new
     else
       if @comedian.save
-        redirect_to comedians_path, notice:"登録しました！"
+        redirect_to comedians_path, notice: "登録しました！"
       else
         render :new
       end
@@ -38,7 +39,7 @@ class ComediansController < ApplicationController
 
   def update
     if @comedian.update(comedian_params)
-      redirect_to comedians_path, notice:"芸人情報を編集しました"
+      redirect_to comedians_path, notice: "芸人情報を編集しました"
     else
       reder :edit
     end
@@ -46,7 +47,7 @@ class ComediansController < ApplicationController
 
   def destroy
     @comedian.destroy
-    redirect_to comedians_path, notice:"芸人情報を削除しました！"
+    redirect_to comedians_path, notice: "芸人情報を削除しました！"
   end
 
   def confirm
@@ -59,7 +60,7 @@ class ComediansController < ApplicationController
 
   def comedian_params
     params.require(:comedian).permit(:combination_name, :email, :genre, :twitter_url,
-                                    :youtube_url, :combination_icon,:combination_icon_cache, :comment, :user_id)
+                                     :youtube_url, :combination_icon, :combination_icon_cache, :comment, :user_id)
   end
 
   def set_comedian
@@ -68,9 +69,16 @@ class ComediansController < ApplicationController
 
   def encure_correct_entertainer
     @comedian = Comedian.find(params[:id])
-      if current_user.id != @comedian.user_id
-        flash[:notice] = "権限がありません"
-        redirect_to comedians_path
-      end
+    if current_user.id != @comedian.user_id
+      flash[:notice] = "権限がありません"
+      redirect_to comedians_path
+    end
+  end
+
+  def encure_correct_comedian
+    unless current_user.comedian.nil?
+      flash[:notice] = "すでに芸人として登録されているので新規登録はできません"
+      redirect_to comedians_path
+    end
   end
 end

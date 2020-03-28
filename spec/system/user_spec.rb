@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe 'ユーザー登録機能', type: :system do
   let!(:first_user) { create(:first_user) }
   let!(:second_user) { create(:second_user) }
-  let!(:favorite) { create(:favorite, user_id: first_user.id, comedian_id: second_user.comedian.id) }
+  let!(:third_user) { FactoryBot.create(:third_user) }
+  let!(:first_comedian) { create(:first_comedian) }
+  let!(:second_comedian) { create(:second_comedian) }
+  let!(:favorite) { create(:favorite, user_id: first_user.id, comedian_id: second_comedian.id) }
 
   scenario 'ユーザー登録テスト' do
     visit new_user_registration_path
@@ -70,14 +73,14 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     find("button.navbar-toggler").click
     find(".dropdown-toggle.user").click
     click_link 'プロフィール変更'
-    fill_in 'user[name]', with: 'spectestuser04'
-    fill_in 'user[email]', with: 'spectestuser04@gmail.com'
+    fill_in 'user[name]', with: 'spectestuser07'
+    fill_in 'user[email]', with: 'spectestuser07@gmail.com'
     check 'user_entertainer'
     click_button '更新'
     find("button.navbar-toggler").click
     find(".dropdown-toggle.user").click
-    click_on 'spectestuser04'
-    expect(page).to have_content 'spectestuser04のページ'
+    click_on 'spectestuser07'
+    expect(page).to have_content 'spectestuser07のページ'
   end
 
 end

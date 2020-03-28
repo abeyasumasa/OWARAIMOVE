@@ -9,6 +9,9 @@ class Comedian < ApplicationRecord
   has_many :performer_managements, dependent: :destroy
   has_many :performer_management_lives, through: :performer_managements, source: :live
 
+  # ユーザーとのアソシエーション
+  belongs_to :user
+
   # ページネーション（１ページの最大表示件数）
   paginates_per 9
 
