@@ -20,7 +20,8 @@ class ComediansController < ApplicationController
       render :new
     else
       if @comedian.save
-        redirect_to comedians_path, notice: "登録しました！"
+        flash[:success] = '芸人情報を登録しました！'
+        redirect_to comedians_path
       else
         render :new
       end
