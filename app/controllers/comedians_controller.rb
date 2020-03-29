@@ -39,7 +39,8 @@ class ComediansController < ApplicationController
 
   def update
     if @comedian.update(comedian_params)
-      redirect_to comedians_path, notice: "芸人情報を編集しました"
+      flash[:success] = '芸人情報を編集しました'
+      redirect_to comedians_path
     else
       render :edit
     end
@@ -47,7 +48,8 @@ class ComediansController < ApplicationController
 
   def destroy
     @comedian.destroy
-    redirect_to comedians_path, notice: "芸人情報を削除しました！"
+    flash[:success] = '芸人情報を削除しました！'
+    redirect_to comedians_path
   end
 
   def confirm
@@ -70,14 +72,14 @@ class ComediansController < ApplicationController
   def encure_correct_entertainer
     @comedian = Comedian.find(params[:id])
     if current_user.id != @comedian.user_id
-      flash[:notice] = "権限がありません"
+      flash[:danger] = '権限がありません'
       redirect_to comedians_path
     end
   end
 
   def encure_correct_comedian
     unless current_user.comedian.nil?
-      flash[:notice] = "すでに芸人として登録されているので新規登録はできません"
+      flash[:danger] = 'すでに芸人として登録されているので新規登録はできません'
       redirect_to comedians_path
     end
   end

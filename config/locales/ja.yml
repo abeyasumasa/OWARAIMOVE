@@ -49,7 +49,7 @@ ja:
       name: 名前
       password: パスワード
       password_confirmation: 確認用パスワード
-      entertainer: 芸人はこちらにチェック
+      entertainer: お笑い芸人の方はこちらをチェックしてください
       add: ユーザーを追加
       list: ユーザー一覧
       release: お気に入り解除する
