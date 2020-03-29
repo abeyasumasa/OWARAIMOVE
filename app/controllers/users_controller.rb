@@ -18,9 +18,11 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       if @user.entertainer == true && @user.entertainer_started_at == nil
         @user.update_attributes(entertainer_started_at: Date.today)
-        redirect_to new_comedian_path, notice: '芸人を作成してください！'
+        flash[:success] = '芸人を作成してください！'
+        redirect_to new_comedian_path
       else
-        redirect_to user_path(@user), notice: '更新しました'
+        flash[:success] = '更新しました'
+        redirect_to user_path(@user)
       end
     else
       render action: :edit
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
   def encure_correct_user
     @user = User.find(params[:id])
     if current_user.id != @user.id
-      flash[:notice] = "権限がありません"
+      flash[:danger] = "権限がありません"
       redirect_to user_path(current_user.id)
     end
   end
