@@ -36,7 +36,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     fill_in 'Password', with: 'password'
     click_button 'ログイン'
     visit user_path(second_user)
-    expect(page).to have_content 'spectestuser02のページ'
+    expect(page).to have_content '権限がありません'
   end
 
   describe 'お気に入り芸人が' do
@@ -80,7 +80,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     find("button.navbar-toggler").click
     find(".dropdown-toggle.user").click
     click_on 'spectestuser07'
-    expect(page).to have_content 'spectestuser07のページ'
+    expect(page).to have_content 'spectestuser07プロフィール'
   end
 
 end

@@ -1,3 +1,52 @@
-<h1>ライブ登録画面</h1>
+<div class="wrapper">
+  <h1>ライブ登録画面</h1>
 
-<%= render 'form' %>
+  <%= form_with(model: @live, local: true) do |form| %>
+    <% if @live.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= @live.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @live.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="live_title">
+      <%= form.label t('view.live.title') %><br>
+      <%= form.text_field :title, id: 'live_title', placeholder: 'ライブタイトルを入力' %>
+    </div>
+
+    <div class="live_date">
+      <%= form.label t('view.live.date') %><br>
+      <%= form.date_field :date, id: 'live_date', max: "9999-12-31" %>
+    </div>
+
+    <div class="live_time">
+      <%= form.label t('view.live.time') %><br>
+      <%= form.time_select :start_time, :default => {:hour => '0', :minute => '00'}, id: 'live_start_time' %>
+      <span>〜</span>
+      <%= form.time_select :ending_time, :default => {:hour => '0', :minute => '00'}, id: 'live_ending_time' %>
+    </div>
+
+    <div class="live_place">
+      <%= form.label t('view.live.place') %><br>
+      <%= form.text_field :place, id: 'live_place', placeholder: '会場名を入力 (例)渋谷∞ホールなど' %>
+    </div>
+
+    <div class="live_price">
+      <%= form.label t('view.live.prise') %><br>
+      <%= form.text_field :price, id: 'live_price', placeholder: '料金を入力' %>
+    </div>
+
+    <div class="live_content">
+      <%= form.label t('view.live.content') %><br>
+      <%= form.text_area :content, size: "30×10", id: 'live_content', placeholder: 'ライブの見所や特徴などを入力' %>
+    </div>
+
+    <%= form.submit t('view.live.entry'), id: 'submit' %>
+
+  <% end %>
+  <p><%= link_to t('view.live.list'), lives_path %></p>
+</div>
