@@ -18,7 +18,8 @@ class LivesController < ApplicationController
     if @live.save
       comedian = current_user.comedian
       comedian.performer_managements.create(live_id: @live.id)
-      redirect_to lives_path, notice: "ライブを作成しました！"
+      flash[:success] = 'ライブを作成しました！'
+      redirect_to lives_path
     else
       render :new
     end
@@ -33,7 +34,8 @@ class LivesController < ApplicationController
 
   def update
     if @live.update(live_params)
-      redirect_to lives_path, notice: "ライブ情報を編集しました！"
+      flash[:success] = 'ライブ情報を編集しました！'
+      redirect_to lives_path
     else
       render :edit
     end
@@ -41,7 +43,8 @@ class LivesController < ApplicationController
 
   def destroy
     @live.destroy
-    redirect_to lives_path, notice: "ライブを削除しました！"
+    flash[:success] = 'ライブを削除しました！'
+    redirect_to lives_path
   end
 
   private
@@ -58,7 +61,7 @@ class LivesController < ApplicationController
     @comedian = @live.performer_management_comedians
     @comedian.each do |comedian|
       if current_user.comedian.id != comedian.id
-        flash[:notice] = "権限がありません"
+        flash[:danger] = "権限がありません"
         redirect_to lives_path
       end
     end

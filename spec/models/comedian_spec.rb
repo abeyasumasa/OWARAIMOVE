@@ -57,16 +57,6 @@ RSpec.describe Comedian, type: :model do
         expect(comedian.reload.email).to eq 'aaaaaaaaa@gmail.com'
       end
     end
-    context 'comment値が' do
-      it '空白の場合、無効である' do
-        comedian.comment = ' '
-        expect(comedian).to_not be_valid
-      end
-      it '入力されている場合、有効である' do
-        comedian.comment = 'comedian001です。よろしくお願いします。'
-        expect(comedian).to be_valid
-      end
-    end
 
     context 'genre値が' do
       it '空白の場合、無効である' do
