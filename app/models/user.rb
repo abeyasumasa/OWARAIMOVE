@@ -18,7 +18,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable, :omniauthable, omniauth_providers: %i(google)
+         :recoverable, :rememberable, :validatable, :trackable, :omniauthable, omniauth_providers: %i(google twitter)
   # イメージアップローダー機能
   mount_uploader :icon, UserImageUploader
 
@@ -33,19 +33,34 @@ class User < ApplicationRecord
     SecureRandom.uuid
   end
 
-  # 外部から取得したユーザー情報を元に、このアプリで使用するユーザーを作成するメソッド
-  def self.find_for_google(auth)
-    user = User.find_by(email: auth.info.email)
-    unless user
-      user = User.new(email: auth.info.email,
-                      provider: auth.provider,
-                      uid: auth.uid,
-                      name: auth.info.name,
-                      password: Devise.friendly_token[0, 20],
-      )
+  # # 外部から取得したユーザー情報を元に、このアプリで使用するユーザーを作成するメソッド
+  # def self.find_for_google(auth)
+  #   user = User.find_by(email: auth.info.email)
+  #   unless user
+  #     user = User.new(email: auth.info.email,
+  #                     provider: auth.provider,
+  #                     uid: auth.uid,
+  #                     name: auth.info.name,
+  #                     password: Devise.friendly_token[0, 20],
+  #     )
+  #   end
+  #   user.save
+  #   user
+  # end
+
+  def self.find_for_oauth(auth)
+      user = User.where(uid: auth.uid, provider: auth.provider).first
+
+      unless user
+        user = User.new(email: auth.info.email,
+                        provider: auth.provider,
+                        uid: auth.uid,
+                        name: auth.info.name,
+                        password: Devise.friendly_token[0, 20],
+                        )
+      end
+      user.save
+      user
     end
-    user.save
-    user
-  end
 
 end
