@@ -4,9 +4,8 @@ class LivesController < ApplicationController
 
   def index
     @search = Live.ransack(params[:q])
-    @lives = @search.result.page(params[:page])
-    # .list(params)
-    # @comedian = Live.performer_management_comedians
+    #現在日時より前のデータは表示しないように設定
+    @lives = @search.result.where("date > ?", DateTime.now).reorder(:date).page(params[:page])
   end
 
   def new
