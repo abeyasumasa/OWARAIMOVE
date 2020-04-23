@@ -1,0 +1,7 @@
+<% @live.each do |live| %>
+  <h1>出演する予定のライブの開催が明日です！</h1>
+  <h4>ライブ名: <%= live.title %> </h4>
+  <h4>ライブ時間: <%= live.start_time %> </h4>
+  <h4>会場: <%= live.place %></h4>
+  <h4>料金: <%= live.price %></h4>
+<% end %>

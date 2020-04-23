@@ -41,12 +41,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   def google
-      callback_from :google
-    end
+    callback_from :google
+  end
 
-    def twitter
-      callback_from :twitter
-    end
+  def twitter
+    callback_from :twitter
+  end
 
   private
 

@@ -37,6 +37,8 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { protocol: 'https', host: 'トップページアドレス' }
 
+  config.action_mailer.delivery_method = :ses
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
