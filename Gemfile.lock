@@ -51,6 +51,11 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.7.4)
       execjs
+    aws-ses (0.6.0)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     bcrypt (3.1.13)
     bcrypt_pbkdf (1.0.1)
     better_errors (2.6.0)
@@ -383,6 +388,7 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    xml-simple (1.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -391,6 +397,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  aws-ses
   bcrypt_pbkdf
   better_errors
   binding_of_caller
