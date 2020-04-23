@@ -1,5 +1,5 @@
-class ScheduleMailer < ApplicationMailer
-  def schedule_mail
+class UserScheduleMailer < ApplicationMailer
+  def user_schedule_mail
     @live = Live.where(date: Date.today.since(1.days))
     @live.each do |live|
       live.participant_management_users.each do |user|
