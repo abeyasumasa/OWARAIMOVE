@@ -92,3 +92,4 @@ gem 'mini_racer', platforms: :ruby # デプロイ時に必要
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
 gem 'aws-ses'
+gem 'whenever', require: false
