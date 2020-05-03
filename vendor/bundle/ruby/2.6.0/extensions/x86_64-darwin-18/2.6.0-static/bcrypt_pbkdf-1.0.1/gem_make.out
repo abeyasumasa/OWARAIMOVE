@@ -1,0 +1,19 @@
+current directory: /Users/abeyasumasa/Desktop/graduation/OWARAIMOVE/vendor/bundle/ruby/2.6.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+/Users/abeyasumasa/.rbenv/versions/2.6.3/bin/ruby -I /Users/abeyasumasa/.rbenv/versions/2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200503-1450-v2352a.rb extconf.rb
+creating Makefile
+
+current directory: /Users/abeyasumasa/Desktop/graduation/OWARAIMOVE/vendor/bundle/ruby/2.6.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR=" clean
+
+current directory: /Users/abeyasumasa/Desktop/graduation/OWARAIMOVE/vendor/bundle/ruby/2.6.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR="
+compiling bcrypt_pbkdf.c
+compiling bcrypt_pbkdf_ext.c
+compiling blowfish.c
+compiling explicit_bzero.c
+compiling hash_sha512.c
+linking shared-object bcrypt_pbkdf_ext.bundle
+
+current directory: /Users/abeyasumasa/Desktop/graduation/OWARAIMOVE/vendor/bundle/ruby/2.6.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_pbkdf_ext.bundle ./.gem.20200503-1450-ak5ifw
