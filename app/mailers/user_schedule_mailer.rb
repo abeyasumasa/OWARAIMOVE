@@ -1,7 +1,7 @@
 class UserScheduleMailer < ApplicationMailer
   before_action :set_lives
 
-  def user_schedule_mail(@user)
+  def user_schedule_mail
     mail to:@user.email, subject:"参加予定ライブ通知のメール"
   end
 
@@ -12,8 +12,8 @@ class UserScheduleMailer < ApplicationMailer
     set_user(@lives)
   end
 
-  def set_user(@lives)
-    @lives.each do |live|
+  def set_user(lives)
+    lives.each do |live|
       live.participant_management_users.each do |user|
         @user = user
       end
