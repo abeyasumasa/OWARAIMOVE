@@ -1,55 +1,88 @@
-<h1>ライブ詳細</h1>
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="comedian-show col-sm-12">
-        <div class="live_title">
-          <p><%= t('view.live.title') %></p>
-          <p><%= @live.title %></p>
-        </div>
-
-        <div class="live_date">
-          <p><%= t('view.live.date') %></p>
-          <p><%= simple_day(@live.date) %></p>
-        </div>
-
-        <div class="live_time">
-          <p><%= t('view.live.time') %></p>
-          <p><%= simple_time(@live.start_time) %>〜<%= simple_time(@live.ending_time) %></p>
-        </div>
-
-        <div class="live_place">
-          <p><%= t('view.live.place') %></p>
-          <p><%= @live.place %></p>
-        </div>
-
-        <div class="live_price">
-          <p><%= t('view.live.prise') %></p>
-          <p><%= @live.price %>円</p>
-        </div>
-
-        <div class="live_content">
-          　　<p><%= t('view.live.content') %></p>
-          <p><%= @live.content %></p>
-        </div>
-
-        <% @comedian = @live.performer_management_comedians %>
-        <% @comedian.each do |comedian| %>
-          <% unless current_user == nil || current_user.entertainer == false || current_user.comedian == nil %>
-            <% if current_user.comedian.id == comedian.id %>
-              <span><%= link_to t('view.edit'), edit_live_path(@live.id), class: 'btn btn-outline-secondary' %></span>
-              <span><%= link_to t('view.destroy'), live_path(@live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
-            <% elsif @participant.present? %>
-              <%= link_to 'キャンセルする', participant_management_path(id: @participant.id), method: :delete, class: 'btn btn-outline-secondary' %>
-            <% elsif Date.today <= @live.date %>
-              <%= link_to 'ライブに参加する', participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
-            <% end %>
-          <% end %>
-        <% end %>
-        <div class='mt-2'>
-          <%= link_to "ライブ一覧に戻る", lives_path %>
-        </div>
+<div class="page-content">
+  <div class="section">
+    <h1 class="main-title">ライブ詳細</h1>
+    <p class="main-outline"><%= simple_day(@live.date) %>に<%= @live.place %>で行われる<%= @live.title %>のライブ情報ページです。会場情報、開催時間や料金を確認できます。</p>
+  </div>
+  <div class="block-live-group">
+    <table border="1">
+      <div class="live_title">
+        <tr>
+          <th><%= t('view.live.title') %></th>
+          <td><%= @live.title %></td>
+        </tr>
       </div>
+
+      <div class="live_date">
+        <tr>
+          <th><%= t('view.live.date') %></th>
+          <td><%= simple_day(@live.date) %></td>
+        </tr>
+      </div>
+
+      <div class="live_time">
+        <tr>
+          <th><%= t('view.live.time') %></th>
+          <td><%= simple_time(@live.start_time) %>〜<%= simple_time(@live.ending_time) %></td>
+        </tr>
+      </div>
+
+      <div class="live_place">
+        <tr>
+          <th><%= t('view.live.place') %></th>
+          <td><%= @live.place %></td>
+        </tr>
+      </div>
+
+      <div class="live_price">
+        <tr>
+          <th><%= t('view.live.prise') %></th>
+          <td><%= @live.price %>円</td>
+        </tr>
+      </div>
+
+      <div class="live-peformer">
+        <tr>
+          <th>ライブ出演者</th>
+          <% @comedian = @live.performer_management_comedians %>
+          <% @comedian.each do |comedian| %>
+            <td><%= link_to comedian.combination_name, comedian %></td>
+          <% end%>
+        </tr>
+      </div>
+
+      <div class="live_content">
+        <tr>
+          <th><%= t('view.live.content') %></th>
+          <td><%= @live.content %></td>
+        </tr>
+      </div>
+    </table>
+  </div>
+
+  <div class="flex">
+    <div class="live-genre">
+      <p>関連ジャンル</p>
+      <% @comedian.each do |comedian| %>
+        <p><%= comedian.genre %></p>
+      <% end %>
     </div>
+  </div>
+
+  <div class="live-status">
+    <% @comedian.each do |comedian| %>
+      <% unless current_user == nil || current_user.entertainer == false || current_user.comedian == nil %>
+        <% if current_user.comedian.id == comedian.id %>
+          <span><%= link_to t('view.edit'), edit_live_path(@live.id), class: 'btn btn-outline-secondary' %></span>
+          <span><%= link_to t('view.destroy'), live_path(@live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
+        <% elsif @participant.present? %>
+          <%= link_to 'キャンセルする', participant_management_path(id: @participant.id), method: :delete, class: 'btn btn-outline-secondary' %>
+        <% elsif Date.today <= @live.date %>
+          <%= link_to 'ライブに参加する', participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class='mt-2'>
+    <%= link_to "ライブ一覧に戻る", lives_path %>
   </div>
 </div>

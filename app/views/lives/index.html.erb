@@ -1,76 +1,105 @@
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="search_live col-sm-3 pl-0 pr-1">
-        <h6>ライブ検索機能</h6>
-        <h2>ライブを検索しよう</h2>
-
-        <%= search_form_for @search do |f| %>
-          <div class="search_date">
-            <%= f.label :date_gteq, 'ライブの日時で検索' %><br>
-            <%= f.date_field :date_gteq, id: 'search_date', max: "9999-12-31" %>
-            <p class="mb-0">~</p>
-            <%= f.date_field :date_lteq, id: 'search_date', max: "9999-12-31" %>
+<div class="page-content">
+  <div class="column clearfix">
+    <div class="column-left">
+      <nav class="section">
+        <header class="section-header">
+          <div class="secton-header-content">
+            <h2 class="section-header_title">ライブを検索する</h2>
           </div>
+        </header>
+        <div class="section_content">
+          <div class="block">
+            <div class="block-header">
+              <%= search_form_for @search do |f| %>
+                <div class="block-header_title">
+                  <h3><%= f.label :date_gteq, 'ライブの日時で検索' %></h3>
+                </div>
+                <div class="block-content">
+                  <%= f.date_field :date_gteq, id: 'search_date', max: "9999-12-31" %>
+                  <p class="mb-0">~</p>
+                  <%= f.date_field :date_lteq, id: 'search_date', max: "9999-12-31" %>
+                </div>
 
-          <div class='search_plece'>
-            <%= f.label :place_cont, '場所で絞り込む' %><br>
-            <%= f.collection_select :place_cont, Live.select(:place).distinct, :place, :place, :include_blank => true %>
+                <div class="block-header_title">
+                  <h3><%= f.label :place_cont, '場所で絞り込む' %></h3>
+                </div>
+                <div class="block-content">
+                  <%= f.collection_select :place_cont, Live.select(:place).distinct, :place, :place, :include_blank => true %>
+                </div>
+
+                <div class="submit mt-3">
+                  <%= f.submit '検索する' %>
+                </div>
+              <% end %>
+            </div>
           </div>
-
-          <div class="submit mt-3">
-            <%= f.submit '検索する' %>
-          </div>
-        <% end %>
-
+        </div>
         <% if current_user != nil %>
           <% if current_user.entertainer != false && current_user.comedian != nil %>
             <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-outline-secondary mt-3' %>
           <% end %>
         <% end %>
+      </nav>
+    </div>
 
-        <%#= link_to "直近１週間の予定", lives_path(week_search: "true"), class: 'btn btn-info mt-3' %>
-      </div>
-
-      <div class="live  col-sm-9">
-        <h6>ライブ一覧</h6>
-        <h2>開催される予定のライブがあります</h2>
-        <% @lives.each do |live| %>
+    <div class="column-main">
+      <section class="section">
+        <header class="section-header">
+          <div class="section-content">
+            <h2 class="section-header_title">開催予定のライブ情報</h2>
+            <p class="section-header_outline">芸人が出演する予定のライブ情報を開催日が近い順に表示しています。<br>
+              開催日や開催場所で絞り込んで検索することができます。</p>
+          </div>
+        </header>
+        <div class="block-live-list">
+          <% @lives.each do |live| %>
           <div class="live_item mx-auto">
-            <p><%= live.title %></p>
-            <p><%= simple_day(live.date) %></p>
-            <p><%= simple_time(live.start_time) %>〜<%= simple_time(live.ending_time) %></p>
-            <p><%= live.place %></p>
-            <% @comedian = live.performer_management_comedians %>
-            <% @comedian.each do |comedian| %>
-              <% if current_user == nil %>
-                <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
-              <% else %>
-                <% if current_user.entertainer == false %>
-                  <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
-                <% else %>
-                  <% if current_user.comedian == nil %>
-                    <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
-                  <% else %>
-                    <% if current_user.comedian.id == comedian.id %>
+            <section class="live-item_inner">
+              <div class="live-info_left clearfix" id="title">
+                <p><%= simple_day(live.date) %></p>
+              </div>
+              <div class="live-info_right clearfix">
+                <header class="live-item_header">
+                  <h3><%= live.title %></h3>
+                </header>
+                <div class="live-item_content">
+                  <p><%= live.place %></p>
+                  <p><%= simple_time(live.start_time) %>〜<%= simple_time(live.ending_time) %></p>
+                </div>
+                <div class="live-item-_status">
+                  <% @comedian = live.performer_management_comedians %>
+                  <% @comedian.each do |comedian| %>
+                    <% if current_user == nil %>
                       <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
-                      <span><%= link_to t('view.edit'), edit_live_path(live.id), class: 'btn btn-outline-secondary' %></span>
-                      <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
                     <% else %>
-                      <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
+                      <% if current_user.entertainer == false %>
+                        <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
+                      <% else %>
+                        <% if current_user.comedian == nil %>
+                          <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
+                        <% else %>
+                          <% if current_user.comedian.id == comedian.id %>
+                            <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
+                            <span><%= link_to t('view.edit'), edit_live_path(live.id), class: 'btn btn-outline-secondary' %></span>
+                            <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
+                          <% else %>
+                            <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
+                          <% end %>
+                        <% end %>
+                      <% end %>
                     <% end %>
                   <% end %>
-                <% end %>
-              <% end %>
-            <% end %>
+                </div>
+              </div>
+            </section>
           </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
 
-      <div class="pagination mx-auto">
-        <%= paginate @lives %>
-      </div>
-
+        <div class="block-paginator pagination mx-auto">
+          <%= paginate @lives %>
+        </div>
+      </section>
     </div>
   </div>
 </div>

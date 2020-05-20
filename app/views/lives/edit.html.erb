@@ -1,51 +1,63 @@
-<div class="wrapper">
-  <h1>ライブ編集画面</h1>
+<div class="page-content">
+  <div class="container bg-light mt-2">
+      <h1>編集画面</h1>
+      <%= form_with(model: @live, url: live_path, local: true) do |form| %>
+        <% if @live.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= @live.errors.count %>件のエラーがあります。</h2>
+            <ul>
+              <% @live.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <%= form_with(model: @live, url: live_path, local: true) do |form| %>
-    <% if @live.errors.any? %>
-      <div id="error_explanation" class="alert alert-danger">
-        <h2><%= @live.errors.count %>件のエラーがあります。</h2>
-        <ul>
-          <% @live.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
+        <div class="form-group row">
+          <%= form.label t('view.live.title'),class:"col-md-2" %>
+          <div class="col-md-10">
+            <%= form.text_field :title,class:"form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label t('view.live.date'),class:"col-md-2" %>
+          <div class="col-md-10">
+            <%= form.date_field :date,class:"form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label t('view.live.start_time')%>
+          <%= form.time_select :start_time, {include_blank: true} %>
+          <%= form.label t('view.live.ending_time') %>
+          <%= form.time_select :ending_time, {include_blank: true} %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label t('view.live.place'),class:"col-md-2" %>
+          <div class="col-md-10">
+            <%= form.text_field :place,class:"form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label t('view.live.prise'),class:"col-md-2" %>
+          <div class="col-md-10">
+            <%= form.text_field :price,class:"form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label t('view.live.content'),class:"col-md-2" %>
+          <div class="col-md-10">
+          <%= form.text_area :content,class:"form-control" %>
+          </div>
+        </div>
+
+        <%= form.submit t('view.live.entry'),class:"btn btn-primary mb-2" %>
+      <% end %>
+      <div class="live-index mt-2">
+        <p><%= link_to t('view.live.list'), lives_path %></p>
       </div>
-    <% end %>
-    <div class="form-group">
-      <%= form.label t('view.live.title') %><br>
-      <%= form.text_field :title %>
-    </div>
-
-    <div class="live_date">
-      <%= form.label t('view.live.date') %><br>
-      <%= form.date_field :date %>
-    </div>
-
-    <div class="live_time">
-      <%= form.label t('view.live.start_time') %><br>
-      <%= form.time_select :start_time, {include_blank: true} %>
-      <%= form.label t('view.live.ending_time') %>
-      <%= form.time_select :ending_time, {include_blank: true} %>
-    </div>
-
-    <div class="live_place">
-      <%= form.label t('view.live.place') %><br>
-      <%= form.text_field :place %>
-    </div>
-
-    <div class="live_price">
-      <%= form.label t('view.live.prise') %><br>
-      <%= form.text_field :price %>
-    </div>
-
-    <div class="live_content">
-      <%= form.label t('view.live.content') %><br>
-      <%= form.text_area :content, size: "30×10" %>
-    </div>
-
-    <%= form.submit t('view.live.entry') %>
-
-  <% end %>
-  <p><%= link_to t('view.live.list'), lives_path %></p>
 </div>
