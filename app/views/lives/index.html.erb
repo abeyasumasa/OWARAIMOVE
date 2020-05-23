@@ -12,7 +12,7 @@
             <div class="block-header">
               <%= search_form_for @search do |f| %>
                 <div class="block-header_title">
-                  <h3><%= f.label :date_gteq, 'ライブの日時で検索' %></h3>
+                  <%= f.label :date_gteq, 'ライブの日時で検索' %>
                 </div>
                 <div class="block-content">
                   <%= f.date_field :date_gteq, id: 'search_date', max: "9999-12-31" %>
@@ -21,24 +21,26 @@
                 </div>
 
                 <div class="block-header_title">
-                  <h3><%= f.label :place_cont, '場所で絞り込む' %></h3>
+                  <%= f.label :place_cont, '場所で絞り込む' %>
                 </div>
                 <div class="block-content">
                   <%= f.collection_select :place_cont, Live.select(:place).distinct, :place, :place, :include_blank => true %>
                 </div>
 
                 <div class="submit mt-3">
-                  <%= f.submit '検索する' %>
+                  <%= f.submit '検索する', class:"btn btn-primary" %>
                 </div>
               <% end %>
             </div>
           </div>
         </div>
-        <% if current_user != nil %>
-          <% if current_user.entertainer != false && current_user.comedian != nil %>
-            <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-outline-secondary mt-3' %>
+        <div>
+          <% if current_user != nil %>
+            <% if current_user.entertainer != false && current_user.comedian != nil %>
+              <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-outline-secondary mt-3' %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </nav>
     </div>
 

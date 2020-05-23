@@ -18,7 +18,7 @@ class ComedianImageUploader < CarrierWave::Uploader::Base
   process resize_to_limit: [350, 350]
 
   version :thumb do
-    process resize_to_fill: [250, 250]
+    process resize_to_fill: [200, 200]
   end
 
   def default_url

@@ -1,0 +1,59 @@
+<%= form_with(model: @live, url: live_path, local: true) do |form| %>
+  <% if @live.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= @live.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @live.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <%= form.label t('view.live.title'),class:"col-md-2" %>
+    <div class="col-md-10">
+      <%= form.text_field :title,class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label t('view.live.date'),class:"col-md-2" %>
+    <div class="col-md-10">
+      <%= form.date_field :date,class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label t('view.live.start_time')%>
+    <%= form.time_select :start_time, {include_blank: true} %>
+    <%= form.label t('view.live.ending_time') %>
+    <%= form.time_select :ending_time, {include_blank: true} %>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label t('view.live.place'),class:"col-md-2" %>
+    <div class="col-md-10">
+      <%= form.text_field :place,class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label t('view.live.prise'),class:"col-md-2" %>
+    <div class="col-md-10">
+      <%= form.text_field :price,class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label t('view.live.content'),class:"col-md-2" %>
+    <div class="col-md-10">
+    <%= form.text_area :content,class:"form-control" %>
+    </div>
+  </div>
+
+  <%= form.submit t('view.live.entry'),class:"btn btn-primary mb-2" %>
+<% end %>
+<div class="live-index mt-2">
+  <p><%= link_to t('view.live.list'), lives_path %></p>
+</div>

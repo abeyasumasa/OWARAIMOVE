@@ -2,20 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.wrapper {
-  width: 100%;
+// 一覧画面
+select#q_genre_cont,
+input#q_combination_name_or_comment_cont {
+  width: 230px;
+  border: 1px solid #000000;
+  background-color: #F7F7F7;
+}
+
+.card-body p {
+  margin-bottom: 0.75rem;
+}
+
+// 詳細画面
+.column-comedian {
+  width: 70%;
   margin: 0 auto;
-  min-height: 100%;
-  position: relative;
-  padding: 0 auto;
-  padding-bottom: 70px;
-  margin-top: 20px;
+  padding: 16px;
 }
 
-.search_comedian {
-  border-right: 3px solid DarkGray;
+.comedian-info {
+  background-color: #FFFFFF;
 }
 
-.comedian {
-  height: 100%;
+.comedian-info_left {
+  margin: 0 auto;
+  margin-right: 0px;
+  padding: 16px;
+}
+
+.comedian-info_right {
+  margin: 0 auto;
+  margin-left: 0px;
+  text-align: left;
+  padding: 16px;
+}
+
+.comedian-info_right p {
+  margin-bottom: 5px;
+}
+
+.comedian_comment {
+  word-wrap: break-word;
+  text-align: left;
+  margin: 0px 1rem 1rem 1rem;
+}
+
+.comedian_comment h3 {
+  background-color: #E0FFFF;
+}
+
+// 編集画面
+.comedian-edit {
+  width: 40%;
 }
