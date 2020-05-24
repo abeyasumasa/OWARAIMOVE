@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>OWARAIMOVE</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <meta name="viewport" content="width=device-width">
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+  <head>
+    <title>OWARAIMOVE</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width">
+    <script src="https://kit.fontawesome.com/f7d581a92f.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<body>
-<%= render 'layouts/header' %>
-<% flash.each do |key, value| %>
+  <body>
+    <div class="header">
+      <%= render 'layouts/header' %>
+    </div>
+  <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>">
     <%= content_tag(:div, value, class: "#{key}") %>
   </div>
-<% end %>
-<%= yield %>
-<%= render 'layouts/footer' %>
-</body>
+  <% end %>
+  <%= yield %>
+    <div class="footer">
+      <%= render 'layouts/footer' %>
+    </div>
+  </body>
 </html>

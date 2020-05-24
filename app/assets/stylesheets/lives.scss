@@ -2,37 +2,168 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.wrapper {
+// .wrapper {
+//   width: 100%;
+//   margin: 0 auto;
+//   min-height: 100%;
+//   position: relative;
+//   padding: 0 auto;
+//   padding-bottom: 57px;
+//   margin-top: 20px;
+// }
+
+// 共通
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.page-content {
+  min-height: 1015px;
   width: 100%;
+  background-color: rgb(242, 242, 242);
+  padding: 32px 0px 24px 24px;
+}
+
+// ライブ一覧
+.column {
+  width: 80%;
   margin: 0 auto;
-  min-height: 100%;
-  position: relative;
-  padding: 0 auto;
-  padding-bottom: 57px;
-  margin-top: 20px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
-.search_live {
-  border-right: 3px solid DarkGray;
+.column-left {
+  background: #ffffff;
+  margin: 16px;
 }
 
-.live {
-  height: 100%;
+.section {
+  padding: 16px;
 }
 
-
-.live_title {
-  margin: 0 auto;
+.section-header {
+  margin: 10px auto;
+  color: black;
 }
 
-input#live_title,input#live_date,#inputlive_start_time,input#live_ending_time,input#live_place,input#live_price {
-   width:260px;
- }
+.section-header_title {
+  font-size: 20px;
+}
 
-input#submit{
+.section-header_outline {
+  font-size: 13px;
+}
+
+.column-main {
+  margin: 16px;
+  width: 70%;
+}
+
+.live_item {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  margin-bottom: 16px;
+  padding: 24px 32px 24px 0;
+}
+
+.live-item_inner {
+  display: table;
+  width: 100%;
+}
+
+.live-info_left {
+  display: table-cell;
+  border-right: 1px solid #d1d1d1;
+  vertical-align: middle;
+  text-align: center;
+  width: 30%;
+  font-size: 13px;
+}
+
+.live-info_right {
+  padding-left: 32px;
+}
+
+.live-info_right h3 {
+  margin: 0px;
+  text-align: left;
+  color: blue;
+  font-size: 14px;
+}
+
+.live-info_right p {
+  margin: 0px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.live-item_content p {
+  margin: 0px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.live-item-_status {
+  text-align: right;
+  font-size: 13px;
+}
+
+input#search_date,
+select#q_place_cont {
+  width: 230px;
+  border: 1px solid #000000;
+  background-color: #F7F7F7;
+}
+
+input#submit {
   width: initial;
 }
-//
-//input#live_place{
-//  height:60px;
-//}
+
+// ライブ詳細
+.main-title {
+  font-size: 28px;
+}
+
+.main-outline {
+  font-size: 13px;
+}
+
+.block-live-group {
+  // min-width: 400px;
+  display: table;
+  // border: 1px solid;
+  // border-radius: 8px;
+  margin: 0px auto;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+table th {
+  height: 50px;
+  min-width: 150px;
+  background-color: cornsilk;
+}
+
+table td {
+  max-width: 250px;
+  word-wrap: break-word;
+}
+
+.flex {
+  min-width: 400px;
+  display: table;
+  border: 1px solid;
+  margin: 0px auto;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.flex p {
+  margin: 0px;
+}
+
+// ライブ作成

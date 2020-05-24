@@ -1,26 +1,55 @@
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="user_show col-sm-12">
-        <h1><%= @user.name %>プロフィール</h1>
+<div class="page-content">
+  <div class="column-user">
+    <div class="section">
+      <h1 class="main-title"><%= @user.name %>プロフィール</h1>
+    </div>
 
-        <p><%= image_tag @user.icon.thumb.to_s %></p>
-        <p><%= link_to t('view.user.follow'), favorites_path %></p>
-
-        <p><%= t('view.user.name') %>: <%= @user.name %></p>
-        <p><%= t('view.email') %>: <%= @user.email %></p>
-
-        <p>参加する予定のライブ</p>
-        <% @schedule.each do |schedule| %>
-          <div class="schedule">
-            <p><%= schedule.title %></p>
-            <p><%= simple_day(schedule.date) %></p>
-            <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
+    <div class="block-user-group">
+      <div class="user-info">
+        <div class="user-info_header d-flex flex-row">
+          <div class="user-info_left">
+            <div class="user_icon">
+              <p><%= image_tag @user.icon.thumb.to_s %></p>
+            </div>
           </div>
-        <% end %>
-        <%= paginate @schedule %>
 
-        <p><%= link_to t('view.edit'), edit_user_path(@user.id) %></p>
+          <div class="user-info_right">
+            <div class="user_name">
+              <p><%= t('view.user.name') %>: <%= @user.name %></p>
+            </div>
+            <div class="user_email">
+              <p><%= t('view.email') %>: <%= @user.email %></p>
+            </div>
+            <div class="user_gesture">
+              <p><%= link_to t('view.user.follow'), favorites_path %></p>
+              <p><%= link_to t('view.edit'), edit_user_path(@user.id) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="user_participate">
+        <h2>参加する予定のライブ</h2>
+        <div class="block-live-list">
+          <% @schedule.each do |schedule| %>
+            <div class="live_item mx-auto">
+              <section class="live-item_inner">
+                <div class="live-info_left clearfix" id="title">
+                  <p><%= schedule.title %></p>
+                </div>
+                <div class="live-info_right clearfix">
+                  <header class="live-item_header">
+                    <h3><%= simple_day(schedule.date) %></h3>
+                  </header>
+                  <div class="live-item_content">
+                    <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          <% end %>
+          <%= paginate @schedule %>
+        </div>
       </div>
     </div>
   </div>

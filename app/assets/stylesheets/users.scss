@@ -1,3 +1,75 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 芸人詳細画面と同じ(あとでまとめる)
+.column-user {
+  width: 70%;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.user-info {
+  background-color: #FFFFFF;
+}
+
+.user-info_left {
+  margin: 0 auto;
+  margin-right: 0px;
+  padding: 16px;
+}
+
+.user-info_right {
+  margin: 0 auto;
+  margin-left: 0px;
+  text-align: left;
+  padding: 16px;
+}
+
+.user-info_right p {
+  margin-bottom: 5px;
+}
+
+.filelabel {
+  border-radius: 3em;
+  padding: 12px 9px;
+  display: inline-block;
+}
+
+.filelabel img {
+  vertical-align: bottom;
+}
+
+.filelabel:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+#filesend {
+  display: none;
+}
+
+.icon {
+  position: relative;
+}
+
+.icon .fa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  /*余計な隙間を除く*/
+  padding: 0;
+  /*余計な隙間を除く*/
+  color: white;
+  /*アイコン色*/
+  font-size: 60px;
+  /*サイズ*/
+}
+
+.icon image {
+  width: 100%;
+}

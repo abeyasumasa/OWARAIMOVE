@@ -1,45 +1,47 @@
-<nav class="navbar navbar-expand-lg  navbar-light" style="background-color:#f9e900;">
-  <% if user_signed_in? %>
-    <a class="navbar-brand logo_image" href="/lives"><%= image_tag 'logo.png', :size => '250x35' %></a>
-  <% else %>
-    <a class="navbar-brand logo_image" href="/"><%= image_tag 'logo.png', :size => '250x35' %></a>
-  <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gnavi" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="header_inner">
+  <nav class="navbar navbar-expand-lg  navbar-light" style="background-color:#f9e900;">
+    <% if user_signed_in? %>
+      <a class="navbar-brand logo_image" href="/lives"><%= image_tag 'logo.png', :size => '250x35' %></a>
+    <% else %>
+      <a class="navbar-brand logo_image" href="/"><%= image_tag 'logo.png', :size => '250x35' %></a>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gnavi" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div id="gnavi" class="collapse navbar-collapse header_nav ">
-    <ul class="navbar-nav float-lg-right">
-      <% if user_signed_in? %>
-        <li class="nav-item m-3"><%= link_to 'トップ', lives_path %></li>
-        <% if current_user.entertainer == true && current_user.comedian != nil %>
-          <li class="dropdown nav-item m-3 p-0 ">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">芸人</a>
+    <div id="gnavi" class="collapse navbar-collapse header_nav ">
+      <ul class="navbar-nav float-lg-right">
+        <% if user_signed_in? %>
+          <li class="nav-item m-3"><%= link_to 'トップ', lives_path %></li>
+          <% if current_user.entertainer == true && current_user.comedian != nil %>
+            <li class="dropdown nav-item m-3 p-0 ">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">芸人</a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li class="dropdown-item text-center"><%= link_to t('view.comedian.list'), comedians_path %></li>
+                <li class="dropdown-item text-center"><%= link_to t('view.profile'), comedian_path(current_user.comedian.id) %></li>
+                <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_comedian_path(current_user.comedian.id) %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="nav-item m-3"><%= link_to t('view.comedian.list'), comedians_path %></li>
+          <% end %>
+          <li class="dropdown nav-item m-3 p-0">
+            <a href="#" class="dropdown-toggle user" data-toggle="dropdown">アカウント</a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li class="dropdown-item text-center"><%= link_to t('view.comedian.list'), comedians_path %></li>
-              <li class="dropdown-item text-center"><%= link_to t('view.profile'), comedian_path(current_user.comedian.id) %></li>
-              <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_comedian_path(current_user.comedian.id) %></li>
+              <li class="dropdown-item text-center"><%= link_to current_user.name, user_path(current_user.id) %></li>
+              <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_user_path(current_user.id) ,id: "user" %></li>
+              <% if current_user.admin == true %>
+                <li class="dropdown-item text-center"><%= link_to t('view.admin'), users_path %></li>
+              <% end %>
+              <li class="divider"></li>
+              <li class="dropdown-item text-center"><%= link_to t('view.logout'), destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
-          <li class="nav-item m-3"><%= link_to t('view.comedian.list'), comedians_path %></li>
+          <li><%= link_to t('view.new'), new_user_registration_path %></li>
+          <li><%= link_to t('view.log_in'), new_user_session_path %></li>
         <% end %>
-        <li class="dropdown nav-item m-3 p-0">
-          <a href="#" class="dropdown-toggle user" data-toggle="dropdown">アカウント</a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li class="dropdown-item text-center"><%= link_to current_user.name, user_path(current_user.id) %></li>
-            <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_user_path(current_user.id) ,id: "user" %></li>
-            <% if current_user.admin == true %>
-              <li class="dropdown-item text-center"><%= link_to t('view.admin'), users_path %></li>
-            <% end %>
-            <li class="divider"></li>
-            <li class="dropdown-item text-center"><%= link_to t('view.logout'), destroy_user_session_path, method: :delete %></li>
-          </ul>
-        </li>
-      <% else %>
-        <li><%= link_to t('view.new'), new_user_registration_path %></li>
-        <li><%= link_to t('view.log_in'), new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+      </ul>
+    </div>
+  </nav>
+</div>
