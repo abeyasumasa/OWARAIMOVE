@@ -1,45 +1,53 @@
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="user_edit col-sm-12">
-        <h2><%= @user.name %>プロフィール編集</h2>
-
-        <%= form_with(model: @user, local: true) do |f| %>
-          <% if @user.errors.any? %>
-            <div id="error_explanation" class="alert alert-danger">
-              <h2><%= @user.errors.count %>件のエラーがあります。</h2>
-              <ul>
-                <% @user.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <div class="field">
-            <%= f.label t('view.user.icon') %>
-            <p><%= image_tag @user.icon.thumb.to_s %></p>
-            <%= f.file_field :icon %>
-          </div>
-
-          <div class="field">
-            <%= f.label t('view.user.name') %>
-            <%= f.text_field :name, id: 'Name', autofocus: true %>
-          </div>
-
-          <div class="field">
-            <%= f.label t('view.email') %>
-            <%= f.email_field :email, id: 'Email', autofocus: true, autocomplete: "email" %>
-          </div>
-
-          <div class="field">
-            <%= f.label t('view.user.entertainer') %>
-            <%= f.check_box :entertainer, {}, checked_value = "true", unchecked_value = "false" %>
-          </div>
-
-          <div class="actions">
-            <%= f.submit t('view.user.update') %>
+<div class="page-content">
+  <div class="container bg-light mt-2 comedian-edit">
+      <h1><%= @user.name %>プロフィールを変更</h1>
+      <%= form_with(model: @user, local: true) do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
           </div>
         <% end %>
+
+        <div class="form-group row　col-md-10">
+          <div class="icon">
+            <label>
+              <span class="filelabel" title="ファイルを選択">
+                <%= image_tag @user.icon.thumb.to_s %>
+                <i class="fas fa-camera"></i>
+              </span>
+            <label>
+            <%= f.file_field :icon, id:"filesend" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label t('view.user.name'), class:"col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :name, class:"form-control", autofocus: true %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label t('view.email'), class:"col-md-3" %>
+          <div class="col-md-9">
+            <%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email" %>
+          </div>
+        </div>
+
+        <div class="form-check">
+          <%= f.check_box :entertainer,{class:"form-check-input"}, checked_value = "true", unchecked_value = "false" %>
+          <%= f.label t('view.user.entertainer'), class:"col-md-7 form-check-label" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit t('view.user.update'),class: "btn btn-success mt-2 mb-2" %>
+        </div>
+      <% end %>
       </div>
     </div>
   </div>

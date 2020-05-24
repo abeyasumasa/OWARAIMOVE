@@ -11,9 +11,16 @@
   <% end %>
 
   <div class="form-group row　col-md-10">
-      <%= image_tag(@comedian.combination_icon.thumb.url) if @comedian.combination_icon && @comedian.combination_icon.thumb.url %><br>
-      <%= form.file_field :combination_icon, class:"form-control-file"%>
+    <div class="icon">
+      <label>
+        <span class="filelabel" title="ファイルを選択">
+          <%= image_tag(@comedian.combination_icon.thumb.url) if @comedian.combination_icon && @comedian.combination_icon.thumb.url %>
+          <i class="fas fa-camera"></i>
+        </span>
+      <label>
+      <%= form.file_field :combination_icon, class:"form-control-file",id:"filesend" %>
       <%= form.hidden_field :combination_icon_cache %>
+    </div>
   </div>
 
   <div class="form-group row">
@@ -59,6 +66,6 @@
     </div>
   </div>
 
-  <%= form.submit t('view.comedian.entry') ,class: "btn btn-success mt-2"%>
+  <%= form.submit t('view.comedian.entry') ,class: "btn btn-success mt-2 mb-2" %>
 
 <% end %>
