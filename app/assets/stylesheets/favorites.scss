@@ -1,3 +1,42 @@
 // Place all the styles related to the favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.block-favorite-list {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.favorite_item {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  margin-bottom: 16px;
+  padding: 24px 32px 24px 0;
+}
+
+.favorite-item_inner {
+  display: table;
+  width: 100%;
+}
+
+.favorite-info_left {
+  display: table-cell;
+  border-right: 1px solid #d1d1d1;
+  vertical-align: middle;
+  text-align: center;
+  width: 20%;
+}
+
+.favorite-info_right {
+  padding-left: 32px;
+  text-align: left;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+}
+
+.image-tag {
+  margin: 0px;
+}

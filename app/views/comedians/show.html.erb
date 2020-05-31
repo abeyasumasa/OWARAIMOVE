@@ -27,15 +27,6 @@
               <p><%= t('view.comedian.genre') %></p>
               <p><%= @comedian.genre %></p>
             </div>
-            <div class="comedian_twitter_url">
-              <p>Twitter_url</p>
-              <p><%= link_to @comedian.twitter_url,  @comedian.twitter_url , target: :_blank %></p>
-            </div>
-
-            <div class="comedian_youtube_video">
-              <p>Youtube_url</p>
-              <p><%= link_to @comedian.youtube_url,  @comedian.youtube_url, target: :_blank %></p>
-            </div>
 
             <div class="comedian_favorite">
               <% if current_user != nil %>
@@ -58,6 +49,21 @@
         </div>
 
         <div class="comedian-info_main">
+          <div class="comedian-info_main_upper d-flex justify-content-center mb-2">
+            <div class="comedian_twitter_url mr-3">
+              <a class="twitter-timeline" data-chrome="transparent noheader nofooter" data-lang="ja" data-width="100%" data-height="100%" data-theme="light" href=<%= @comedian.twitter_url %>>
+              <%= @comedian.combination_name %></a>
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+
+            <% if @comedian.youtube_url != "" %>
+              <div class="comedian_youtube_video ml-3">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/?list=<%= @comedian.youtube_url.slice(-24,56) %>"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+            <% end %>
+          </div>
+
           <div class="comedian_comment">
             <h3><%= t('view.comedian.comment') %></h3>
             <p><%= @comedian.comment %></p>
@@ -68,24 +74,7 @@
       <div class="comedian-perform">
         <h2>出演する予定のライブ</h2>
         <div class="block-live-list">
-          <% @schedule.each do |schedule| %>
-            <div class="live_item mx-auto">
-              <section class="live-item_inner">
-                <div class="live-info_left clearfix" id="title">
-                  <p><%= schedule.title %></p>
-                </div>
-                <div class="live-info_right clearfix">
-                  <header class="live-item_header">
-                    <h3><%= simple_day(schedule.date) %></h3>
-                  </header>
-                  <div class="live-item_content">
-                    <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
-                  </div>
-                </div>
-              </section>
-            </div>
-          <% end %>
-          <%= paginate @schedule %>
+          <%= render partial: 'show_schedule' %>
         </div>
       </div>
 
