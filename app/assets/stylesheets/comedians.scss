@@ -23,6 +23,8 @@ input#q_combination_name_or_comment_cont {
 
 .comedian-info {
   background-color: #FFFFFF;
+  padding: 16px;
+  border: 1px solid darkgray;
 }
 
 .comedian-info_left {
@@ -45,7 +47,9 @@ input#q_combination_name_or_comment_cont {
 .comedian_comment {
   word-wrap: break-word;
   text-align: left;
-  margin: 0px 1rem 1rem 1rem;
+  margin: 0 auto;
+  width: 70%;
+  // レスポンス対応
 }
 
 .comedian_comment h3 {

@@ -20,6 +20,11 @@ class ComediansController < ApplicationController
       render :new
     else
       if @comedian.save
+        if @comedian.youtube_url != ""
+          youtube_url=@comedian.youtube_url
+          youtube_url=youtube_url.gsub(youtube_url[-23],"U")
+          @comedian.update(youtube_url: youtube_url)
+        end
         flash[:success] = '芸人情報を登録しました！'
         redirect_to comedians_path
       else
@@ -32,6 +37,10 @@ class ComediansController < ApplicationController
     if current_user != nil
       @favorite = current_user.favorites.find_by(comedian_id: @comedian.id)
       @schedule = @comedian.performer_management_lives.page(params[:page]).per(3)
+      respond_to do |format|
+        format.html
+        format.js{ render :show}
+      end
     end
   end
 
@@ -40,6 +49,11 @@ class ComediansController < ApplicationController
 
   def update
     if @comedian.update(comedian_params)
+      if @comedian.youtube_url != ""
+        youtube_url=@comedian.youtube_url
+        youtube_url=youtube_url.gsub(youtube_url[-23],"U")
+        @comedian.update(youtube_url: youtube_url)
+      end
       flash[:success] = '芸人情報を編集しました'
       redirect_to comedians_path
     else

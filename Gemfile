@@ -93,3 +93,9 @@ gem 'ed25519'
 gem 'bcrypt_pbkdf'
 gem 'aws-ses'
 gem 'whenever', require: false
+
+# 管理画面機能
+gem 'rails_admin', '~> 2.0.0.beta'
+
+# 権限管理
+gem 'cancancan'

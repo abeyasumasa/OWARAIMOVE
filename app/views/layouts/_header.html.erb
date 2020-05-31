@@ -31,7 +31,7 @@
               <li class="dropdown-item text-center"><%= link_to current_user.name, user_path(current_user.id) %></li>
               <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_user_path(current_user.id) ,id: "user" %></li>
               <% if current_user.admin == true %>
-                <li class="dropdown-item text-center"><%= link_to t('view.admin'), users_path %></li>
+                <li class="dropdown-item text-center"><%= link_to t('view.admin'), rails_admin_path %></li>
               <% end %>
               <li class="divider"></li>
               <li class="dropdown-item text-center"><%= link_to t('view.logout'), destroy_user_session_path, method: :delete %></li>

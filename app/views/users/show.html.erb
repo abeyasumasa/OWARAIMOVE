@@ -15,14 +15,14 @@
 
           <div class="user-info_right">
             <div class="user_name">
-              <p><%= t('view.user.name') %>: <%= @user.name %></p>
+              <h2><%= @user.name %></h2>
             </div>
             <div class="user_email">
-              <p><%= t('view.email') %>: <%= @user.email %></p>
+              <p><%= @user.email %></p>
             </div>
             <div class="user_gesture">
-              <p><%= link_to t('view.user.follow'), favorites_path %></p>
-              <p><%= link_to t('view.edit'), edit_user_path(@user.id) %></p>
+              <span><%= link_to t('view.user.follow'), favorites_path %></span>
+              <span><%= link_to t('view.edit'), edit_user_path(@user.id) %></span>
             </div>
           </div>
         </div>

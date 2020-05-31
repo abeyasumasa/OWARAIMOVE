@@ -3,6 +3,10 @@ ja:
     models:
       comedian: 芸人
       user: ユーザー
+      live: ライブ
+      favorite: お気に入り
+      performer_management: 出演者
+      participant_management: 参加者
     attributes:
       comedian:
         combination_name: コンビ名
@@ -28,4 +32,3 @@ ja:
         ending_time: 終了時間
         price: 料金
         time: 時間
-      
