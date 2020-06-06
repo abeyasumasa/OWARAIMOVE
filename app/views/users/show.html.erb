@@ -1,19 +1,22 @@
-<div class="page-content">
-  <div class="column-user">
-    <div class="section">
-      <h1 class="main-title"><%= @user.name %>プロフィール</h1>
+<main role=”main”> 
+  <header class="page-header">
+    <div class="page-header_inner">
+      <div class="page-header_content row">
+        <h1 class="main-title col-md-12"><%= @user.name %>プロフィール</h1>
+      </div>
     </div>
-
+  </header>
+  <div class="page-content p-3">
     <div class="block-user-group">
-      <div class="user-info">
-        <div class="user-info_header d-flex flex-row">
-          <div class="user-info_left">
+      <div class="user-info bg-light mx-auto">
+        <div class="user-info_header row p-3">
+          <div class="user-info_left col-md-4 offset-md-2">
             <div class="user_icon">
               <p><%= image_tag @user.icon.thumb.to_s %></p>
             </div>
           </div>
 
-          <div class="user-info_right">
+          <div class="user-info_right col-md-4">
             <div class="user_name">
               <h2><%= @user.name %></h2>
             </div>
@@ -22,35 +25,20 @@
             </div>
             <div class="user_gesture">
               <span><%= link_to t('view.user.follow'), favorites_path %></span>
-              <span><%= link_to t('view.edit'), edit_user_path(@user.id) %></span>
+              <span><%= link_to t('view.edit'), edit_user_path(@user.id),class: 'btn btn-primary' %></span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="user_participate">
-        <h2>参加する予定のライブ</h2>
-        <div class="block-live-list">
-          <% @schedule.each do |schedule| %>
-            <div class="live_item mx-auto">
-              <section class="live-item_inner">
-                <div class="live-info_left clearfix" id="title">
-                  <p><%= schedule.title %></p>
-                </div>
-                <div class="live-info_right clearfix">
-                  <header class="live-item_header">
-                    <h3><%= simple_day(schedule.date) %></h3>
-                  </header>
-                  <div class="live-item_content">
-                    <p><%= simple_time(schedule.start_time) %>〜<%= simple_time(schedule.ending_time) %></p>
-                  </div>
-                </div>
-              </section>
-            </div>
-          <% end %>
-          <%= paginate @schedule %>
+      <div class="user_participate row p-4">
+        <div class="user_participate-header col-md-12">
+          <h2>参加予定のライブ</h2>
+        </div>
+        <div class="block-live-list col-md-6 offset-md-3">
+          <%= render partial: 'show_schedule' %>
         </div>
       </div>
     </div>
   </div>
-</div>
+</main>

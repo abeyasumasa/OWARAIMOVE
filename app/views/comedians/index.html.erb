@@ -1,85 +1,91 @@
-<div class="page-content">
-  <div class="column clearfix">
-    <div class="column-left">
+<main role=”main”>
+  <header class="page-header">
+    <div class="page-header_inner">
+      <div class="page-header_content row">
+        <h1 class="section-header_title col-md-12">登録されている芸人一覧</h1>
+      </div>
+      <div class="page-header_outline col-md-12">
+        <p class="section-header_outline">登録されている芸人を表示しています。
+          好きなジャンルやお好きなキーワード  で検索できます。</p>
+      </div>
+    </div>
+  </header>
+  <div class="page-content">
+    <div class="column clearfix">
       <nav class="section">
-        <header class="section-header">
-          <div class="secton-header-content">
-            <h2 class="section-header_title">芸人を検索する</h2>
-          </div>
-        </header>
         <div class="section_content">
-          <div class="block">
-            <div class="block-header">
-              <%= search_form_for @search do |f| %>
-                <div class="block-content">
-                  <%= f.label :genre_cont, 'ジャンルで検索' %><br>
-                  <%= f.collection_select :genre_cont, Comedian.select(:genre).distinct, :genre, :genre, :include_blank => true %>
-              </div>
+          <section class="block-filter-main">
+            <div class="block-filter w-100">
+              <div class="block-filter_content">
+                <%= search_form_for @search do |f| %>
+                  <div class="block-content">
+                    <div class="filter-section mb-3 row">
+                      <div class="filter-section_header col-md-1 offset-md-1">
+                        <%= f.label :genre_cont, 'ジャンルで検索' %>
+                      </div>
+                      <div class="filter-section_content col-md-4">
+                        <%= f.collection_select :genre_cont, Comedian.select(:genre).distinct, :genre, :genre, :include_blank => true %>
+                      </div>
 
-              <div class="block-content">
-                <%= f.label :comment_cout, 'キーワード' %><br>
-                <%= f.text_field :combination_name_or_comment_cont, placeholder: "コンビ名やフレーズ等で検索"%>
-              </div>
+                      <div class="filter-section_header col-md-1 offset-md-1">
+                        <%= f.label :comment_cout, 'キーワード' %><br>
+                      </div>
+                      <div class="filter-section_content col-md-4">
+                        <%= f.text_field :combination_name_or_comment_cont, placeholder: "コンビ名やフレーズ等で検索"%>
+                      </div>
+                    </div>
+                  </div>
 
-              <div class="submit mt-3">
-                <%= f.submit '検索する', class:"btn btn-primary" %>
-              </div>
-              <% end %>
-              <div>
-                <% if current_user != nil %>
-                  <% if current_user.entertainer != false %>
-                    <% if current_user.comedian.nil? %>
-                      <%= link_to t('view.comedian.add'), new_comedian_path, class: 'btn btn-outline-primary mt-3' %>
-                    <% end %>
-                  <% end %>
+                  <div class="filter-footer row pt-3">
+                    <div class="filter-botton col-md-2 offset-md-4">
+                      <%= f.submit '検索する', class:"btn btn-primary" %>
+                    </div>
+                    <div class="filter-botton create col-md-3">
+                      <% if current_user != nil %>
+                        <% if current_user.entertainer != false %>
+                          <% if current_user.comedian.nil? %>
+                            <%= link_to t('view.comedian.add'), new_comedian_path, class: 'btn btn-outline-primary' %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
                 <% end %>
               </div>
             </div>
+          </section>
+          <div class="block-comedian-list card-columns my-3 ">
+            <% @comedians.each do |comedian| %>
+            <div class="card mb-3">
+              <% unless comedian.combination_icon.thumb.url == nil %>
+                <%= image_tag comedian.combination_icon.thumb.url, class: "card-img-top p-3" %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title text-left"><%= comedian.combination_name %></h5>
+                <p class="card-text text-left"><%= t('view.comedian.genre') %> : <%= comedian.genre %></p>
+                <p class="card-text text-left overflow-auto" style="height:4.5rem;"><%= comedian.comment %></p>
+                <% if current_user == nil || current_user.id != comedian.user_id %>
+                  <div class="mb-4 comedian_show">
+                    <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
+                  </div>
+                <% elsif current_user.id == comedian.user_id %>
+                  <div class="btn-toolbar mx-a  uto mb-4">
+                    <div class="btn-group comedian_show">
+                      <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
+                      <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-outline-secondary' %></span>
+                      <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <div class="block-paginator pagination mx-auto pb-4">
+            <%= paginate @comedians %>
           </div>
         </div>
       </nav>
     </div>
-
-    <div class="column-main">
-      <section class="section">
-        <header class="section-header">
-          <div class="section-content">
-            <h2 class="section-header_title">登録されている芸人一覧</h2>
-            <p class="section-header_outline">本アプリに登録されている芸人を表示しています<br>
-            好きなジャンルやお好きなキーワドで検索できます。</p>
-          </div>
-        </header>
-        <div class="card-columns mb-3">
-          <% @comedians.each do |comedian| %>
-          <div class="card mb-3">
-            <% unless comedian.combination_icon.thumb.url == nil %>
-              <%= image_tag comedian.combination_icon.thumb.url, class: "card-img-top mt-4" %>
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title text-left"><%= comedian.combination_name %></h5>
-              <p class="card-text text-left"><%= t('view.comedian.genre') %> : <%= comedian.genre %></p>
-              <p class="card-text text-left overflow-auto" style="height:4.5rem;"><%= comedian.comment %></p>
-              <% if current_user == nil || current_user.id != comedian.user_id %>
-                <div class="mb-4 comedian_show">
-                  <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
-                </div>
-              <% elsif current_user.id == comedian.user_id %>
-                <div class="btn-toolbar mx-a  uto mb-4">
-                  <div class="btn-group comedian_show">
-                    <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
-                    <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-outline-secondary' %></span>
-                    <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <% end %>
-        </div>
-        <div class="block-paginator pagination mx-auto">
-          <%= paginate @comedians %>
-        </div>
-      </section>
-    </div>
   </div>
-</div>
+</main>

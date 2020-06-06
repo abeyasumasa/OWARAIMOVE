@@ -3,7 +3,7 @@ ja:
   activerecord:
     errors:
       messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        record_invalid: "バリデーションに失敗しました: %{errors}"
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
@@ -39,7 +39,7 @@ ja:
       prise: 料金
       content: コメント
       time: 時間
-      add: ライブを作成
+      add: ライブ作成
       list: ライブ一覧
       entry: 登録
       participation: 参加する
@@ -171,7 +171,7 @@ ja:
       invalid: は不正な値です
       less_than: は%{count}より小さい値にしてください
       less_than_or_equal_to: は%{count}以下の値にしてください
-      model_invalid: 'バリデーションに失敗しました: %{errors}'
+      model_invalid: "バリデーションに失敗しました: %{errors}"
       not_a_number: は数値で入力してください
       not_an_integer: は整数で入力してください
       odd: は奇数にしてください
@@ -219,9 +219,9 @@ ja:
           quadrillion: 千兆
           thousand: 千
           trillion: 兆
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -237,11 +237,11 @@ ja:
           tb: TB
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%n%"
     precision:
       format:
-        delimiter: ''
+        delimiter: ""
   support:
     array:
       last_word_connector: "、"

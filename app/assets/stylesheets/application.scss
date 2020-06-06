@@ -22,13 +22,15 @@
 
 /* universal */
 
-html {
-  position: relative;
-  min-height: 100%;
+html,
+body {
+  height: 100%;
+  text-align: center;
 }
 
-body {
-  text-align: center;
+#wrapper {
+  width: 100%;
+  position: relative;
   min-height: 100%;
 }
 
@@ -51,7 +53,7 @@ body {
 
 .footer {
   width: 100%;
-  min-height: 3%;
+  // min-height: 3%;
   background-color: #f9e900;
   color: #337ab7;
   margin: 0px auto;
@@ -133,4 +135,20 @@ div.alert.alert-notice {
 .row {
   margin-left: 0px;
   margin-right: 0px;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.page-header {
+  padding: 20px 0px;
+}
+
+.page-content {
+  min-height: 1015px;
+  width: 100%;
+  background-color: rgb(242, 242, 242);
 }

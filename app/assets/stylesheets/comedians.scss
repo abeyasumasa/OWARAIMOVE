@@ -15,48 +15,33 @@ input#q_combination_name_or_comment_cont {
 }
 
 // 詳細画面
-.column-comedian {
-  width: 70%;
-  margin: 0 auto;
-  padding: 16px;
-}
-
 .comedian-info {
   background-color: #FFFFFF;
-  padding: 16px;
-  border: 1px solid darkgray;
+  width: 60%;
 }
 
-.comedian-info_left {
-  margin: 0 auto;
-  margin-right: 0px;
-  padding: 16px;
-}
-
-.comedian-info_right {
-  margin: 0 auto;
-  margin-left: 0px;
-  text-align: left;
-  padding: 16px;
-}
-
-.comedian-info_right p {
-  margin-bottom: 5px;
-}
-
-.comedian_comment {
-  word-wrap: break-word;
-  text-align: left;
-  margin: 0 auto;
-  width: 70%;
-  // レスポンス対応
+@media screen and (max-width: 767px) {
+  .comedian-info {
+    width: 100%;
+  }
 }
 
 .comedian_comment h3 {
   background-color: #E0FFFF;
 }
 
+.comedian_comment {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 // 編集画面
-.comedian-edit {
+.comedian-form {
   width: 40%;
+}
+
+@media screen and (max-width: 767px) {
+  .comedian-form {
+    width: 100%;
+  }
 }

@@ -1,20 +1,24 @@
-<div class="page-content">
-  <div class="column-comedian">
-    <div class="section">
-      <h1 class="main-title">芸人プロフィール</h1>
+<main role=”main”>
+  <header class="page-header">
+    <div class="page-header_inner">
+      <div class="page-header_content row">
+        <h1 class="main-title col-md-12">芸人プロフィール</h1>
+      </div>
     </div>
+  </header>
+  <div class="page-content p-3">
     <div class="block-comedian-group">
-      <div class="comedian-info">
-        <div class="comedian-info_header d-flex flex-row">
-          <div class="comedian-info_left">
+      <div class="comedian-info p-4 mx-auto">
+        <div class="comedian-info_header row mb-3">
+          <div class="comedian-info_left col-md-4 offset-md-2">
             <div class="comedian_icon">
               <% unless @comedian.combination_icon.url == nil %>
-                <p><%= image_tag @comedian.combination_icon.thumb.url %></p>
+                <p class="mb-0"><%= image_tag @comedian.combination_icon.thumb.url %></p>
               <% end %>
             </div>
           </div>
 
-          <div class="comedian-info_right">
+          <div  class="comedian-info_right col-md-4">
             <div class="comedian_combination_name">
               <h2><%= @comedian.combination_name %></h2>
             </div>
@@ -49,38 +53,40 @@
         </div>
 
         <div class="comedian-info_main">
-          <div class="comedian-info_main_upper d-flex justify-content-center mb-2">
-            <div class="comedian_twitter_url mr-3">
-              <a class="twitter-timeline" data-chrome="transparent noheader nofooter" data-lang="ja" data-width="100%" data-height="100%" data-theme="light" href=<%= @comedian.twitter_url %>>
+          <div class="comedian-info_main_upper mb-3 row">
+            <div class="comedian_twitter_url col-md-4 offset-md-2">
+              <a class="twitter-timeline" data-chrome="transparent noheader nofooter" data-lang="ja" data-width="100%" data-height="315px" data-theme="light" href=<%= @comedian.twitter_url %>>
               <%= @comedian.combination_name %></a>
               <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
 
             <% if @comedian.youtube_url != "" %>
-              <div class="comedian_youtube_video ml-3">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/?list=<%= @comedian.youtube_url.slice(-24,56) %>"
+              <div class="comedian_youtube_video col-md-4">
+                <iframe width="100%" height="315px" src="https://www.youtube.com/embed/?list=<%= @comedian.youtube_url.slice(-24,56) %>"
                 frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
               </div>
             <% end %>
           </div>
 
-          <div class="comedian_comment">
-            <h3><%= t('view.comedian.comment') %></h3>
-            <p><%= @comedian.comment %></p>
+          <div class="comedian_comment row">
+            <h3 class="col-md-8 offset-md-2"><%= t('view.comedian.comment') %></h3>
+            <p class="col-md-8 offset-md-2"><%= @comedian.comment %></p>
           </div>
         </div>
       </div>
 
-      <div class="comedian-perform">
-        <h2>出演する予定のライブ</h2>
-        <div class="block-live-list">
+      <div class="comedian-perform row p-4">
+        <div class="comedian-perform-header col-md-12">
+          <h2 class="">出演予定のライブ</h2>
+        </div>
+        <div class="block-live-list col-md-6 offset-md-3">
           <%= render partial: 'show_schedule' %>
         </div>
       </div>
 
-      <div class='mt-2'>
+      <div class='mb-4'>
         <%= link_to "芸人一覧に戻る", comedians_path %>
       </div>
     </div>
   </div>
-</div>
+</main>

@@ -2,65 +2,74 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// .wrapper {
-//   width: 100%;
-//   margin: 0 auto;
-//   min-height: 100%;
-//   position: relative;
-//   padding: 0 auto;
-//   padding-bottom: 57px;
-//   margin-top: 20px;
-// }
-
-// 共通
-.clearfix:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.page-content {
-  min-height: 1015px;
-  width: 100%;
-  background-color: rgb(242, 242, 242);
-  padding: 32px 0px 24px 24px;
-}
-
 // ライブ一覧
 .column {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   padding: 16px;
-  display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
-.column-left {
-  background: #ffffff;
-  margin: 16px;
+@media screen and (max-width: 1140px) {
+  .column {
+    width: 100%;
+    padding: 0px;
+  }
 }
 
 .section {
   padding: 16px;
 }
 
-.section-header {
-  margin: 10px auto;
-  color: black;
+.block-filter-main {
+  margin: 0 auto;
+  background-color: #ffffff;
 }
 
-.section-header_title {
-  font-size: 20px;
+.block-filter_content {
+  padding: 16px;
 }
 
-.section-header_outline {
+.filter-section_header {
   font-size: 13px;
+  padding-left: 0px;
+  text-align: center;
 }
 
-.column-main {
-  margin: 16px;
-  width: 70%;
+.filter-section_content {
+  font-size: 12px;
+  text-align: center;
+}
+
+.filter-section {
+  text-align: left;
+}
+
+#q_place_cont {
+  width: 50%;
+}
+
+.filter-footer {
+  border-top: 1px solid #e5e5e5;
+}
+
+@media screen and (max-width: 767px) {
+  .create {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .input#search_date {
+    width: 50%;
+  }
+}
+
+
+.from,
+.to {
+  font-size: 12px;
 }
 
 .live_item {
@@ -112,15 +121,16 @@
   font-size: 13px;
 }
 
-input#search_date,
-select#q_place_cont {
-  width: 230px;
+input#search_date {
   border: 1px solid #000000;
   background-color: #F7F7F7;
+  text-align: left;
 }
 
-input#submit {
-  width: initial;
+select#q_place_cont {
+  border: 1px solid #000000;
+  background-color: #F7F7F7;
+  text-align: left;
 }
 
 // ライブ詳細
@@ -132,29 +142,18 @@ input#submit {
   font-size: 13px;
 }
 
-.block-live-group {
-  // min-width: 400px;
-  display: table;
-  // border: 1px solid;
-  // border-radius: 8px;
-  margin: 0px auto;
-  margin-bottom: 10px;
-  background-color: white;
-}
-
 table th {
   height: 50px;
-  min-width: 150px;
   background-color: cornsilk;
 }
 
 table td {
-  max-width: 250px;
   word-wrap: break-word;
+  background-color: white;
 }
 
 .flex {
-  min-width: 400px;
+  min-width: 50%;
   display: table;
   border: 1px solid;
   margin: 0px auto;
@@ -166,4 +165,12 @@ table td {
   margin: 0px;
 }
 
-// ライブ作成
+.live-form {
+  width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  .live-form {
+    width: 100%;
+  }
+}

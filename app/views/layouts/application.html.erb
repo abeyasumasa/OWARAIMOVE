@@ -10,18 +10,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="header">
-      <%= render 'layouts/header' %>
-    </div>
-  <% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>">
-    <%= content_tag(:div, value, class: "#{key}") %>
-  </div>
-  <% end %>
-  <%= yield %>
-    <div class="footer">
-      <%= render 'layouts/footer' %>
+  <body clss="container">
+    <div id="wrapper">
+      <div class="header">
+        <%= render 'layouts/header' %>
+      </div>
+      <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= content_tag(:div, value, class: "#{key}") %>
+      </div>
+      <% end %>
+      <%= yield %>
+      <div class="footer">
+        <%= render 'layouts/footer' %>
+      </div>
     </div>
   </body>
 </html>
