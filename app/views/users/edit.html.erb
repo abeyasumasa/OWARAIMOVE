@@ -1,6 +1,13 @@
-<div class="page-content">
-  <div class="container bg-light mt-2 comedian-edit">
-      <h1><%= @user.name %>プロフィールを変更</h1>
+<main role=”main”>
+  <header class="page-header">
+    <div class="page-header_inner">
+      <div class="page-header_content row">
+        <h1 class="col-md-12"><%= @user.name %>プロフィールを変更</h1>
+      </div>
+    </div>
+  </header>
+  <div class="page-content p-4">
+    <div class="bg-light comedian-form mx-auto p-4">
       <%= form_with(model: @user, local: true) do |f| %>
         <% if @user.errors.any? %>
           <div id="error_explanation" class="alert alert-danger">
@@ -13,8 +20,8 @@
           </div>
         <% end %>
 
-        <div class="form-group row　col-md-10">
-          <div class="icon">
+        <div class="form-group row">
+          <div class="icon mx-auto">
             <label>
               <span class="filelabel" title="ファイルを選択">
                 <%= image_tag @user.icon.thumb.to_s %>
@@ -39,16 +46,15 @@
           </div>
         </div>
 
-        <div class="form-check">
+        <div class="form-check row">
           <%= f.check_box :entertainer,{class:"form-check-input"}, checked_value = "true", unchecked_value = "false" %>
           <%= f.label t('view.user.entertainer'), class:"col-md-7 form-check-label" %>
         </div>
 
         <div class="actions">
-          <%= f.submit t('view.user.update'),class: "btn btn-success mt-2 mb-2" %>
+          <%= f.submit t('view.user.update'),class: "btn btn-success my-2" %>
         </div>
       <% end %>
-      </div>
     </div>
   </div>
-</div>
+</main>
