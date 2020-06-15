@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   devise_for :users,
-             controllers: {registrations: "users/registrations", except: :edit,
-                           omniauth_callbacks: "users/omniauth_callbacks"}
-  root 'root#index'
+             controllers: { registrations: "users/registrations", except: :edit,
+                            omniauth_callbacks: "users/omniauth_callbacks" }
+  root "root#index"
 
   resources :users, :only => [:index, :show, :edit, :update]
 
