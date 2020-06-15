@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   # ログイン済ユーザーのみにアクセスを許可する
   # before_action :authenticate_user!
 
-  # deviseコントローラーにストロングパラメータを追加する          
+  # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   # このアクションを追加
   def after_sign_in_path_for(resource)
     "/users/#{current_user.id}"
@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    def sign_in_required
-      redirect_to new_user_session_url unless user_signed_in?
-    end
+
+  def sign_in_required
+    redirect_to new_user_session_url unless user_signed_in?
+  end
 end

@@ -23,10 +23,10 @@ class User < ApplicationRecord
   mount_uploader :icon, UserImageUploader
 
   # バリデーション
-  validates :name, presence: true, length: {maximum: 30}
-  validates :password, presence: true, length: {minimum: 6}, on: :create
-  validates :email, presence: true, length: {maximum: 255},
-            format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
+  validates :name, presence: true, length: { maximum: 30 }
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 
   # ランダムなuidを作成
   def self.create_unique_string
@@ -49,18 +49,16 @@ class User < ApplicationRecord
   # end
 
   def self.find_for_oauth(auth)
-      user = User.where(uid: auth.uid, provider: auth.provider).first
+    user = User.where(uid: auth.uid, provider: auth.provider).first
 
-      unless user
-        user = User.new(email: auth.info.email,
-                        provider: auth.provider,
-                        uid: auth.uid,
-                        name: auth.info.name,
-                        password: Devise.friendly_token[0, 20],
-                        )
-      end
-      user.save
-      user
+    unless user
+      user = User.new(email: auth.info.email,
+                      provider: auth.provider,
+                      uid: auth.uid,
+                      name: auth.info.name,
+                      password: Devise.friendly_token[0, 20])
     end
-
+    user.save
+    user
+  end
 end
