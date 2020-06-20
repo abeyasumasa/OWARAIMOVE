@@ -7,23 +7,10 @@
         <h3 class="form-signin-heading">サインアップ</h3>
         <hr class="colorgraph">
         <br>
-
-<!--        <div class="form-control">-->
-          <%= f.text_field :name, placeholder: t('view.user.name'), class:'form-control', id: 'Name', autofocus: true %>
-<!--        </div>-->
-
-<!--        <div class="form-control">-->
-          <%= f.email_field :email, placeholder: t('view.email'), class:'form-control', id: 'Email', autocomplete: "email" %>
-<!--        </div>-->
-
-<!--        <div class="form-control">-->
-          <%= f.password_field :password, placeholder: t('view.user.password'), class:'form-control', id: 'Password' %>
-<!--        </div>-->
-
-<!--        <div class="form-control">-->
-          <%= f.password_field :password_confirmation, placeholder: t('view.user.password_confirmation'), class:'form-control', id: 'Password_confirmation' %>
-<!--        </div>-->
-
+        <%= f.text_field :name, placeholder: t('view.user.name'), class:'form-control', id: 'Name', autofocus: true %>
+        <%= f.email_field :email, placeholder: t('view.email'), class:'form-control', id: 'Email', autocomplete: "email" %>
+        <%= f.password_field :password, placeholder: t('view.user.password'), class:'form-control', id: 'Password' %>
+        <%= f.password_field :password_confirmation, placeholder: t('view.user.password_confirmation'), class:'form-control', id: 'Password_confirmation' %>
         <div class="form-control">
           <%= f.check_box :entertainer, {:checked => false}, checked_value = "true", unchecked_value = "false" %>
           <%= f.label t('view.user.entertainer') %>
