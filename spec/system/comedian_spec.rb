@@ -24,12 +24,12 @@ RSpec.describe '芸人登録機能', type: :system do
     fill_in 'Password', with: 'password'
     click_button 'ログイン'
     visit new_comedian_path
-    fill_in 'Comment', with: 'comedian01です！'
     fill_in 'Combination_name', with: 'comedian01'
     fill_in 'Email', with: 'comedian01@gmail.com'
     select '漫才', from: 'comedian_genre'
     fill_in 'Twitter_url', with: 'https:www'
     fill_in 'Youtube_url', with: 'https:www'
+    fill_in 'Comment', with: 'comedian01です！'
     click_on '登録'
     click_on '登録'
     expect(page).to have_content 'comedian01'
@@ -46,12 +46,12 @@ RSpec.describe '芸人登録機能', type: :system do
     fill_in 'Password', with: 'password'
     click_button 'ログイン'
     visit edit_comedian_path(2)
-    fill_in 'Comment', with: 'comedian04です！'
     fill_in 'Combination_name', with: 'comedian04'
     fill_in 'Email', with: 'comedian04@gmail.com'
     select 'コント', from: 'comedian_genre'
     fill_in 'Twitter_url', with: 'https:www'
     fill_in 'Youtube_url', with: 'https:www'
+    fill_in 'Comment', with: 'comedian04です！'
     click_on '登録'
     expect(page).to have_content 'comedian04'
   end

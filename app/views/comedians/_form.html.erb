@@ -26,14 +26,14 @@
   <div class="form-group row">
     <%= form.label t('view.comedian.combination_name'), class:"col-md-3" %>
     <div class="col-md-9">
-      <%= form.text_field :combination_name, class:"form-control",placeholder:'コンビ名を入力' %>
+      <%= form.text_field :combination_name, class:"form-control", id:"Combination_name", placeholder:'コンビ名を入力' %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= form.label t('view.email'), class:"col-md-3" %>
     <div class="col-md-9">
-      <%= form.email_field :email, class:"form-control", placeholder:'メールアドレスを入力'%>
+      <%= form.email_field :email, class:"form-control", id:"Email", placeholder:'メールアドレスを入力'%>
     </div>
   </div>
 
@@ -41,28 +41,28 @@
     <%= form.label t('view.comedian.genre'), class:"col-md-3" %>
     <div class="col-md-9">
       <%= form.select :genre, ["コント", "漫才", "フリートーク", "モノマネ", "リアクション芸", "大喜利",
-                                "一発ギャグ", "歌ネタ/リズムネタ", "ピン芸人", "フリップ芸", "漫談"],{} ,{prompt: "選択してください",class: "form-control"} %>
+                                "一発ギャグ", "歌ネタ/リズムネタ", "ピン芸人", "フリップ芸", "漫談"],{} ,{prompt: "選択してください",class: "form-control", id:"comedian_genre",} %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= form.label :twitter_url, class:"col-md-3" %>
     <div class="col-md-9">
-      <%= form.text_field :twitter_url, class:"form-control", placeholder:'TwitterプロフィールのURLを入力' %>
+      <%= form.text_field :twitter_url, class:"form-control", id:"Twitter_url", placeholder:'TwitterプロフィールのURLを入力' %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= form.label :youtube_url, class:"col-md-3" %>
     <div class="col-md-9">
-      <%= form.text_field :youtube_url, class:"form-control", placeholder:'YoutubeチャンネルのURLを入力' %>
+      <%= form.text_field :youtube_url, class:"form-control", id:"Youtube_url", placeholder:'YoutubeチャンネルのURLを入力' %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= form.label t('view.comedian.comment'), class:"col-md-3" %>
     <div class="col-md-9">
-      <%= form.text_area :comment, class:"form-control", placeholder:'自己紹介を追加',rows:"3"%>
+      <%= form.text_area :comment, class:"form-control", id:"Comment", placeholder:'自己紹介を追加',rows:"3"%>
     </div>
   </div>
 
