@@ -8,10 +8,6 @@ User.create!(name: "test_user",
              provider: ""
 )
 # ユーザー
-# 15.times do |n|
-  # email = Faker::Internet.email
-  # uid = User.create_unique_string
-  # password = "password"
 User.create!(name: "亀尾　広光",
               email: Faker::Internet.email,
               password: "password",
@@ -122,14 +118,6 @@ User.create!(name: "藤原　時",
 # end
 
 # 芸人
-# 15.times do |n|
-#   genres = ["コント", "漫才", "フリートーク", "モノマネ", "リアクション芸", "大喜利",
-#             "一発ギャグ", "歌ネタ/リズムネタ", "ピン芸人", "フリップ芸"]
-  # genre = genres.sample
-  # name = Faker::Games::Zelda.character
-  # email = Faker::Internet.email
-  # user_id = 1
-  # number = [*1..4].sample
   comment = "test"
   Comedian.create!(combination_name: "インテリアモール",
     email: Faker::Internet.email,

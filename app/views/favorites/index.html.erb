@@ -1,38 +1,47 @@
-<div class="page-content">
-  <section class="section">
-    <header class="section-header">
-      <div class="section-content">
-        <h2>お気に入り芸人一覧</h2>
-          <p class="section-header_outline">あなたがフォローした芸人が表示されています。</p>
+<main role=”main”>
+  <header class="page-header">
+    <div class="page-header_inner">
+      <div class="page-header_content row">
+        <h1 class="section-header_title col-md-12">お気に入り芸人一覧</h1>
       </div>
-    </header>
-
-    <div class="block-favorite-list">
-      <% @favorites.each do |favorite| %>
-        <div class="favorite_item mx-auto">
-          <section class="favorite-item_inner">
-            <div class="favorite-info_left clearfix">
-              <header class="live-item_header">
-                <% unless favorite.combination_icon.url == nil %>
-                  <p class="image-tag"><%= image_tag favorite.combination_icon.url, class:"img-circle image" %></p>
-                <% end %>
-              </header>
-            </div>
-            <div class="favorite-info_right clearfix">
-              <header class="favorite-item_header">
-                <h5><%= favorite.combination_name %></h5>
-              </header>
-              <div class="favorite-comedian_content">
-                <p><%= t('view.comedian.genre') %> : <%= favorite.genre %></p>
-                <p class="overflow-auto" style="height:4.5rem;"><%= favorite.comment %></p>
-              </div>
-            </div>
-          </section>
-        </div>
-      <% end %>
+      <div class="page-header_outline col-md-12">
+        <p class="section-header_outline">あなたがフォローした芸人が表示されています。</p>
+      </div>
     </div>
-    <div class="block-paginator pagination mx-auto">
-      <%= paginate @favorites %>
+  </header>
+  
+  <div class="page-content">
+    <div class="column clearfix">
+      <nav class="section">
+        <div class="section_content">
+          <div class="block-favorite-list">
+            <% @favorites.each do |favorite| %>
+              <div class="favorite_item mx-auto">
+                <section class="favorite-item_inner">
+                  <div class="favorite-info_left clearfix">
+                    <header class="live-item_header">
+                      <% unless favorite.combination_icon.url == nil %>
+                        <p class="image-tag"><%= image_tag favorite.combination_icon.url, class:"img-circle image" %></p>
+                      <% end %>
+                    </header>
+                  </div>
+                  <div class="favorite-info_right clearfix">
+                    <header class="favorite-item_header">
+                      <h5><%= favorite.combination_name %></h5>
+                    </header>
+                    <div class="favorite-comedian_content">
+                      <p><%= t('view.comedian.genre') %> : <%= favorite.genre %></p>
+                      <p class="overflow-auto" style="height:4.5rem;"><%= favorite.comment %></p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            <% end %>
+          </div>
+          <div class="block-paginator pagination mx-auto">
+            <%= paginate @favorites %>
+          </div>
+      </nav>
     </div>
   </div>
-</div>
+</main>
