@@ -214,7 +214,7 @@ Comedian.create!(combination_name: "藤崎マーケット",
   combination_icon: open("#{Rails.root}/db/fixtures/藤崎マーケット.jpg"),
   comment: comment,
   user_id: "11",
-  twitter_url: "https://twitter.com/sakuzari",
+  twitter_url: "https://twitter.com/fujisakitoki",
   youtube_url: "https://www.youtube.com/channel/UCcJySXLBICOd1NlBktE5kOA"
 )
 # end
