@@ -25,7 +25,9 @@ class LivesController < ApplicationController
   end
 
   def show
-    @participant = current_user.participant_managements.find_by(live_id: @live.id)
+    if current_user != nil
+      @participant = current_user.participant_managements.find_by(live_id: @live.id)
+    end
   end
 
   def edit
