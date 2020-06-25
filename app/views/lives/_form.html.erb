@@ -13,14 +13,14 @@
   <div class="form-group row">
     <%= form.label t('view.live.title'),class:"col-md-2" %>
     <div class="col-md-10">
-      <%= form.text_field :title,class:"form-control" %>
+      <%= form.text_field :title,class:"form-control", id:"live_title" %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= form.label t('view.live.date'),class:"col-md-2" %>
     <div class="col-md-10">
-      <%= form.date_field :date,class:"form-control" %>
+      <%= form.date_field :date,class:"form-control", id:"live_date" %>
     </div>
   </div>
 
@@ -34,21 +34,21 @@
   <div class="form-group row">
     <%= form.label t('view.live.place'),class:"col-md-2" %>
     <div class="col-md-10">
-      <%= form.text_field :place,class:"form-control" %>
+      <%= form.text_field :place,class:"form-control", id:"live_place" %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= form.label t('view.live.prise'),class:"col-md-2" %>
     <div class="col-md-10">
-      <%= form.text_field :price,class:"form-control" %>
+      <%= form.text_field :price,class:"form-control", id:"live_prise" %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= form.label t('view.live.content'),class:"col-md-2" %>
     <div class="col-md-10">
-    <%= form.text_area :content,class:"form-control" %>
+    <%= form.text_area :content,class:"form-control", id:"live_content" %>
     </div>
   </div>
 

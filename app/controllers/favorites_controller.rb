@@ -4,8 +4,12 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    favorite = current_user.favorites.create(comedian_id: params[:comedian_id])
-    redirect_to comedians_url, notice: "#{favorite.comedian.combination_name}さんをお気に入り登録しました"
+    unless current_user.comedian.id == params[:comedian_id].to_i
+      favorite = current_user.favorites.create(comedian_id: params[:comedian_id])
+      redirect_to comedians_url, notice: "#{favorite.comedian.combination_name}さんをお気に入り登録しました"
+    else
+      redirect_to comedians_url, notice: "自分をお気に入り登録できません！"
+    end
   end
 
   def destroy
