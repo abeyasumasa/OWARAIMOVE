@@ -69,12 +69,10 @@
                     <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
                   </div>
                 <% elsif current_user.id == comedian.user_id %>
-                  <div class="btn-toolbar mx-a  uto mb-4">
-                    <div class="btn-group comedian_show">
-                      <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
-                      <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-outline-secondary' %></span>
-                      <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
-                    </div>
+                  <div class="btn-group comedian_show mb-4">
+                    <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
+                    <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-outline-secondary' %></span>
+                    <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
                   </div>
                 <% end %>
               </div>

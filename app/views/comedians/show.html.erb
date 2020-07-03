@@ -51,14 +51,16 @@
             </div>
           </div>
         </div>
-
+        
         <div class="comedian-info_main">
           <div class="comedian-info_main_upper mb-3 row">
-            <div class="comedian_twitter_url col-md-4 offset-md-2">
-              <a class="twitter-timeline" data-chrome="transparent noheader nofooter" data-lang="ja" data-width="100%" data-height="315px" data-theme="light" href=<%= @comedian.twitter_url %>>
-              <%= @comedian.combination_name %></a>
-              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
+            <% if @comedian.twitter_url != "" %>
+              <div class="comedian_twitter_url col-md-4 offset-md-2">
+                <a class="twitter-timeline" data-chrome="transparent noheader nofooter" data-lang="ja" data-width="100%" data-height="315px" data-theme="light" href=<%= @comedian.twitter_url %>>
+                <%= @comedian.combination_name %></a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+            <% end %>
 
             <% if @comedian.youtube_url != "" %>
               <div class="comedian_youtube_video col-md-4">
