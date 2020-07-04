@@ -12,7 +12,7 @@
     <div id="gnavi" class="collapse navbar-collapse header_nav ">
       <ul class="navbar-nav float-lg-right">
         <% if user_signed_in? %>
-          <li class="nav-item m-3"><%= link_to 'トップ', lives_path %></li>
+          <li class="nav-item m-3"><%= link_to t('view.live.list'), lives_path %></li>
           <% if current_user.entertainer == true && current_user.comedian != nil %>
             <li class="dropdown nav-item m-3 p-0 ">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">芸人</a>
