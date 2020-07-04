@@ -6,9 +6,9 @@
       </div>
     </div>
   </header>
-  <div class="page-content p-3">
+  <div class="page-content p-5">
     <div class="block-comedian-group">
-      <div class="comedian-info p-4 mx-auto">
+      <div class="comedian-info p-5 mx-auto bg-light">
         <div class="comedian-info_header row mb-3">
           <div class="comedian-info_left col-md-4 offset-md-2">
             <div class="comedian_icon">
@@ -74,15 +74,15 @@
             <h3 class="col-md-8 offset-md-2"><%= t('view.comedian.comment') %></h3>
             <p class="col-md-8 offset-md-2"><%= @comedian.comment %></p>
           </div>
-        </div>
-      </div>
 
-      <div class="comedian-perform row p-4">
-        <div class="comedian-perform-header col-md-12">
-          <h2 class="">出演予定のライブ</h2>
-        </div>
-        <div class="block-live-list col-md-6 offset-md-3">
-          <%= render partial: 'show_schedule' %>
+          <div class="comedian-perform row">
+            <div class="comedian-perform-header col-md-12">
+              <h2 class="">出演予定のライブ</h2>
+            </div>
+            <div class="block-live-list col-md-8 offset-md-2">
+              <%= render partial: 'show_schedule' %>
+            </div>
+          </div>
         </div>
       </div>
 

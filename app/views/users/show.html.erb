@@ -6,10 +6,10 @@
       </div>
     </div>
   </header>
-  <div class="page-content p-3">
+  <div class="page-content p-5">
     <div class="block-user-group">
       <div class="user-info bg-light mx-auto">
-        <div class="user-info_header row p-3">
+        <div class="user-info_header row pt-5">
           <div class="user-info_left col-md-4 offset-md-2">
             <div class="user_icon">
               <p><%= image_tag @user.icon.thumb.to_s %></p>
@@ -29,16 +29,17 @@
             </div>
           </div>
         </div>
+
+        <div class="user_participate row p-4">
+          <div class="user_participate-header col-md-12">
+            <h2>参加予定のライブ</h2>
+          </div>
+          <div class="block-live-list col-md-8 offset-md-2">
+            <%= render partial: 'show_schedule' %>
+          </div>
+        </div>
       </div>
 
-      <div class="user_participate row p-4">
-        <div class="user_participate-header col-md-12">
-          <h2>参加予定のライブ</h2>
-        </div>
-        <div class="block-live-list col-md-6 offset-md-3">
-          <%= render partial: 'show_schedule' %>
-        </div>
-      </div>
     </div>
   </div>
 </main>
