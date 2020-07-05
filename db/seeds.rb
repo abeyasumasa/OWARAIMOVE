@@ -134,7 +134,7 @@ User.create!(name: "藤原　時",
                    comment: comment,
                    user_id: "2",
                    twitter_url: "https://twitter.com/soysauce_kameo",
-                   youtube_url: "https://www.youtube.com/channel/UCTOSwxVNtT5RVejAH4JgxVg"
+                   youtube_url: "https://www.youtube.com/channel/UUTOSwxVNtT5RVejAH4JgxVg"
   )
   Comedian.create!(combination_name: "中川家",
     email: Faker::Internet.email,
@@ -143,7 +143,7 @@ User.create!(name: "藤原　時",
     comment: comment,
     user_id: "3",
     twitter_url: "https://twitter.com/nakagawake419",
-    youtube_url: "https://www.youtube.com/channel/UCOg6P-Ne5Hdd5tDtcOHDd-Q"
+    youtube_url: "https://www.youtube.com/channel/UUOg6P-Ne5Hdd5tDtcOHDd-Q"
 )
 Comedian.create!(combination_name: "ますだおかだ",
   email: Faker::Internet.email,
@@ -197,7 +197,7 @@ Comedian.create!(combination_name: "バカリズム",
   comment: comment,
   user_id: "9",
   twitter_url: "https://twitter.com/BAKARHYTHM",
-  youtube_url: "https://www.youtube.com/channel/UCzOHCa6-FxSeO4wWUL6smLw"
+  youtube_url: "https://www.youtube.com/channel/UUzOHCa6-FxSeO4wWUL6smLw"
 )
 Comedian.create!(combination_name: "佐久間一行",
   email: Faker::Internet.email,
@@ -206,7 +206,7 @@ Comedian.create!(combination_name: "佐久間一行",
   comment: comment,
   user_id: "10",
   twitter_url: "https://twitter.com/sakuzari",
-  youtube_url: "https://www.youtube.com/channel/UCcJySXLBICOd1NlBktE5kOA"
+  youtube_url: "https://www.youtube.com/channel/UUcJySXLBICOd1NlBktE5kOA"
 )
 Comedian.create!(combination_name: "藤崎マーケット",
   email: Faker::Internet.email,
@@ -215,7 +215,7 @@ Comedian.create!(combination_name: "藤崎マーケット",
   comment: comment,
   user_id: "11",
   twitter_url: "https://twitter.com/fujisakitoki",
-  youtube_url: "https://www.youtube.com/channel/UCcJySXLBICOd1NlBktE5kOA"
+  youtube_url: "https://www.youtube.com/channel/UUcJySXLBICOd1NlBktE5kOA"
 )
 # end
 

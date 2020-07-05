@@ -39,16 +39,20 @@
                     </div>
                   </div>
                   <div class="filter-footer d-flex flex-row row pt-3">
-                    <div class="filter-botton col-md-2 offset-md-4">
-                      <%= f.submit '検索する', class:"btn btn-primary" %>
-                    </div>
-                    <div class="filter-botton create col-md-2">
-                      <% if current_user != nil %>
-                        <% if current_user.entertainer != false && current_user.comedian != nil %>
+                    <% if current_user != nil %>
+                      <% if current_user.entertainer != false && current_user.comedian != nil %>
+                        <div class="filter-botton col-md-2 offset-md-4">
+                          <%= f.submit '検索する', class:"btn btn-primary" %>
+                        </div>
+                        <div class="filter-botton create col-md-2">
                           <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-secondary' %>
-                        <% end %>
+                        </div>
+                      <% else %>
+                        <div class="filter-botton col-md-4 offset-md-4">
+                          <%= f.submit '検索する', class:"btn btn-primary" %>
+                        </div>
                       <% end %>
-                    </div>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
@@ -85,6 +89,7 @@
                               <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
                               <span><%= link_to t('view.edit'), edit_live_path(live.id), class: 'btn btn-outline-secondary' %></span>
                               <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
+                              <% break %>
                             <% else %>
                               <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
                             <% end %>

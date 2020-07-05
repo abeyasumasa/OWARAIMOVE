@@ -33,6 +33,7 @@ ja:
     live:
       title: ライブタイトル
       date: ライブ日付
+      time: 時間
       start_time: 開演時間
       ending_time: 終了時間
       place: 会場

@@ -131,6 +131,7 @@ select#q_place_cont {
   border: 1px solid #000000;
   background-color: #F7F7F7;
   text-align: left;
+  width: 75%;
 }
 
 // ライブ詳細
@@ -142,31 +143,42 @@ select#q_place_cont {
   font-size: 13px;
 }
 
-table th {
-  height: 50px;
-  background-color: cornsilk;
+.live-info {
+  width: 60%;
 }
 
-table td {
-  word-wrap: break-word;
-  background-color: white;
-}
+// table th {
+//   height: 50px;
+//   background-color: cornsilk;
+// }
 
-.flex {
-  min-width: 50%;
-  display: table;
-  border: 1px solid;
-  margin: 0px auto;
-  margin-bottom: 10px;
-  background-color: white;
-}
+// table td {
+//   word-wrap: break-word;
+//   background-color: white;
+// }
 
-.flex p {
-  margin: 0px;
-}
+// .live-genre {
+//   border: 1px solid;
+//   background-color: white;
+// }
+
+// .live-genre p {
+//   margin-bottom: 0px;
+// }
 
 .live-form {
   width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  .live-form {
+    width: 100%;
+  }
+}
+
+// 編集画面
+.live-form {
+  width: 40%;
 }
 
 @media screen and (max-width: 767px) {

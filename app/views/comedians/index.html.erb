@@ -21,7 +21,7 @@
                   <div class="block-content">
                     <div class="filter-section mb-3 row">
                       <div class="filter-section_header col-md-1 offset-md-1">
-                        <%= f.label :genre_cont, 'ジャンルで検索' %>
+                        <%= f.label :genre_cont, 'ジャンル' %>
                       </div>
                       <div class="filter-section_content col-md-4">
                         <%= f.collection_select :genre_cont, Comedian.select(:genre).distinct, :genre, :genre, :include_blank => true %>
@@ -37,18 +37,22 @@
                   </div>
 
                   <div class="filter-footer row pt-3">
-                    <div class="filter-botton col-md-2 offset-md-4">
-                      <%= f.submit '検索する', class:"btn btn-primary" %>
-                    </div>
-                    <div class="filter-botton create col-md-3">
-                      <% if current_user != nil %>
-                        <% if current_user.entertainer != false %>
+                    <% if current_user != nil %>
+                      <% if current_user.entertainer != false && current_user.comedian.nil? %>
+                        <div class="filter-botton col-md-2 offset-md-4">
+                          <%= f.submit '検索する', class:"btn btn-primary" %>
+                        </div>
+                        <div class="filter-botton create col-md-3">
                           <% if current_user.comedian.nil? %>
                             <%= link_to t('view.comedian.add'), new_comedian_path, class: 'btn btn-outline-primary' %>
                           <% end %>
-                        <% end %>
+                        </div>
+                      <% else %>
+                        <div class="filter-botton col-md-4 offset-md-4">
+                          <%= f.submit '検索する', class:"btn btn-primary" %>
+                        </div>
                       <% end %>
-                    </div>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
@@ -69,12 +73,10 @@
                     <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
                   </div>
                 <% elsif current_user.id == comedian.user_id %>
-                  <div class="btn-toolbar mx-a  uto mb-4">
-                    <div class="btn-group comedian_show">
-                      <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
-                      <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-outline-secondary' %></span>
-                      <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
-                    </div>
+                  <div class="btn-group comedian_show mb-4">
+                    <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
+                    <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-outline-secondary' %></span>
+                    <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
                   </div>
                 <% end %>
               </div>

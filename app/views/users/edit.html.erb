@@ -6,8 +6,8 @@
       </div>
     </div>
   </header>
-  <div class="page-content p-4">
-    <div class="bg-light comedian-form mx-auto p-4">
+  <div class="page-content p-5">
+    <div class="bg-light comedian-form mx-auto p-5">
       <%= form_with(model: @user, local: true) do |f| %>
         <% if @user.errors.any? %>
           <div id="error_explanation" class="alert alert-danger">
@@ -33,15 +33,15 @@
         </div>
 
         <div class="form-group row">
-          <%= f.label t('view.user.name'), class:"col-md-3" %>
-          <div class="col-md-9">
+          <%= f.label t('view.user.name'), class:"col-md-4" %>
+          <div class="col-md-8">
             <%= f.text_field :name, class:"form-control", autofocus: true %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label t('view.email'), class:"col-md-3" %>
-          <div class="col-md-9">
+          <%= f.label t('view.email'), class:"col-md-4" %>
+          <div class="col-md-8">
             <%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email" %>
           </div>
         </div>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :favorites, only: [:index, :create, :destroy]
   resources :participant_managements, only: [:create, :destroy]
+  resources :performer_managements, only: [:create, :destroy]
 
   resources :comedians do
     collection do
