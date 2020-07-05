@@ -12,14 +12,14 @@
     <div id="gnavi" class="collapse navbar-collapse header_nav ">
       <ul class="navbar-nav float-lg-right">
         <% if user_signed_in? %>
-          <li class="nav-item m-3"><%= link_to t('view.live.list'), lives_path %></li>
+          <p class="nav-item m-3"><%= link_to_unless_current t('view.live.list'), lives_path%></p>
           <% if current_user.entertainer == true && current_user.comedian != nil %>
             <li class="dropdown nav-item m-3 p-0 ">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">芸人</a>
               <ul class="dropdown-menu dropdown-menu-right">
-                <li class="dropdown-item text-center"><%= link_to t('view.comedian.list'), comedians_path %></li>
-                <li class="dropdown-item text-center"><%= link_to t('view.profile'), comedian_path(current_user.comedian.id) %></li>
-                <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_comedian_path(current_user.comedian.id) %></li>
+                <li class="dropdown-item text-center"><%= link_to_unless_current t('view.comedian.list'), comedians_path %></li>
+                <li class="dropdown-item text-center"><%= link_to_unless_current t('view.profile'), comedian_path(current_user.comedian.id) %></li>
+                <li class="dropdown-item text-center"><%= link_to_unless_current t('view.change'), edit_comedian_path(current_user.comedian.id) %></li>
               </ul>
             </li>
           <% else %>
@@ -28,18 +28,18 @@
           <li class="dropdown nav-item m-3 p-0">
             <a href="#" class="dropdown-toggle user" data-toggle="dropdown">アカウント</a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li class="dropdown-item text-center"><%= link_to current_user.name, user_path(current_user.id) %></li>
-              <li class="dropdown-item text-center"><%= link_to t('view.change'), edit_user_path(current_user.id) ,id: "user" %></li>
+              <li class="dropdown-item text-center"><%= link_to_unless_current current_user.name, user_path(current_user.id) %></li>
+              <li class="dropdown-item text-center"><%= link_to_unless_current t('view.change'), edit_user_path(current_user.id) ,id: "user" %></li>
               <% if current_user.admin == true %>
-                <li class="dropdown-item text-center"><%= link_to t('view.admin'), rails_admin_path %></li>
+                <li class="dropdown-item text-center"><%= link_to_unless_current t('view.admin'), rails_admin_path %></li>
               <% end %>
               <li class="divider"></li>
-              <li class="dropdown-item text-center"><%= link_to t('view.logout'), destroy_user_session_path, method: :delete %></li>
+              <li class="dropdown-item text-center"><%= link_to_unless_current t('view.logout'), destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to t('view.new'), new_user_registration_path %></li>
-          <li><%= link_to t('view.log_in'), new_user_session_path %></li>
+          <p class="nav-item"><%= link_to_unless_current t('view.new'), new_user_registration_path %></p>
+          <p class="nav-item"><%= link_to_unless_current t('view.log_in'), new_user_session_path %></p>
         <% end %>
       </ul>
     </div>

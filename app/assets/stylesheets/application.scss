@@ -39,16 +39,15 @@ body {
   min-height: 10%;
 }
 
+.nav-item,
+.dropdown-item {
+  color: #FF0000;
+}
+
 .header_inner ul a {
   display: block;
   text-decoration: none;
   color: #f5a500;
-}
-
-.header_inner ul:after {
-  content: "";
-  display: block;
-  clear: both;
 }
 
 .footer {

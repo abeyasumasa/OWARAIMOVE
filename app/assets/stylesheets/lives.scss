@@ -143,24 +143,28 @@ select#q_place_cont {
   font-size: 13px;
 }
 
-table th {
-  height: 50px;
-  background-color: cornsilk;
+.live-info {
+  width: 60%;
 }
 
-table td {
-  word-wrap: break-word;
-  background-color: white;
-}
+// table th {
+//   height: 50px;
+//   background-color: cornsilk;
+// }
 
-.live-genre {
-  border: 1px solid;
-  background-color: white;
-}
+// table td {
+//   word-wrap: break-word;
+//   background-color: white;
+// }
 
-.live-genre p {
-  margin-bottom: 0px;
-}
+// .live-genre {
+//   border: 1px solid;
+//   background-color: white;
+// }
+
+// .live-genre p {
+//   margin-bottom: 0px;
+// }
 
 .live-form {
   width: 50%;

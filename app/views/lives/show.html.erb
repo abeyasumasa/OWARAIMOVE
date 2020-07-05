@@ -7,87 +7,92 @@
       </div>
     </div>
   </header>
+
   <div class="page-content p-5">
-    <div class="block-live-group row mx-3 mb-2">
-      <table border="1" class="col-md-4 offset-md-4">
-        <div class="live_title">
-          <tr>
-            <th class="w-25"><%= t('view.live.title') %></th>
-            <td class="w-50"><%= @live.title %></td>
-          </tr>
+    <div class="block-live-group">
+      <div class="live-info p-5 mx-auto bg-light">
+        <div class="live_title row">
+          <p class="col-md-4 offset-md-1 text-center p-2 mb-0 border"><%= t('view.live.title') %></p>
+          <p class="col-md-6 text-center p-2 m-0 border border-left-0"><%= @live.title %></p>
         </div>
 
-        <div class="live_date">
-          <tr>
-            <th><%= t('view.live.date') %></th>
-            <td><%= simple_day(@live.date) %></td>
-          </tr>
+        <div class="live_date row">
+          <p class="col-md-4 offset-md-1 text-center p-2 mb-0 border border-top-0"><%= t('view.live.date') %></p>
+          <p class="col-md-6 text-center p-2 m-0 border border-top-0 border-left-0"><%= simple_day(@live.date) %></p>
         </div>
 
-        <div class="live_time">
-          <tr>
-            <th><%= t('view.live.time') %></th>
-            <td><%= simple_time(@live.start_time) %>〜<%= simple_time(@live.ending_time) %></td>
-          </tr>
+        <div class="live_time row">
+          <p class="col-md-4 offset-md-1 text-center p-2 mb-0 border border-top-0"><%= t('view.live.time') %></p>
+          <p class="col-md-6 text-center p-2 m-0 border border-top-0 border-left-0"><%= simple_time(@live.start_time) %>〜<%= simple_time(@live.ending_time) %></p>
         </div>
 
-        <div class="live_place">
-          <tr>
-            <th><%= t('view.live.place') %></th>
-            <td><%= @live.place %></td>
-          </tr>
+        <div class="live_place row">
+          <p class="col-md-4 offset-md-1 text-center p-2 mb-0 border border-top-0"><%= t('view.live.place') %></p>
+          <p class="col-md-6 text-center p-2 m-0 border border-top-0 border-left-0"><%= @live.place %></p>
         </div>
 
-        <div class="live_price">
-          <tr>
-            <th><%= t('view.live.prise') %></th>
-            <td><%= @live.price %>円</td>
-          </tr>
+        <div class="live_price row">
+          <p class="col-md-4 offset-md-1 text-center p-2 mb-0 border border-top-0"><%= t('view.live.prise') %></p>
+          <p class="col-md-6 text-center p-2 m-0 border border-top-0 border-left-0"><%= @live.price %>円</p>
         </div>
 
-        <div class="live-peformer">
-          <tr>
-            <th>ライブ出演者</th>
-            <% @comedian = @live.performer_management_comedians %>
+        <div class="live-peformer row">
+          <p class="col-md-4 offset-md-1 text-center p-2 mb-0 border border-top-0">ライブ出演者</p>
+          <% @comedian = @live.performer_management_comedians %>
+          <div class="col-md-6 text-center p-2 m-0 border border-top-0 border-left-0">
             <% @comedian.each do |comedian| %>
-              <td><%= link_to comedian.combination_name, comedian %></td>
+              <span><%= link_to comedian.combination_name, comedian %></@>
             <% end%>
-          </tr>
+          </div>
         </div>
 
-        <div class="live_content">
-          <tr>
-            <th><%= t('view.live.content') %></th>
-            <td><%= @live.content %></td>
-          </tr>
+        <div class="live_content row">
+          <p class="col-md-4 offset-md-1 text-center p-2 mb-0 border border-top-0"><%= t('view.live.content') %></p>
+          <p class="col-md-6 text-center p-2 m-0 border border-top-0 border-left-0"><%= @live.content %></p>
         </div>
-      </table>
 
-      <div class="live-genre col-md-4 offset-md-4 mt-2">
-        <p>関連ジャンル</p>
-        <% @comedian.each do |comedian| %>
-          <p><%= comedian.genre %></p>
-        <% end %>
+        <div class="live-genre row">
+          <p class="col-md-4 offset-md-1 text-center p-2 mb-0 border border-top-0">関連ジャンル</p>
+          <div class="col-md-6 text-center p-2 m-0 border border-top-0 border-left-0">
+            <% genres = [] %>
+            <% @comedian.each do |comedian| %>
+              <% genres = genres.push(comedian.genre) %>
+            <% end %>
+            <% genres =  genres.uniq %>
+            <% genres.each do |genre| %>
+              <span><%= genre %></span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="live-status mt-3">
+          <% @comedian.each do |comedian| %>
+            <% unless current_user == nil || current_user.entertainer != false || current_user.comedian != nil %>
+              <% if Date.today <= @live.date %>
+                <%= link_to 'ライブに参加する', participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
+              <% elsif @participant.present? %>
+                <%= link_to 'キャンセルする', participant_management_path(id: @participant.id), method: :delete, class: 'btn btn-outline-secondary' %>
+              <% end %>
+            <% end %>
+            <% unless current_user == nil || current_user.entertainer != true || current_user.comedian == nil %>
+              <% if current_user.comedian.id == comedian.id %>
+                <span><%= link_to t('view.edit'), edit_live_path(@live.id), class: 'btn btn-outline-secondary' %></span>
+                <span><%= link_to t('view.destroy'), live_path(@live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
+              <% end %>
+              <% if current_user.comedian.present?%>
+                <% if @performer.present? %>
+                  <%= link_to 'キャンセルする', performer_management_path(id: @participant.id), method: :delete, class: 'btn btn-outline-secondary' %>
+                  <% break %>
+                <% elsif Date.today <= @live.date %>
+                  <%= link_to 'ライブに出演する', performer_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
+                <% end %>
+              <% end %>
+            <% end%>
+          <% end %>
+        </div>
       </div>
     </div>
 
-    <div class="live-status">
-      <% @comedian.each do |comedian| %>
-        <% unless current_user == nil || current_user.entertainer != false || current_user.comedian != nil %>
-          <% if Date.today <= @live.date %>
-            <%= link_to 'ライブに参加する', participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
-          <% elsif @participant.present? %>
-            <%= link_to 'キャンセルする', participant_management_path(id: @participant.id), method: :delete, class: 'btn btn-outline-secondary' %>
-          <% end %>
-        <% end %>
-        <% unless current_user == nil || current_user.entertainer != true || current_user.comedian == nil %>
-          <% if @current_user.comedian.id == comedian.id %>
-            <span><%= link_to t('view.edit'), edit_live_path(@live.id), class: 'btn btn-outline-secondary' %></span>
-            <span><%= link_to t('view.destroy'), live_path(@live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
-          <% end %>
-        <% end%>
-      <% end %>
-    </div>
     <div class='mt-2'>
       <%= link_to "ライブ一覧に戻る", lives_path %>
     </div>

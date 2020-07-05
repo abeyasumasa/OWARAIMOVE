@@ -89,6 +89,7 @@
                               <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
                               <span><%= link_to t('view.edit'), edit_live_path(live.id), class: 'btn btn-outline-secondary' %></span>
                               <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
+                              <% break %>
                             <% else %>
                               <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
                             <% end %>

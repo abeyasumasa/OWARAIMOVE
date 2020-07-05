@@ -27,6 +27,7 @@ class LivesController < ApplicationController
   def show
     if current_user != nil
       @participant = current_user.participant_managements.find_by(live_id: @live.id)
+      @performer = current_user.comedian.performer_managements.find_by(live_id: @live.id)
     end
   end
 
