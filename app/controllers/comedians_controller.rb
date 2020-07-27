@@ -47,6 +47,7 @@ class ComediansController < ApplicationController
 
   def update
     if @comedian.update(comedian_params)
+      binding.pry
       if @comedian.youtube_url != ""
         @comedian.youtube_url_change
       end
