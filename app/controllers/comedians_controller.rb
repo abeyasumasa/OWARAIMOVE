@@ -21,9 +21,7 @@ class ComediansController < ApplicationController
     else
       if @comedian.save
         if @comedian.youtube_url != ""
-          youtube_url=@comedian.youtube_url
-          youtube_url=youtube_url.gsub(youtube_url[-23],"U")
-          @comedian.update(youtube_url: youtube_url)
+          @comedian.youtube_url_change
         end
         flash[:success] = '芸人情報を登録しました！'
         redirect_to comedians_path
@@ -49,10 +47,9 @@ class ComediansController < ApplicationController
 
   def update
     if @comedian.update(comedian_params)
+      binding.pry
       if @comedian.youtube_url != ""
-        youtube_url=@comedian.youtube_url
-        youtube_url=youtube_url.gsub(youtube_url[-23],"U")
-        @comedian.update(youtube_url: youtube_url)
+        @comedian.youtube_url_change
       end
       flash[:success] = '芸人情報を編集しました'
       redirect_to comedians_path

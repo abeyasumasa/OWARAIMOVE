@@ -19,12 +19,18 @@ class Comedian < ApplicationRecord
   mount_uploader :combination_icon, ComedianImageUploader
 
   # バリデーション
-  validates :combination_name, presence: true, length: {maximum: 30}
-  validates :email, presence: true, length: {maximum: 255},
-            format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
-  validates :twitter_url, length: {maximum: 255}
-  validates :youtube_url, length: {maximum: 255}
+  validates :combination_name, presence: true, length: { maximum: 30 }
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :twitter_url, length: { maximum: 255 }
+  validates :youtube_url, length: { maximum: 255 }
   validates :genre, presence: true
   validates :twitter_url, format: /\A#{URI::regexp(%w(http https))}\z/, allow_blank: true
   validates :youtube_url, format: /\A#{URI::regexp(%w(http https))}\z/, allow_blank: true
+
+  #youtubeURLにデータが入っていれば23番目の文字をUに変更する
+  def youtube_url_change
+    youtube_url = self.youtube_url.gsub(self.youtube_url[-23], "U")
+    self.update(youtube_url: youtube_url)
+  end
 end
