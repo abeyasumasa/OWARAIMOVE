@@ -23,9 +23,9 @@ ja:
     admin: 管理画面
     top:
     comedian:
-      combination_icon: コンビ写真
+      combination_icon: グループ写真
       comment: コメント
-      combination_name: コンビ名
+      combination_name: グループ名
       genre: ジャンル
       entry: 登録
       add: 芸人プロフィール作成
