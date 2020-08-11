@@ -24,9 +24,13 @@
                         <%= f.label :date_gteq, '公演日'%>
                       </div>
                       <div class="filter-section_content col-md-4">
-                        <%= f.date_field :date_gteq, id: 'search_date', max: "9999-12-31" %>
+                        <label class="date-edit">
+                          <%= f.date_field :date_gteq, id: 'search_date', max: "9999-12-31" %>
+                        </label>
                         <span class="from">から</span>
-                        <%= f.date_field :date_lteq, id: 'search_date', max: "9999-12-31" %>
+                        <label class="date-edit">
+                          <%= f.date_field :date_lteq, id: 'search_date', max: "9999-12-31" %>
+                        </label>
                         <span class="to">まで</span>
                       </div>
 
@@ -41,10 +45,10 @@
                   <div class="filter-footer d-flex flex-row row pt-3">
                     <% if current_user != nil %>
                       <% if current_user.entertainer != false && current_user.comedian != nil %>
-                        <div class="filter-botton col-md-2 offset-md-4">
+                       <div class="filter-botton col-md-2 offset-md-4">
                           <%= f.submit '検索する', class:"btn btn-primary" %>
                         </div>
-                        <div class="filter-botton create col-md-2">
+                        <div class="filter-botton create col-md-3">
                           <%= link_to t('view.live.add'), new_live_path, class: 'btn btn-secondary' %>
                         </div>
                       <% else %>
@@ -74,29 +78,21 @@
                     <p><%= simple_time(live.start_time) %>〜<%= simple_time(live.ending_time) %></p>
                   </div>
                   <div class="live-item-_status">
-                    <% @comedian = live.performer_management_comedians %>
-                    <% @comedian.each do |comedian| %>
-                      <% if current_user == nil %>
+                    <%#カレントユーザーがログインしていなければ詳細画面しか表示させない%>
+                    <%#カレントユーザーが芸人ではない場合は詳細画面しか表示させない%>
+                      <% if current_user == nil || current_user.entertainer == false %>
                         <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
                       <% else %>
-                        <% if current_user.entertainer == false %>
+                        <%#カレントユーザーの芸人とライブに参加する芸人が同じIDの場合は詳細、編集、削除画面を表示される%>
+                        <%#詳細画面が表示されるのは一回だけ%>
+                        <% if current_user.comedian.performer_managements.where(live_id:live.id).empty? %>
                           <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
                         <% else %>
-                          <% if current_user.comedian == nil %>
-                            <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
-                          <% else %>
-                            <% if current_user.comedian.id == comedian.id %>
-                              <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
-                              <span><%= link_to t('view.edit'), edit_live_path(live.id), class: 'btn btn-outline-secondary' %></span>
-                              <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
-                              <% break %>
-                            <% else %>
-                              <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
-                            <% end %>
-                          <% end %>
+                          <span><%= link_to t('view.show'), live_path(live.id), class: 'btn btn-outline-secondary' %></span>
+                          <span><%= link_to t('view.edit'), edit_live_path(live.id), class: 'btn btn-outline-secondary' %></span>
+                          <span><%= link_to t('view.destroy'), live_path(live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
                         <% end %>
                       <% end %>
-                    <% end %>
                   </div>
                 </div>
               </section>

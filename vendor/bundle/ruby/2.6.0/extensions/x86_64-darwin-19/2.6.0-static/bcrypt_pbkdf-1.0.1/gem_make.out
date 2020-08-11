@@ -1,0 +1,29 @@
+current directory: /Users/abeyasumasa/Desktop/graduation/OWARAIMOVE/vendor/bundle/ruby/2.6.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+/Users/abeyasumasa/.rbenv/versions/2.6.3/bin/ruby -I /Users/abeyasumasa/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20200803-71089-1yg4wpp.rb extconf.rb
+creating Makefile
+
+current directory: /Users/abeyasumasa/Desktop/graduation/OWARAIMOVE/vendor/bundle/ruby/2.6.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR=" clean
+
+current directory: /Users/abeyasumasa/Desktop/graduation/OWARAIMOVE/vendor/bundle/ruby/2.6.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR="
+compiling bcrypt_pbkdf.c
+compiling bcrypt_pbkdf_ext.c
+bcrypt_pbkdf_ext.c:18:5: warning: implicit conversion loses integer precision: 'unsigned long' to 'unsigned int' [-Wshorten-64-to-32]
+    NUM2ULONG(rounds));
+    ^~~~~~~~~~~~~~~~~
+/Users/abeyasumasa/.rbenv/versions/2.6.3/include/ruby-2.6.0/ruby/ruby.h:688:22: note: expanded from macro 'NUM2ULONG'
+#define NUM2ULONG(x) RB_NUM2ULONG(x)
+                     ^~~~~~~~~~~~~~~
+/Users/abeyasumasa/.rbenv/versions/2.6.3/include/ruby-2.6.0/ruby/ruby.h:687:25: note: expanded from macro 'RB_NUM2ULONG'
+#define RB_NUM2ULONG(x) rb_num2ulong_inline(x)
+                        ^~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+compiling blowfish.c
+compiling explicit_bzero.c
+compiling hash_sha512.c
+linking shared-object bcrypt_pbkdf_ext.bundle
+
+current directory: /Users/abeyasumasa/Desktop/graduation/OWARAIMOVE/vendor/bundle/ruby/2.6.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_pbkdf_ext.bundle ./.gem.20200803-71089-3cu1pi

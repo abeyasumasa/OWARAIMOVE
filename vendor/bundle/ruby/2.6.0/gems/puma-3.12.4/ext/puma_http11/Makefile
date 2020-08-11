@@ -14,7 +14,7 @@ NULLCMD = :
 srcdir = .
 topdir = /Users/abeyasumasa/.rbenv/versions/2.6.3/include/ruby-2.6.0
 hdrdir = $(topdir)
-arch_hdrdir = /Users/abeyasumasa/.rbenv/versions/2.6.3/include/ruby-2.6.0/x86_64-darwin18
+arch_hdrdir = /Users/abeyasumasa/.rbenv/versions/2.6.3/include/ruby-2.6.0/x86_64-darwin19
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
 prefix = $(DESTDIR)/Users/abeyasumasa/.rbenv/versions/2.6.3
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20200503-1450-3ybxpd
-sitelibdir = $(DESTDIR)./.gem.20200503-1450-3ybxpd
+sitearchdir = $(DESTDIR)./.gem.20200803-71089-nbgapi
+sitelibdir = $(DESTDIR)./.gem.20200803-71089-nbgapi
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -83,10 +83,10 @@ debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens
 cppflags = 
 CCDLFLAGS = -fno-common
-CFLAGS   = $(CCDLFLAGS)  -O3 -Wno-error=shorten-64-to-32  -pipe $(ARCH_FLAG)
+CFLAGS   = $(CCDLFLAGS) $(cflags)  -pipe $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DHAVE_OPENSSL_BIO_H -I/usr/local/opt/openssl/include -I/Users/abeyasumasa/.rbenv/versions/2.6.3/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
+CPPFLAGS = -DHAVE_OPENSSL_BIO_H -I/usr/local/opt/openssl@1.1/include -I/Users/abeyasumasa/.rbenv/versions/2.6.3/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
 ldflags  = -L. -L/Users/abeyasumasa/.rbenv/versions/2.6.3/lib  -fstack-protector-strong -L/usr/local/lib
 dldflags = -L/Users/abeyasumasa/.rbenv/versions/2.6.3/lib  -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress 
@@ -104,7 +104,7 @@ RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
 RUBYW_BASE_NAME = rubyw
 RUBY_BASE_NAME = ruby
 
-arch = x86_64-darwin18
+arch = x86_64-darwin19
 sitearch = $(arch)
 ruby_version = 2.6.0
 ruby = $(bindir)/$(RUBY_BASE_NAME)
@@ -124,8 +124,8 @@ TOUCH = exit >
 #### End of system configuration section. ####
 
 preload = 
-libpath = . $(libdir) /usr/local/opt/openssl/lib
-LIBPATH =  -L. -L$(libdir) -L/usr/local/opt/openssl/lib
+libpath = . $(libdir) /usr/local/opt/openssl@1.1/lib
+LIBPATH =  -L. -L$(libdir) -L/usr/local/opt/openssl@1.1/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
