@@ -60,13 +60,13 @@ class LivesController < ApplicationController
   end
 
   def encure_correct_performer
-    @comedian = @live.performer_management_comedians
-    @comedian.each do |comedian|
-      if current_user.comedian.id != comedian.id
+    # @comedian = @live.performer_management_comedians
+    # @comedian.each do |comedian|
+      if current_user.comedian.performer_managements.where(live_id:@live.id).empty?
         flash[:danger] = "権限がありません"
         redirect_to lives_path
       end
-    end
+    # end
   end
 
 end

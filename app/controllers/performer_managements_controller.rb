@@ -4,7 +4,7 @@ class PerformerManagementsController < ApplicationController
     redirect_to lives_url, notice: "#{performer.live.title}に参加しました"
   end
   def destroy
-    performer = current_user.comedian.performer_managements.find_by(live_id: params[:id]).destroy
+    performer = current_user.comedian.performer_managements.find_by(id: params[:id]).destroy
     redirect_to lives_url, notice: "#{performer.live.title}への参加をキャンセルしました"
   end
 end
