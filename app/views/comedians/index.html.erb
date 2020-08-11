@@ -20,17 +20,17 @@
                 <%= search_form_for @search do |f| %>
                   <div class="block-content">
                     <div class="filter-section mb-3 row">
-                      <div class="filter-section_header col-md-1 offset-md-1">
+                      <div class="filter-section_header col-md-2 ">
                         <%= f.label :genre_cont, 'ジャンル' %>
                       </div>
-                      <div class="filter-section_content col-md-4">
+                      <div class="filter-section_content col-md-2">
                         <%= f.collection_select :genre_cont, Comedian.select(:genre).distinct, :genre, :genre, :include_blank => true %>
                       </div>
 
-                      <div class="filter-section_header col-md-1 offset-md-1">
+                      <div class="filter-section_header col-md-2 offset-md-2">
                         <%= f.label :comment_cout, 'キーワード' %><br>
                       </div>
-                      <div class="filter-section_content col-md-4">
+                      <div class="filter-section_content col-md-2">
                         <%= f.text_field :combination_name_or_comment_cont, placeholder: "コンビ名やフレーズ等で検索"%>
                       </div>
                     </div>

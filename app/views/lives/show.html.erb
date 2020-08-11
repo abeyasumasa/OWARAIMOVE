@@ -40,8 +40,12 @@
           <p class="col-md-4 offset-md-1 text-center p-2 mb-0 border border-top-0">ライブ出演者</p>
           <% @comedian = @live.performer_management_comedians %>
           <div class="col-md-6 text-center p-2 m-0 border border-top-0 border-left-0">
-            <% @comedian.each do |comedian| %>
-              <span><%= link_to comedian.combination_name, comedian %></@>
+            <% @comedian.each_with_index do |comedian,i| %>
+              <% if i == @comedian.length - 1 %>
+                <span><%= link_to comedian.combination_name, comedian %></span>
+                <% break %>
+              <% end%>
+              <span><%= link_to comedian.combination_name, comedian %>/</span>
             <% end%>
           </div>
         </div>
