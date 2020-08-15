@@ -1,13 +1,13 @@
-
 <% @schedule.each do |schedule| %>
   <div class="live_item mx-auto">
+    <%= link_to '', live_path(schedule.id) %>
     <section class="live-item_inner">
-      <div class="live-info_left" id="title">
-        <p><%= link_to schedule.title, live_path(params[:id]) %></p>
+      <div class="live-info_left clearfix" id="title">
+        <p><%= simple_day(schedule.date) %></p>
       </div>
       <div class="live-info_right">
         <header class="live-item_header">
-          <h3><%= simple_day(schedule.date) %></h3>
+          <h3><%= schedule.title %></h3>
         </header>
         <div class="live-item_content">
           <p><%= simple_time(schedule.start_time) %>~<%= simple_time(schedule.ending_time) %></p>
