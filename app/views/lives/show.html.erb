@@ -70,26 +70,45 @@
         </div>
 
         <div class="live-status mt-3">
-            <%#ユーザー登録が済んでない、又は芸人チェックが済んできない、又は芸人登録が済んできない場合は次へ%>
-            <% unless current_user == nil || current_user.entertainer != false || current_user.comedian != nil %>
+          <% if current_user.entertainer == true %>
+            <%# ライブに出演・参加していない芸人は参加出演両方表示 %>
+            <% if current_user.comedian.performer_managements.where(live_id:@live.id).empty? && current_user.participant_managements.where(live_id:@live.id).empty? %>
               <% if Date.today <= @live.date %>
-                <%= link_to 'ライブに参加する', participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
-              <% elsif @participant.present? %>
-                <%= link_to 'キャンセルする', participant_management_path(id: @participant.id), method: :delete, class: 'btn btn-outline-secondary' %>
+                <%= link_to 'ライブ参加', participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
+                <%= link_to 'ライブ出演', performer_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
               <% end %>
-            <% else %>
-              <% unless current_user.comedian.performer_managements.where(live_id:@live.id).empty? %>
+              <%# ライブに出演している %>
+            <% elsif current_user.comedian.performer_managements.where(live_id:@live.id).any? %>
+              <% if Date.today <= @live.date %>
+                <%= link_to 'ライブ出演キャンセル', performer_management_path(id: @performer.id), method: :delete, class: 'btn btn-outline-secondary' %>
                 <span><%= link_to t('view.edit'), edit_live_path(@live.id), class: 'btn btn-outline-secondary' %></span>
                 <span><%= link_to t('view.destroy'), live_path(@live.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
               <% end %>
-              <% if current_user.comedian.performer_managements.where(live_id:@live.id).empty? %>
-                <% if @performer.present? %>
-                  <%= link_to 'キャンセルする', performer_management_path(id: @performer.id), method: :delete, class: 'btn btn-outline-secondary' %>
-                <% elsif Date.today <= @live.date %>
-                  <%= link_to 'ライブに出演する', performer_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
+            <% else %>
+              <%# 芸人がライブに参加していない %>
+              <% if current_user.participant_managements.where(live_id:@live.id).empty? %>
+                <% if Date.today <= @live.date %>
+                  <%= link_to 'ライブ参加', participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
+                <% end %>
+              <%# 芸人がライブに参加している %>
+              <% elsif current_user.participant_managements.where(live_id:@live.id).any? %>
+                <% if Date.today <= @live.date %>
+                  <%= link_to 'ライブ参加キャンセル', participant_management_path(id: @participant.id), method: :delete, class: 'btn btn-outline-secondary' %>
                 <% end %>
               <% end %>
-            <% end%>
+            <% end %>
+          <% else %>
+          <%# ライブに参加していないユーザー参加、キャンセルのみ表示 %>
+            <% if current_user.participant_managements.where(live_id:@live.id).empty? %>
+              <% if Date.today <= @live.date %>
+                <%= link_to 'ライブ参加', participant_managements_path(live_id: @live.id), method: :post, class: 'btn btn-outline-secondary' %>
+              <% end %>
+            <% else %>
+              <% if Date.today <= @live.date %>
+                <%= link_to 'ライブ参加キャンセル', participant_management_path(id: @participant.id), method: :delete, class: 'btn btn-outline-secondary' %>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
