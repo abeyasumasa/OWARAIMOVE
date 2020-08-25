@@ -60,7 +60,8 @@
           </section>
           <div class="block-comedian-list card-columns my-3 ">
             <% @comedians.each do |comedian| %>
-            <div class="card mb-3">
+            <div class="card comedian_item mb-3">
+              <%= link_to "", comedian %>
               <% unless comedian.combination_icon.thumb.url == nil %>
                 <%= image_tag comedian.combination_icon.thumb.url, class: "card-img-top p-3" %>
               <% end %>
@@ -68,17 +69,6 @@
                 <h5 class="card-title text-left"><%= comedian.combination_name %></h5>
                 <p class="card-text text-left"><%= t('view.comedian.genre') %> : <%= comedian.genre %></p>
                 <p class="card-text text-left overflow-auto" style="height:4.5rem;"><%= comedian.comment %></p>
-                <% if current_user == nil || current_user.id != comedian.user_id %>
-                  <div class="mb-4 comedian_show">
-                    <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
-                  </div>
-                <% elsif current_user.id == comedian.user_id %>
-                  <div class="btn-group comedian_show mb-4">
-                    <span><%= link_to t('view.show'), comedian, class: 'btn btn-outline-secondary' %></span>
-                    <span><%= link_to t('view.edit'), edit_comedian_path(comedian.id), class: 'btn btn-outline-secondary' %></span>
-                    <span><%= link_to t('view.destroy'), comedian_path(comedian.id), method: :delete, class: 'btn btn-outline-secondary' %></span>
-                  </div>
-                <% end %>
               </div>
             </div>
             <% end %>
